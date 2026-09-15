@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css"><link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css"><style>body{margin:0;background:#E9EEF3;font-family:Inter,system-ui,sans-serif;color:#152A45;-webkit-font-smoothing:antialiased}*{box-sizing:border-box}a{color:#247BA0;text-decoration:none}a:hover{color:#1A5C78;text-decoration:underline}:focus-visible{outline:2px solid #247BA0;outline-offset:2px;border-radius:4px}::selection{background:#CDE4EE}</style></helmet>
+
+<div style="position:sticky;top:0;z-index:50;background:#152A45;color:#9FB3C6;display:flex;align-items:center;gap:16px;padding:10px 18px;flex-wrap:wrap">
+<div style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#D79B2E">ITM · Public site prototype</div>
+<div style="display:flex;gap:4px;flex-wrap:wrap">
+<button onClick="{{ goHome }}" style="font:500 13px Inter,sans-serif;background:transparent;border:1px solid rgba(233,238,243,.22);color:#E9EEF3;border-radius:8px;padding:7px 12px;cursor:pointer" style-hover="background:rgba(233,238,243,.12)">Homepage</button>
+<button onClick="{{ goService }}" style="font:500 13px Inter,sans-serif;background:transparent;border:1px solid rgba(233,238,243,.22);color:#E9EEF3;border-radius:8px;padding:7px 12px;cursor:pointer" style-hover="background:rgba(233,238,243,.12)">Service detail</button>
+<button onClick="{{ goFlow }}" style="font:500 13px Inter,sans-serif;background:transparent;border:1px solid rgba(233,238,243,.22);color:#E9EEF3;border-radius:8px;padding:7px 12px;cursor:pointer" style-hover="background:rgba(233,238,243,.12)">Start application</button>
+<button onClick="{{ goDone }}" style="font:500 13px Inter,sans-serif;background:transparent;border:1px solid rgba(233,238,243,.22);color:#E9EEF3;border-radius:8px;padding:7px 12px;cursor:pointer" style-hover="background:rgba(233,238,243,.12)">Request received</button>
+</div>
+<div style="margin-left:auto;display:flex;gap:4px;align-items:center">
+<span style="font-size:12px;margin-right:6px">Viewport</span>
+<button onClick="{{ setDesktop }}" style="font:500 13px Inter,sans-serif;background:transparent;border:1px solid rgba(233,238,243,.22);color:#E9EEF3;border-radius:8px;padding:7px 12px;cursor:pointer;display:flex;align-items:center;gap:6px" style-hover="background:rgba(233,238,243,.12)"><i class="ph ph-monitor" style="font-size:15px"></i>Desktop</button>
+<button onClick="{{ setMobile }}" style="font:500 13px Inter,sans-serif;background:transparent;border:1px solid rgba(233,238,243,.22);color:#E9EEF3;border-radius:8px;padding:7px 12px;cursor:pointer;display:flex;align-items:center;gap:6px" style-hover="background:rgba(233,238,243,.12)"><i class="ph ph-device-mobile" style="font-size:15px"></i>360px</button>
+</div>
+</div>
+
+<div style="display:flex;justify-content:center;padding:24px 16px 64px">
+<div style="width:100%;max-width:{{ frameWidth }};background:#F4F7F9;border:1px solid #DDE5EB;border-radius:18px;overflow:hidden;box-shadow:0 12px 32px rgba(21,42,69,.10)">
+
+<div style="background:#152A45;color:#9FB3C6;font-size:12px;padding:8px 20px;display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+<span style="display:inline-flex;align-items:center;gap:6px"><i class="ph ph-phone" style="font-size:13px"></i>+263 —— ——</span>
+<span style="display:inline-flex;align-items:center;gap:6px"><i class="ph ph-clock" style="font-size:13px"></i>Mon–Fri, 08:00–17:00</span>
+<span style="margin-left:auto;color:#E9EEF3;cursor:pointer" style-hover="color:#D79B2E">Track Application</span>
+</div>
+
+<div style="background:#fff;border-bottom:1px solid #DDE5EB;padding:13px 20px;display:flex;align-items:center;gap:22px;flex-wrap:{{ headerWrap }};row-gap:12px">
+<div onClick="{{ goHome }}" style="display:flex;align-items:center;gap:10px;cursor:pointer;flex:none">
+<div style="width:36px;height:36px;border-radius:9px;overflow:hidden;flex:none"><img src="assets/itm-logo.png" alt="ITM Business Solutions" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+<div><div style="font-size:14px;font-weight:600;line-height:1.15;white-space:nowrap">ITM Business Solutions</div><div style="font-size:10px;color:#5A6B7D;white-space:nowrap">Ideas today. A brighter tomorrow.</div></div>
+</div>
+<sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;gap:20px;font-size:14px;font-weight:500;flex:1 1 auto;min-width:0;flex-wrap:wrap">
+<span onClick="{{ goHome }}" style="cursor:pointer" style-hover="color:#247BA0">Home</span>
+<span onClick="{{ goService }}" style="cursor:pointer;display:inline-flex;align-items:center;gap:5px" style-hover="color:#247BA0">Services<i class="ph ph-caret-down" style="font-size:12px"></i></span>
+<span style="cursor:pointer" style-hover="color:#247BA0">Packages</span>
+<span style="cursor:pointer" style-hover="color:#247BA0">Requirements</span>
+<span style="cursor:pointer" style-hover="color:#247BA0">Resources</span>
+<span style="cursor:pointer" style-hover="color:#247BA0">About</span>
+</div>
+<div style="display:flex;gap:9px;flex:none;margin-left:auto">
+<button style="font:600 14px Inter,sans-serif;color:#152A45;background:transparent;border:1px solid #9FB3C6;border-radius:10px;padding:10px 14px;cursor:pointer;min-height:44px;display:flex;align-items:center;gap:7px;white-space:nowrap" style-hover="border-color:#152A45"><i class="ph ph-whatsapp-logo" style="font-size:17px;color:#1F7A5C"></i>WhatsApp</button>
+<button onClick="{{ goFlow }}" style="font:600 14px Inter,sans-serif;color:#fff;background:#247BA0;border:none;border-radius:10px;padding:11px 16px;cursor:pointer;min-height:44px;white-space:nowrap" style-hover="background:#1A5C78">Start Your Application</button>
+</div>
+</sc-if>
+<sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+<div style="margin-left:auto;display:flex;gap:8px;flex:none">
+<button style="width:44px;height:44px;border-radius:10px;border:1px solid #DDE5EB;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center"><i class="ph ph-whatsapp-logo" style="font-size:20px;color:#1F7A5C"></i></button>
+<button style="width:44px;height:44px;border-radius:10px;border:1px solid #DDE5EB;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center"><i class="ph ph-list" style="font-size:20px;color:#152A45"></i></button>
+</div>
+</sc-if>
+</div>
+
+<sc-if value="{{ onHome }}" hint-placeholder-val="{{ true }}">
+<div style="padding:0 0 0">
+<div style="background:#152A45;color:#E9EEF3;padding:56px 20px 64px">
+<div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:{{ heroCols }};gap:44px;align-items:center">
+<div>
+<div style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#D79B2E;margin-bottom:16px">Zimbabwean registration &amp; compliance</div>
+<h1 style="font-size:{{ h1Size }};font-weight:600;line-height:1.08;letter-spacing:-.02em;color:#fff;margin:0 0 18px;text-wrap:balance">Start, Grow and Keep Your Organisation Compliant.</h1>
+<p style="font-size:17px;line-height:1.6;color:#9FB3C6;margin:0 0 28px;max-width:52ch;text-wrap:pretty">Company registration, tax, NSSA, PRAZ, licensing and business documents — with clear requirements, a written quotation before you pay, and visible progress from start to finish.</p>
+<div style="display:flex;gap:11px;flex-wrap:wrap">
+<button onClick="{{ goFlow }}" style="font:600 15px Inter,sans-serif;color:#fff;background:#247BA0;border:none;border-radius:10px;padding:14px 22px;cursor:pointer;min-height:50px" style-hover="background:#4E97B6">Find the Right Service</button>
+<button style="font:600 15px Inter,sans-serif;color:#fff;background:transparent;border:1px solid rgba(233,238,243,.42);border-radius:10px;padding:13px 21px;cursor:pointer;min-height:50px;display:flex;align-items:center;gap:9px" style-hover="background:rgba(233,238,243,.1);border-color:#fff"><i class="ph ph-whatsapp-logo" style="font-size:18px"></i>Chat on WhatsApp</button>
+</div>
+<div style="display:flex;gap:22px;margin-top:32px;padding-top:24px;border-top:1px solid rgba(233,238,243,.16);flex-wrap:wrap;font-size:13px;color:#9FB3C6">
+<span style="display:inline-flex;align-items:center;gap:7px"><i class="ph-fill ph-check-circle" style="font-size:16px;color:#D79B2E"></i>Written quotation first</span>
+<span style="display:inline-flex;align-items:center;gap:7px"><i class="ph-fill ph-check-circle" style="font-size:16px;color:#D79B2E"></i>Fees separated, never bundled</span>
+<span style="display:inline-flex;align-items:center;gap:7px"><i class="ph-fill ph-check-circle" style="font-size:16px;color:#D79B2E"></i>Progress you can check</span>
+</div>
+</div>
+<div style="aspect-ratio:4/3;border-radius:18px;background:repeating-linear-gradient(135deg,rgba(233,238,243,.07) 0 10px,rgba(233,238,243,.02) 10px 20px);border:1px solid rgba(233,238,243,.16);display:flex;align-items:center;justify-content:center">
+<div style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#5A7796;text-align:center;line-height:1.6">abstract corporate<br>collage — drop here<br><span style="color:#3D5064">no certificates or seals</span></div>
+</div>
+</div>
+</div>
+
+<div style="max-width:1200px;margin:0 auto;padding:56px 20px">
+<h2 style="font-size:28px;font-weight:600;letter-spacing:-.01em;margin:0 0 8px">What do you need to do?</h2>
+<p style="font-size:15px;color:#5A6B7D;margin:0 0 28px">Five outcomes, each leading to the right service — not a catalogue you have to decode.</p>
+<div style="display:grid;grid-template-columns:{{ pathCols }};gap:12px">
+<div onClick="{{ goService }}" style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;padding:22px 20px;cursor:pointer;transition:box-shadow .18s,border-color .18s" style-hover="box-shadow:0 8px 24px rgba(21,42,69,.10);border-color:#247BA0">
+<i class="ph ph-rocket-launch" style="font-size:26px;color:#247BA0"></i>
+<div style="font-size:17px;font-weight:600;margin:14px 0 6px">Start a Business</div>
+<div style="font-size:14px;line-height:1.55;color:#5A6B7D">Register a company, PBC or re-register an old entity.</div>
+</div>
+<div onClick="{{ goService }}" style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;padding:22px 20px;cursor:pointer;transition:box-shadow .18s,border-color .18s" style-hover="box-shadow:0 8px 24px rgba(21,42,69,.10);border-color:#247BA0">
+<i class="ph ph-receipt" style="font-size:26px;color:#247BA0"></i>
+<div style="font-size:17px;font-weight:600;margin:14px 0 6px">Become Tax Compliant</div>
+<div style="font-size:14px;line-height:1.55;color:#5A6B7D">TIN, tax clearance, VAT, returns and fiscalisation.</div>
+</div>
+<div onClick="{{ goService }}" style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;padding:22px 20px;cursor:pointer;transition:box-shadow .18s,border-color .18s" style-hover="box-shadow:0 8px 24px rgba(21,42,69,.10);border-color:#247BA0">
+<i class="ph ph-gavel" style="font-size:26px;color:#247BA0"></i>
+<div style="font-size:17px;font-weight:600;margin:14px 0 6px">Prepare for Tenders</div>
+<div style="font-size:14px;line-height:1.55;color:#5A6B7D">PRAZ registration and vendor number support.</div>
+</div>
+<div onClick="{{ goService }}" style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;padding:22px 20px;cursor:pointer;transition:box-shadow .18s,border-color .18s" style-hover="box-shadow:0 8px 24px rgba(21,42,69,.10);border-color:#247BA0">
+<i class="ph ph-users-three" style="font-size:26px;color:#247BA0"></i>
+<div style="font-size:17px;font-weight:600;margin:14px 0 6px">Manage Employer Compliance</div>
+<div style="font-size:14px;line-height:1.55;color:#5A6B7D">NSSA registration, certificates and P4 returns.</div>
+</div>
+<div onClick="{{ goService }}" style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;padding:22px 20px;cursor:pointer;transition:box-shadow .18s,border-color .18s" style-hover="box-shadow:0 8px 24px rgba(21,42,69,.10);border-color:#247BA0">
+<i class="ph ph-hand-heart" style="font-size:26px;color:#247BA0"></i>
+<div style="font-size:17px;font-weight:600;margin:14px 0 6px">Register an Organisation or Trust</div>
+<div style="font-size:14px;line-height:1.55;color:#5A6B7D">Trusts, PVOs, associations and family trusts.</div>
+</div>
+</div>
+</div>
+
+<div style="max-width:1200px;margin:0 auto;padding:0 20px 56px">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap">
+<h2 style="font-size:28px;font-weight:600;letter-spacing:-.01em;margin:0">Popular services</h2>
+<span onClick="{{ goService }}" style="font-size:14px;font-weight:600;color:#247BA0;cursor:pointer;display:inline-flex;align-items:center;gap:6px">All 20 services<i class="ph ph-arrow-right" style="font-size:15px"></i></span>
+</div>
+<div style="display:grid;grid-template-columns:{{ cardCols }};gap:12px">
+<div onClick="{{ goService }}" style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;overflow:hidden;cursor:pointer;transition:box-shadow .18s,border-color .18s" style-hover="box-shadow:0 8px 24px rgba(21,42,69,.10);border-color:#9FB3C6">
+<div style="aspect-ratio:1;background:repeating-linear-gradient(135deg,#E9EFF3 0 8px,#F4F7F9 8px 16px);display:flex;align-items:center;justify-content:center"><span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#5A6B7D">1:1 thumbnail</span></div>
+<div style="padding:16px 18px 18px">
+<div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#247BA0;margin-bottom:7px">Company Registration</div>
+<div style="font-size:16px;font-weight:600;line-height:1.3;margin-bottom:6px">Private Limited Company</div>
+<div style="font-size:13px;line-height:1.5;color:#5A6B7D">The documents banks and tenders ask for.</div>
+</div>
+</div>
+<div onClick="{{ goService }}" style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;overflow:hidden;cursor:pointer;transition:box-shadow .18s,border-color .18s" style-hover="box-shadow:0 8px 24px rgba(21,42,69,.10);border-color:#9FB3C6">
+<div style="aspect-ratio:1;background:repeating-linear-gradient(135deg,#E9EFF3 0 8px,#F4F7F9 8px 16px);display:flex;align-items:center;justify-content:center"><span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#5A6B7D">1:1 thumbnail</span></div>
+<div style="padding:16px 18px 18px">
+<div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#247BA0;margin-bottom:7px">Tax &amp; Fiscal</div>
+<div style="font-size:16px;font-weight:600;line-height:1.3;margin-bottom:6px">TIN &amp; Tax Clearance Support</div>
+<div style="font-size:13px;line-height:1.5;color:#5A6B7D">Get and keep a valid clearance certificate.</div>
+</div>
+</div>
+<div onClick="{{ goService }}" style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;overflow:hidden;cursor:pointer;transition:box-shadow .18s,border-color .18s" style-hover="box-shadow:0 8px 24px rgba(21,42,69,.10);border-color:#9FB3C6">
+<div style="aspect-ratio:1;background:repeating-linear-gradient(135deg,#E9EFF3 0 8px,#F4F7F9 8px 16px);display:flex;align-items:center;justify-content:center"><span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#5A6B7D">1:1 thumbnail</span></div>
+<div style="padding:16px 18px 18px">
+<div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#247BA0;margin-bottom:7px">Tender &amp; Supplier</div>
+<div style="font-size:16px;font-weight:600;line-height:1.3;margin-bottom:6px">PRAZ Registration Support</div>
+<div style="font-size:13px;line-height:1.5;color:#5A6B7D">Become eligible to bid for public contracts.</div>
+</div>
+</div>
+<div onClick="{{ goService }}" style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;overflow:hidden;cursor:pointer;transition:box-shadow .18s,border-color .18s" style-hover="box-shadow:0 8px 24px rgba(21,42,69,.10);border-color:#9FB3C6">
+<div style="aspect-ratio:1;background:repeating-linear-gradient(135deg,#E9EFF3 0 8px,#F4F7F9 8px 16px);display:flex;align-items:center;justify-content:center"><span style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#5A6B7D">1:1 thumbnail</span></div>
+<div style="padding:16px 18px 18px">
+<div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#247BA0;margin-bottom:7px">Trusts &amp; Organisations</div>
+<div style="font-size:16px;font-weight:600;line-height:1.3;margin-bottom:6px">Trust Registration</div>
+<div style="font-size:13px;line-height:1.5;color:#5A6B7D">Deed preparation and registration support.</div>
+</div>
+</div>
+</div>
+</div>
+
+<div style="background:#fff;border-top:1px solid #DDE5EB;border-bottom:1px solid #DDE5EB;padding:56px 20px">
+<div style="max-width:1200px;margin:0 auto">
+<h2 style="font-size:28px;font-weight:600;letter-spacing:-.01em;margin:0 0 8px">How it works</h2>
+<p style="font-size:15px;color:#5A6B7D;margin:0 0 32px">Nothing is charged before you approve a written quotation.</p>
+<div style="display:grid;grid-template-columns:{{ stepCols }};gap:12px">
+<div style="border-top:2px solid #247BA0;padding:18px 0 0">
+<div style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#247BA0;margin-bottom:10px">01</div>
+<div style="font-size:16px;font-weight:600;margin-bottom:6px">Tell us your goal</div>
+<div style="font-size:14px;line-height:1.55;color:#5A6B7D">A short request — no documents, no payment.</div>
+</div>
+<div style="border-top:2px solid #DDE5EB;padding:18px 0 0">
+<div style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#5A6B7D;margin-bottom:10px">02</div>
+<div style="font-size:16px;font-weight:600;margin-bottom:6px">Consultant assessment</div>
+<div style="font-size:14px;line-height:1.55;color:#5A6B7D">A person confirms what your situation actually needs.</div>
+</div>
+<div style="border-top:2px solid #DDE5EB;padding:18px 0 0">
+<div style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#5A6B7D;margin-bottom:10px">03</div>
+<div style="font-size:16px;font-weight:600;margin-bottom:6px">Written quotation</div>
+<div style="font-size:14px;line-height:1.55;color:#5A6B7D">Professional, statutory and optional costs, listed apart.</div>
+</div>
+<div style="border-top:2px solid #DDE5EB;padding:18px 0 0">
+<div style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#5A6B7D;margin-bottom:10px">04</div>
+<div style="font-size:16px;font-weight:600;margin-bottom:6px">You approve and pay</div>
+<div style="font-size:14px;line-height:1.55;color:#5A6B7D">Approve an exact version. Then payment opens.</div>
+</div>
+<div style="border-top:2px solid #DDE5EB;padding:18px 0 0">
+<div style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#5A6B7D;margin-bottom:10px">05</div>
+<div style="font-size:16px;font-weight:600;margin-bottom:6px">We lodge the application</div>
+<div style="font-size:14px;line-height:1.55;color:#5A6B7D">Documents checked, submitted and followed up.</div>
+</div>
+<div style="border-top:2px solid #DDE5EB;padding:18px 0 0">
+<div style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#5A6B7D;margin-bottom:10px">06</div>
+<div style="font-size:16px;font-weight:600;margin-bottom:6px">Ongoing compliance</div>
+<div style="font-size:14px;line-height:1.55;color:#5A6B7D">Renewals and deadlines tracked in your workspace.</div>
+</div>
+</div>
+</div>
+</div>
+
+<div style="max-width:1200px;margin:0 auto;padding:56px 20px">
+<div style="display:grid;grid-template-columns:{{ trustCols }};gap:12px">
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;padding:24px">
+<div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#247BA0;margin-bottom:12px">Reviewed guidance</div>
+<div style="font-size:18px;font-weight:600;line-height:1.35;margin-bottom:10px">What documents do I need to register a company in Zimbabwe?</div>
+<div style="font-size:14px;line-height:1.55;color:#5A6B7D;margin-bottom:14px">The short list, what is conditional, and the three mistakes that cause the most delays.</div>
+<div style="font-size:12px;color:#5A6B7D">Reviewed 14 Aug 2026 · 6 min read</div>
+</div>
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;padding:24px">
+<div style="display:flex;gap:3px;margin-bottom:14px">
+<i class="ph-fill ph-star" style="font-size:15px;color:#D79B2E"></i><i class="ph-fill ph-star" style="font-size:15px;color:#D79B2E"></i><i class="ph-fill ph-star" style="font-size:15px;color:#D79B2E"></i><i class="ph-fill ph-star" style="font-size:15px;color:#D79B2E"></i><i class="ph-fill ph-star" style="font-size:15px;color:#D79B2E"></i>
+</div>
+<div style="font-size:16px;line-height:1.6;margin-bottom:16px;text-wrap:pretty">"Testimonial placeholder — replace with a verified client quote once written permission is on file."</div>
+<div style="display:flex;align-items:center;gap:10px">
+<div style="width:36px;height:36px;border-radius:999px;background:#E4F0F5;display:flex;align-items:center;justify-content:center;color:#1A5C78;font-size:12px;font-weight:600">—</div>
+<div><div style="font-size:14px;font-weight:600">Client name</div><div style="font-size:12px;color:#5A6B7D">Organisation, sector</div></div>
+</div>
+</div>
+<div style="background:#152A45;border-radius:18px;padding:24px;color:#9FB3C6;display:flex;flex-direction:column">
+<div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#D79B2E;margin-bottom:12px">Not sure what you need?</div>
+<div style="font-size:20px;font-weight:600;color:#fff;line-height:1.3;margin-bottom:10px">Answer six questions and get a recommendation.</div>
+<div style="font-size:14px;line-height:1.55;margin-bottom:20px">Preliminary until a consultant reviews it — never automated legal or tax advice.</div>
+<button onClick="{{ goFlow }}" style="font:600 15px Inter,sans-serif;color:#fff;background:#247BA0;border:none;border-radius:10px;padding:13px 20px;cursor:pointer;min-height:48px;margin-top:auto" style-hover="background:#4E97B6">Find the Right Service</button>
+</div>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ onService }}" hint-placeholder-val="{{ false }}">
+<div>
+<div style="background:#fff;border-bottom:1px solid #DDE5EB;padding:32px 20px 40px">
+<div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:{{ heroCols }};gap:36px;align-items:start">
+<div>
+<div style="font-size:13px;color:#5A6B7D;margin-bottom:18px"><span onClick="{{ goHome }}" style="cursor:pointer;color:#247BA0">Home</span> <span style="color:#9FB3C6">/</span> Services <span style="color:#9FB3C6">/</span> Company Registration</div>
+<div style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#247BA0;margin-bottom:12px">Company Registration</div>
+<h1 style="font-size:{{ h1Size }};font-weight:600;line-height:1.1;letter-spacing:-.02em;margin:0 0 14px;text-wrap:balance">Private Limited Company Registration</h1>
+<p style="font-size:17px;line-height:1.6;color:#3D5064;margin:0 0 20px;max-width:54ch;text-wrap:pretty">Register a private limited company and receive the incorporation documents banks, landlords and tender portals ask for.</p>
+<div style="font-size:13px;color:#5A6B7D;margin-bottom:24px">Reviewed 14 Aug 2026 · Next review Feb 2027</div>
+<div style="display:flex;gap:11px;flex-wrap:wrap">
+<button onClick="{{ goFlow }}" style="font:600 15px Inter,sans-serif;color:#fff;background:#247BA0;border:none;border-radius:10px;padding:14px 22px;cursor:pointer;min-height:50px" style-hover="background:#1A5C78">Request a Written Quotation</button>
+<button style="font:600 15px Inter,sans-serif;color:#152A45;background:transparent;border:1px solid #9FB3C6;border-radius:10px;padding:13px 21px;cursor:pointer;min-height:50px;display:flex;align-items:center;gap:9px" style-hover="border-color:#152A45;background:#F4F7F9"><i class="ph ph-whatsapp-logo" style="font-size:18px;color:#1F7A5C"></i>Ask on WhatsApp</button>
+</div>
+</div>
+<div style="aspect-ratio:1;border-radius:18px;background:repeating-linear-gradient(135deg,#E9EFF3 0 10px,#F4F7F9 10px 20px);border:1px solid #DDE5EB;display:flex;align-items:center;justify-content:center">
+<div style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#5A6B7D;text-align:center;line-height:1.6">1:1 service thumbnail<br><span style="color:#9FB3C6">never a mock certificate</span></div>
+</div>
+</div>
+</div>
+
+<div style="max-width:1200px;margin:0 auto;padding:44px 20px 64px;display:grid;grid-template-columns:{{ detailCols }};gap:36px;align-items:start">
+<div style="display:flex;flex-direction:column;gap:36px;min-width:0">
+
+<div>
+<h2 style="font-size:24px;font-weight:600;letter-spacing:-.01em;margin:0 0 14px">Is this service right for you?</h2>
+<div style="display:grid;grid-template-columns:{{ twoCols }};gap:12px">
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:14px;padding:18px 20px">
+<div style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#12543F;margin-bottom:12px"><i class="ph-fill ph-check-circle" style="font-size:17px"></i>Choose this if</div>
+<div style="display:flex;flex-direction:column;gap:9px;font-size:14px;line-height:1.5;color:#3D5064">
+<div>You want limited liability and a separate legal entity</div>
+<div>A bank, landlord or tender portal has asked for a certificate of incorporation</div>
+<div>You plan to bring in shareholders or investors</div>
+</div>
+</div>
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:14px;padding:18px 20px">
+<div style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#7D5218;margin-bottom:12px"><i class="ph-fill ph-arrow-bend-up-right" style="font-size:17px"></i>Consider instead</div>
+<div style="display:flex;flex-direction:column;gap:9px;font-size:14px;line-height:1.5;color:#3D5064">
+<div><strong style="font-weight:600">PBC registration</strong> — simpler, for a small owner-run business</div>
+<div><strong style="font-weight:600">Trust registration</strong> — for family or asset-holding purposes</div>
+<div><strong style="font-weight:600">Association or PVO</strong> — for non-profit activity</div>
+</div>
+</div>
+</div>
+</div>
+
+<div>
+<h2 style="font-size:24px;font-weight:600;letter-spacing:-.01em;margin:0 0 14px">Starting requirements</h2>
+<div style="display:flex;gap:13px;background:#E4F0F5;border:1px solid #CDE4EE;border-radius:14px;padding:14px 16px;margin-bottom:14px">
+<i class="ph-fill ph-info" style="font-size:19px;color:#1A5C78;flex:none"></i>
+<div style="font-size:14px;line-height:1.55;color:#3D5064">This checklist helps you prepare. A consultant confirms the final list in your quotation — requirements may change.</div>
+</div>
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:14px;padding:8px 20px">
+<label style="display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-bottom:1px solid #EEF2F5;cursor:pointer"><input type="checkbox" style="accent-color:#247BA0;width:18px;height:18px;flex:none;margin-top:2px"><span><span style="font-size:15px;font-weight:500;display:block">Three proposed company names, in order of preference</span><span style="font-size:13px;color:#5A6B7D">Required</span></span></label>
+<label style="display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-bottom:1px solid #EEF2F5;cursor:pointer"><input type="checkbox" style="accent-color:#247BA0;width:18px;height:18px;flex:none;margin-top:2px"><span><span style="font-size:15px;font-weight:500;display:block">Identity document for each director and shareholder</span><span style="font-size:13px;color:#5A6B7D">Required · clear scan, all pages, PDF or JPG</span></span></label>
+<label style="display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-bottom:1px solid #EEF2F5;cursor:pointer"><input type="checkbox" style="accent-color:#247BA0;width:18px;height:18px;flex:none;margin-top:2px"><span><span style="font-size:15px;font-weight:500;display:block">Proof of the intended business address</span><span style="font-size:13px;color:#5A6B7D">Required</span></span></label>
+<label style="display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-bottom:1px solid #EEF2F5;cursor:pointer"><input type="checkbox" style="accent-color:#247BA0;width:18px;height:18px;flex:none;margin-top:2px"><span><span style="font-size:15px;font-weight:500;display:block">Share split between shareholders</span><span style="font-size:13px;color:#5A6B7D">Conditional · only where there is more than one shareholder</span></span></label>
+<label style="display:flex;gap:12px;align-items:flex-start;padding:14px 0;cursor:pointer"><input type="checkbox" style="accent-color:#247BA0;width:18px;height:18px;flex:none;margin-top:2px"><span><span style="font-size:15px;font-weight:500;display:block">Written consent from a non-resident director</span><span style="font-size:13px;color:#5A6B7D">Conditional</span></span></label>
+</div>
+</div>
+
+<div>
+<h2 style="font-size:24px;font-weight:600;letter-spacing:-.01em;margin:0 0 14px">Charges and payment</h2>
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:14px;padding:22px 24px">
+<div style="display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px solid #EEF2F5">
+<div><div style="font-size:15px;font-weight:500">ITM professional fee</div><div style="font-size:13px;color:#5A6B7D">Name search, document preparation, lodgement, follow-up</div></div>
+<div style="font-family:ui-monospace,Menlo,monospace;font-size:14px;white-space:nowrap;color:#5A6B7D">USD —</div>
+</div>
+<div style="display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px solid #EEF2F5">
+<div><div style="font-size:15px;font-weight:500">Statutory / authority fee</div><div style="font-size:13px;color:#5A6B7D">Paid to the authority, not to ITM · confirmed at assessment</div></div>
+<div style="font-family:ui-monospace,Menlo,monospace;font-size:14px;white-space:nowrap;color:#5A6B7D">USD —</div>
+</div>
+<div style="display:flex;justify-content:space-between;gap:16px;padding:13px 0">
+<div><div style="font-size:15px;font-weight:500">Optional additions</div><div style="font-size:13px;color:#5A6B7D">Certified copies, courier, expedited handling</div></div>
+<div style="font-family:ui-monospace,Menlo,monospace;font-size:14px;white-space:nowrap;color:#5A6B7D">USD —</div>
+</div>
+<div style="display:flex;gap:11px;background:#F4F7F9;border-radius:10px;padding:13px 15px;margin-top:16px">
+<i class="ph ph-info" style="font-size:18px;color:#5A6B7D;flex:none"></i>
+<div style="font-size:13px;line-height:1.55;color:#3D5064">Amounts are placeholders until confirmed in your written quotation. Payment is requested only after you approve it. Authority approval is never guaranteed.</div>
+</div>
+</div>
+</div>
+
+<div>
+<h2 style="font-size:24px;font-weight:600;letter-spacing:-.01em;margin:0 0 14px">Common questions</h2>
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:14px;overflow:hidden">
+<details open="open" style="border-bottom:1px solid #EEF2F5"><summary style="font-size:15px;font-weight:600;padding:17px 20px;cursor:pointer;min-height:48px;display:flex;align-items:center">How long does registration take?</summary><div style="font-size:14px;line-height:1.6;color:#3D5064;padding:0 20px 18px">Processing times are set by the authority and change. Your consultant gives a current estimate at assessment — ITM does not guarantee a turnaround.</div></details>
+<details style="border-bottom:1px solid #EEF2F5"><summary style="font-size:15px;font-weight:600;padding:17px 20px;cursor:pointer;min-height:48px;display:flex;align-items:center">Why do I get a quotation before paying?</summary><div style="font-size:14px;line-height:1.6;color:#3D5064;padding:0 20px 18px">Because your situation changes the work and the statutory fees. A written quotation lets you see professional fees, authority charges and optional costs separately before committing.</div></details>
+<details><summary style="font-size:15px;font-weight:600;padding:17px 20px;cursor:pointer;min-height:48px;display:flex;align-items:center">Can I register a company on my own?</summary><div style="font-size:14px;line-height:1.6;color:#3D5064;padding:0 20px 18px">Yes. Clients usually use ITM to avoid rejections on names, share structures and incomplete documents, and to have one contact following the file.</div></details>
+</div>
+</div>
+
+<div style="font-size:13px;line-height:1.6;color:#5A6B7D;border-top:1px solid #DDE5EB;padding-top:20px">
+<strong style="font-weight:600;color:#152A45">Source and review note.</strong> Requirements on this page were reviewed against the responsible authority's published guidance on 14 August 2026. ITM supports applications but does not control authority decisions or fees.
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px;min-width:0;align-self:stretch">
+<div style="background:#152A45;border-radius:18px;padding:24px;color:#9FB3C6;position:sticky;top:78px">
+<div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#D79B2E;margin-bottom:12px">Next step</div>
+<div style="font-size:19px;font-weight:600;color:#fff;line-height:1.3;margin-bottom:10px">Request a written quotation</div>
+<div style="font-size:14px;line-height:1.55;margin-bottom:18px">Takes about three minutes. No documents and no payment at this stage.</div>
+<button onClick="{{ goFlow }}" style="font:600 15px Inter,sans-serif;color:#fff;background:#247BA0;border:none;border-radius:10px;padding:13px 18px;cursor:pointer;min-height:48px;width:100%" style-hover="background:#4E97B6">Start Your Application</button>
+<div style="height:1px;background:rgba(233,238,243,.16);margin:20px 0"></div>
+<div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:12px">Related services</div>
+<div style="display:flex;flex-direction:column;gap:10px;font-size:14px">
+<span style="cursor:pointer;color:#9FB3C6" style-hover="color:#fff">PBC Registration</span>
+<span style="cursor:pointer;color:#9FB3C6" style-hover="color:#fff">TIN &amp; Tax Clearance Support</span>
+<span style="cursor:pointer;color:#9FB3C6" style-hover="color:#fff">Professional Logo Design</span>
+<span style="cursor:pointer;color:#9FB3C6" style-hover="color:#fff">NSSA Employer Registration</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ onFlow }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:1200px;margin:0 auto;padding:32px 20px 64px">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:8px;flex-wrap:wrap">
+<h1 style="font-size:32px;font-weight:600;letter-spacing:-.02em;margin:0">Start Your Application</h1>
+<span style="font-size:13px;color:#5A6B7D;display:inline-flex;align-items:center;gap:6px"><i class="ph ph-floppy-disk" style="font-size:15px"></i>Saved automatically</span>
+</div>
+<p style="font-size:15px;color:#5A6B7D;margin:0 0 24px">This requests a quotation. It does not charge you and does not ask for sensitive documents.</p>
+
+<div style="max-width:340px;margin-bottom:28px">
+<div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px"><span style="font-weight:600">Step {{ step }} of 5</span><span style="color:#5A6B7D">{{ stepName }}</span></div>
+<div style="height:6px;border-radius:999px;background:#DDE5EB;overflow:hidden"><div style="width:{{ pct }};height:100%;background:#247BA0;border-radius:999px;transition:width .25s"></div></div>
+</div>
+
+<div style="display:grid;grid-template-columns:{{ detailCols }};gap:24px;align-items:start">
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;padding:28px;min-width:0">
+
+<sc-if value="{{ s1 }}" hint-placeholder-val="{{ true }}">
+<div>
+<h2 style="font-size:22px;font-weight:600;margin:0 0 6px">What do you need?</h2>
+<p style="font-size:15px;color:#5A6B7D;margin:0 0 20px">Pick one. You can change it later, and "not sure" is a real answer.</p>
+<div style="display:flex;flex-direction:column;gap:10px">
+<div onClick="{{ pickCompany }}" style="border:1px solid {{ b1a }};background:{{ f1a }};border-radius:12px;padding:16px 18px;cursor:pointer;display:flex;gap:14px;align-items:flex-start" style-hover="border-color:#247BA0">
+<i class="ph ph-buildings" style="font-size:22px;color:#247BA0;flex:none;margin-top:2px"></i>
+<div><div style="font-size:16px;font-weight:600;margin-bottom:3px">A specific service</div><div style="font-size:14px;line-height:1.5;color:#5A6B7D">Private Limited Company Registration</div></div>
+<i class="ph-fill ph-check-circle" style="font-size:20px;color:{{ c1a }};flex:none;margin-left:auto"></i>
+</div>
+<div onClick="{{ pickPackage }}" style="border:1px solid {{ b1b }};background:{{ f1b }};border-radius:12px;padding:16px 18px;cursor:pointer;display:flex;gap:14px;align-items:flex-start" style-hover="border-color:#247BA0">
+<i class="ph ph-package" style="font-size:22px;color:#247BA0;flex:none;margin-top:2px"></i>
+<div><div style="font-size:16px;font-weight:600;margin-bottom:3px">A package</div><div style="font-size:14px;line-height:1.5;color:#5A6B7D">Several services grouped — Startup Essentials, Tax Ready, Tender Ready</div></div>
+<i class="ph-fill ph-check-circle" style="font-size:20px;color:{{ c1b }};flex:none;margin-left:auto"></i>
+</div>
+<div onClick="{{ pickUnsure }}" style="border:1px solid {{ b1c }};background:{{ f1c }};border-radius:12px;padding:16px 18px;cursor:pointer;display:flex;gap:14px;align-items:flex-start" style-hover="border-color:#247BA0">
+<i class="ph ph-question" style="font-size:22px;color:#247BA0;flex:none;margin-top:2px"></i>
+<div><div style="font-size:16px;font-weight:600;margin-bottom:3px">I am not sure</div><div style="font-size:14px;line-height:1.5;color:#5A6B7D">Describe your goal and a consultant will recommend the right route</div></div>
+<i class="ph-fill ph-check-circle" style="font-size:20px;color:{{ c1c }};flex:none;margin-left:auto"></i>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ s2 }}" hint-placeholder-val="{{ false }}">
+<div>
+<h2 style="font-size:22px;font-weight:600;margin:0 0 6px">Where are you now?</h2>
+<p style="font-size:15px;color:#5A6B7D;margin:0 0 20px">This decides which questions we still need to ask.</p>
+<div style="display:flex;flex-direction:column;gap:10px">
+<div onClick="{{ pickStage1 }}" style="border:1px solid {{ b2a }};background:{{ f2a }};border-radius:12px;padding:16px 18px;cursor:pointer;display:flex;justify-content:space-between;gap:14px;align-items:center" style-hover="border-color:#247BA0"><div style="font-size:16px;font-weight:600">A new idea — nothing registered yet</div><i class="ph-fill ph-check-circle" style="font-size:20px;color:{{ c2a }};flex:none"></i></div>
+<div onClick="{{ pickStage2 }}" style="border:1px solid {{ b2b }};background:{{ f2b }};border-radius:12px;padding:16px 18px;cursor:pointer;display:flex;justify-content:space-between;gap:14px;align-items:center" style-hover="border-color:#247BA0"><div style="font-size:16px;font-weight:600">Registration is in progress elsewhere</div><i class="ph-fill ph-check-circle" style="font-size:20px;color:{{ c2b }};flex:none"></i></div>
+<div onClick="{{ pickStage3 }}" style="border:1px solid {{ b2c }};background:{{ f2c }};border-radius:12px;padding:16px 18px;cursor:pointer;display:flex;justify-content:space-between;gap:14px;align-items:center" style-hover="border-color:#247BA0"><div style="font-size:16px;font-weight:600">I already have a registered organisation</div><i class="ph-fill ph-check-circle" style="font-size:20px;color:{{ c2c }};flex:none"></i></div>
+<div onClick="{{ pickStage4 }}" style="border:1px solid {{ b2d }};background:{{ f2d }};border-radius:12px;padding:16px 18px;cursor:pointer;display:flex;justify-content:space-between;gap:14px;align-items:center" style-hover="border-color:#247BA0"><div style="font-size:16px;font-weight:600">I am an existing ITM client</div><i class="ph-fill ph-check-circle" style="font-size:20px;color:{{ c2d }};flex:none"></i></div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ s3 }}" hint-placeholder-val="{{ false }}">
+<div>
+<h2 style="font-size:22px;font-weight:600;margin:0 0 6px">How do we reach you?</h2>
+<p style="font-size:15px;color:#5A6B7D;margin:0 0 22px">Contact details only. No identity documents at this stage.</p>
+<div style="display:grid;grid-template-columns:{{ twoCols }};gap:18px">
+<div><label for="f-name" style="display:block;font-size:14px;font-weight:600;margin-bottom:7px">Full name</label><input id="f-name" type="text" placeholder="Tendai Moyo" style="width:100%;font:400 15px Inter,sans-serif;border:1px solid #DDE5EB;border-radius:10px;padding:13px 14px;min-height:48px" style-focus="border-color:#247BA0;outline:2px solid #CDE4EE;outline-offset:0"></div>
+<div><label for="f-wa" style="display:block;font-size:14px;font-weight:600;margin-bottom:7px">WhatsApp or phone</label><input id="f-wa" type="tel" placeholder="+263 —— ——" style="width:100%;font:400 15px Inter,sans-serif;border:1px solid #DDE5EB;border-radius:10px;padding:13px 14px;min-height:48px" style-focus="border-color:#247BA0;outline:2px solid #CDE4EE;outline-offset:0"></div>
+<div><label for="f-em" style="display:block;font-size:14px;font-weight:600;margin-bottom:7px">Email</label><input id="f-em" type="email" placeholder="you@example.co.zw" style="width:100%;font:400 15px Inter,sans-serif;border:1px solid #DDE5EB;border-radius:10px;padding:13px 14px;min-height:48px" style-focus="border-color:#247BA0;outline:2px solid #CDE4EE;outline-offset:0"></div>
+<div><label for="f-org" style="display:block;font-size:14px;font-weight:600;margin-bottom:7px">Organisation name <span style="font-weight:400;color:#5A6B7D">(optional)</span></label><input id="f-org" type="text" placeholder="Or your preferred name" style="width:100%;font:400 15px Inter,sans-serif;border:1px solid #DDE5EB;border-radius:10px;padding:13px 14px;min-height:48px" style-focus="border-color:#247BA0;outline:2px solid #CDE4EE;outline-offset:0"></div>
+</div>
+<div style="margin-top:22px">
+<div style="font-size:14px;font-weight:600;margin-bottom:10px">Preferred channel</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<label style="display:flex;align-items:center;gap:9px;font-size:15px;border:1px solid #247BA0;background:#E4F0F5;border-radius:10px;padding:12px 16px;cursor:pointer;min-height:48px"><input type="radio" name="f-ch" checked="checked" style="accent-color:#247BA0;width:17px;height:17px">WhatsApp</label>
+<label style="display:flex;align-items:center;gap:9px;font-size:15px;border:1px solid #DDE5EB;background:#fff;border-radius:10px;padding:12px 16px;cursor:pointer;min-height:48px" style-hover="border-color:#9FB3C6"><input type="radio" name="f-ch" style="accent-color:#247BA0;width:17px;height:17px">Email</label>
+<label style="display:flex;align-items:center;gap:9px;font-size:15px;border:1px solid #DDE5EB;background:#fff;border-radius:10px;padding:12px 16px;cursor:pointer;min-height:48px" style-hover="border-color:#9FB3C6"><input type="radio" name="f-ch" style="accent-color:#247BA0;width:17px;height:17px">Phone call</label>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ s4 }}" hint-placeholder-val="{{ false }}">
+<div>
+<h2 style="font-size:22px;font-weight:600;margin:0 0 6px">A few questions about the company</h2>
+<p style="font-size:15px;color:#5A6B7D;margin:0 0 22px">Only what a consultant needs to scope the work and the statutory fees.</p>
+<div style="display:flex;flex-direction:column;gap:20px">
+<div><label for="f-n1" style="display:block;font-size:14px;font-weight:600;margin-bottom:7px">Proposed company names, in order of preference</label><input id="f-n1" type="text" placeholder="First choice" style="width:100%;font:400 15px Inter,sans-serif;border:1px solid #DDE5EB;border-radius:10px;padding:13px 14px;min-height:48px;margin-bottom:8px" style-focus="border-color:#247BA0;outline:2px solid #CDE4EE;outline-offset:0"><input type="text" placeholder="Second choice" style="width:100%;font:400 15px Inter,sans-serif;border:1px solid #DDE5EB;border-radius:10px;padding:13px 14px;min-height:48px;margin-bottom:8px" style-focus="border-color:#247BA0;outline:2px solid #CDE4EE;outline-offset:0"><input type="text" placeholder="Third choice" style="width:100%;font:400 15px Inter,sans-serif;border:1px solid #DDE5EB;border-radius:10px;padding:13px 14px;min-height:48px" style-focus="border-color:#247BA0;outline:2px solid #CDE4EE;outline-offset:0"><div style="font-size:13px;color:#5A6B7D;margin-top:7px">A name may be refused. Alternatives avoid restarting the search.</div></div>
+<div><label for="f-dir" style="display:block;font-size:14px;font-weight:600;margin-bottom:7px">How many directors and shareholders?</label><select id="f-dir" style="width:100%;max-width:240px;font:400 15px Inter,sans-serif;border:1px solid #DDE5EB;border-radius:10px;padding:13px 14px;min-height:48px;background:#fff"><option>One</option><option>Two</option><option>Three</option><option>Four or more</option></select></div>
+<div>
+<div style="font-size:14px;font-weight:600;margin-bottom:10px">Is any director not resident in Zimbabwe?</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<label style="display:flex;align-items:center;gap:9px;font-size:15px;border:1px solid #DDE5EB;border-radius:10px;padding:12px 20px;cursor:pointer;min-height:48px" style-hover="border-color:#9FB3C6"><input type="radio" name="f-res" style="accent-color:#247BA0;width:17px;height:17px">Yes</label>
+<label style="display:flex;align-items:center;gap:9px;font-size:15px;border:1px solid #247BA0;background:#E4F0F5;border-radius:10px;padding:12px 20px;cursor:pointer;min-height:48px"><input type="radio" name="f-res" checked="checked" style="accent-color:#247BA0;width:17px;height:17px">No</label>
+<label style="display:flex;align-items:center;gap:9px;font-size:15px;border:1px solid #DDE5EB;border-radius:10px;padding:12px 20px;cursor:pointer;min-height:48px" style-hover="border-color:#9FB3C6"><input type="radio" name="f-res" style="accent-color:#247BA0;width:17px;height:17px">Not sure</label>
+</div>
+</div>
+<div><label for="f-dl" style="display:block;font-size:14px;font-weight:600;margin-bottom:7px">Is there a deadline or tender date? <span style="font-weight:400;color:#5A6B7D">(optional)</span></label><input id="f-dl" type="text" placeholder="e.g. tender closes 30 October" style="width:100%;font:400 15px Inter,sans-serif;border:1px solid #DDE5EB;border-radius:10px;padding:13px 14px;min-height:48px" style-focus="border-color:#247BA0;outline:2px solid #CDE4EE;outline-offset:0"></div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ s5 }}" hint-placeholder-val="{{ false }}">
+<div>
+<h2 style="font-size:22px;font-weight:600;margin:0 0 6px">Check and send</h2>
+<p style="font-size:15px;color:#5A6B7D;margin:0 0 22px">Nothing is charged. A consultant reviews this and sends a written quotation.</p>
+<div style="border:1px solid #DDE5EB;border-radius:14px;padding:6px 18px;margin-bottom:20px">
+<div style="display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid #EEF2F5"><span style="font-size:14px;color:#5A6B7D">Service</span><span style="font-size:14px;font-weight:500;text-align:right">Private Limited Company Registration</span></div>
+<div style="display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid #EEF2F5"><span style="font-size:14px;color:#5A6B7D">Situation</span><span style="font-size:14px;font-weight:500;text-align:right">A new idea — nothing registered yet</span></div>
+<div style="display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid #EEF2F5"><span style="font-size:14px;color:#5A6B7D">Contact</span><span style="font-size:14px;font-weight:500;text-align:right">Tendai Moyo · WhatsApp</span></div>
+<div style="display:flex;justify-content:space-between;gap:16px;padding:14px 0"><span style="font-size:14px;color:#5A6B7D">Names proposed</span><span style="font-size:14px;font-weight:500;text-align:right">3 alternatives supplied</span></div>
+</div>
+<div style="display:flex;gap:11px;background:#FBF1DF;border:1px solid #F0DFBC;border-radius:12px;padding:14px 16px;margin-bottom:18px">
+<i class="ph-fill ph-shield-check" style="font-size:19px;color:#B8792A;flex:none"></i>
+<div style="font-size:14px;line-height:1.55;color:#3D5064">ITM will never ask you for passwords, banking PINs or one-time codes — not by phone, WhatsApp or email.</div>
+</div>
+<label style="display:flex;gap:12px;font-size:14px;line-height:1.55;color:#3D5064;cursor:pointer"><input type="checkbox" checked="checked" style="accent-color:#247BA0;width:18px;height:18px;flex:none;margin-top:2px">I confirm these details are accurate and agree that ITM may contact me about this request and store the information provided.</label>
+</div>
+</sc-if>
+
+<div style="display:flex;gap:10px;align-items:center;margin-top:28px;padding-top:22px;border-top:1px solid #EEF2F5;flex-wrap:wrap">
+<button onClick="{{ back }}" style="font:600 15px Inter,sans-serif;color:#152A45;background:transparent;border:1px solid #DDE5EB;border-radius:10px;padding:13px 20px;cursor:pointer;min-height:48px" style-hover="border-color:#9FB3C6;background:#F4F7F9">Back</button>
+<button style="font:600 15px Inter,sans-serif;color:#247BA0;background:transparent;border:none;border-radius:10px;padding:13px 14px;cursor:pointer;min-height:48px" style-hover="background:#E4F0F5">Save and finish later</button>
+<button onClick="{{ next }}" style="font:600 15px Inter,sans-serif;color:#fff;background:#247BA0;border:none;border-radius:10px;padding:14px 22px;cursor:pointer;min-height:48px;margin-left:auto" style-hover="background:#1A5C78">{{ nextLabel }}</button>
+</div>
+</div>
+
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;padding:24px;min-width:0">
+<div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#5A6B7D;margin-bottom:14px">Your request so far</div>
+<div style="display:flex;flex-direction:column;gap:14px;font-size:14px">
+<div><div style="color:#5A6B7D;font-size:13px;margin-bottom:2px">Service</div><div style="font-weight:500">Private Limited Company Registration</div></div>
+<div><div style="color:#5A6B7D;font-size:13px;margin-bottom:2px">Category</div><div style="font-weight:500">Company Registration</div></div>
+<div><div style="color:#5A6B7D;font-size:13px;margin-bottom:2px">Cost so far</div><div style="font-weight:500">Nothing — quotation first</div></div>
+</div>
+<div style="height:1px;background:#EEF2F5;margin:20px 0"></div>
+<div style="display:flex;gap:10px;font-size:13px;line-height:1.55;color:#5A6B7D"><i class="ph ph-lock-simple" style="font-size:16px;flex:none;margin-top:2px"></i>Your answers are saved as you go. If your connection drops, nothing is lost.</div>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ onDone }}" hint-placeholder-val="{{ false }}">
+<div style="max-width:760px;margin:0 auto;padding:56px 20px 80px">
+<div style="width:60px;height:60px;border-radius:999px;background:#E6F2EE;display:flex;align-items:center;justify-content:center;margin-bottom:22px"><i class="ph-fill ph-check" style="font-size:30px;color:#1F7A5C"></i></div>
+<h1 style="font-size:{{ h1Size }};font-weight:600;line-height:1.1;letter-spacing:-.02em;margin:0 0 14px;text-wrap:balance">Your quotation request is with a consultant</h1>
+<p style="font-size:17px;line-height:1.6;color:#3D5064;margin:0 0 28px;max-width:56ch;text-wrap:pretty">No payment is required until you approve a written quotation. Keep this reference — you can use it to check progress without signing in.</p>
+
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;padding:24px 26px;margin-bottom:14px;display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+<div>
+<div style="font-size:13px;color:#5A6B7D;margin-bottom:6px">Your reference</div>
+<div style="font-family:ui-monospace,Menlo,monospace;font-size:26px;font-weight:600;letter-spacing:.02em">REQ-2026-4187</div>
+</div>
+<div style="display:flex;gap:9px;margin-left:auto;flex-wrap:wrap">
+<button style="font:600 14px Inter,sans-serif;color:#152A45;background:transparent;border:1px solid #DDE5EB;border-radius:10px;padding:11px 16px;cursor:pointer;min-height:46px;display:flex;align-items:center;gap:8px" style-hover="border-color:#9FB3C6;background:#F4F7F9"><i class="ph ph-copy" style="font-size:16px"></i>Copy reference</button>
+<button style="font:600 14px Inter,sans-serif;color:#152A45;background:transparent;border:1px solid #9FB3C6;border-radius:10px;padding:11px 16px;cursor:pointer;min-height:46px;display:flex;align-items:center;gap:8px" style-hover="border-color:#152A45;background:#fff"><i class="ph ph-whatsapp-logo" style="font-size:17px;color:#1F7A5C"></i>Continue on WhatsApp</button>
+</div>
+</div>
+
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;padding:24px 26px;margin-bottom:14px">
+<div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#5A6B7D;margin-bottom:18px">What happens next</div>
+<div style="display:flex;flex-direction:column;gap:0">
+<div style="display:flex;gap:16px;padding-bottom:20px;position:relative">
+<div style="width:28px;height:28px;border-radius:999px;background:#1F7A5C;color:#fff;display:flex;align-items:center;justify-content:center;flex:none;z-index:1"><i class="ph-fill ph-check" style="font-size:14px"></i></div>
+<div><div style="font-size:15px;font-weight:600;margin-bottom:3px">Request received</div><div style="font-size:14px;line-height:1.55;color:#5A6B7D">Today · logged against reference REQ-2026-4187</div></div>
+</div>
+<div style="display:flex;gap:16px;padding-bottom:20px">
+<div style="width:28px;height:28px;border-radius:999px;background:#fff;border:2px solid #247BA0;flex:none;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:#247BA0">2</div>
+<div><div style="font-size:15px;font-weight:600;margin-bottom:3px;color:#247BA0">Consultant assessment</div><div style="font-size:14px;line-height:1.55;color:#5A6B7D">A consultant checks your answers and may ask one or two follow-up questions.</div></div>
+</div>
+<div style="display:flex;gap:16px;padding-bottom:20px">
+<div style="width:28px;height:28px;border-radius:999px;background:#F4F7F9;border:1px solid #DDE5EB;flex:none;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:#5A6B7D">3</div>
+<div><div style="font-size:15px;font-weight:600;margin-bottom:3px;color:#5A6B7D">Written quotation sent</div><div style="font-size:14px;line-height:1.55;color:#5A6B7D">Professional fee, statutory fee and optional costs, listed separately.</div></div>
+</div>
+<div style="display:flex;gap:16px">
+<div style="width:28px;height:28px;border-radius:999px;background:#F4F7F9;border:1px solid #DDE5EB;flex:none;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:#5A6B7D">4</div>
+<div><div style="font-size:15px;font-weight:600;margin-bottom:3px;color:#5A6B7D">You decide</div><div style="font-size:14px;line-height:1.55;color:#5A6B7D">Approve, request changes or walk away. Payment only follows approval.</div></div>
+</div>
+</div>
+</div>
+
+<div style="display:flex;gap:11px;background:#FBF1DF;border:1px solid #F0DFBC;border-radius:14px;padding:16px 18px;margin-bottom:24px">
+<i class="ph-fill ph-shield-check" style="font-size:20px;color:#B8792A;flex:none"></i>
+<div><div style="font-size:15px;font-weight:600;margin-bottom:3px">How to tell it is really us</div><div style="font-size:14px;line-height:1.55;color:#3D5064">ITM will quote your reference and will never ask for passwords, banking PINs or one-time codes. If someone does, stop and contact us on the number on this site.</div></div>
+</div>
+
+<div style="display:flex;gap:10px;flex-wrap:wrap">
+<button onClick="{{ goService }}" style="font:600 15px Inter,sans-serif;color:#247BA0;background:transparent;border:1px solid #247BA0;border-radius:10px;padding:13px 20px;cursor:pointer;min-height:48px" style-hover="background:#E4F0F5">View the requirements checklist</button>
+<button onClick="{{ goHome }}" style="font:600 15px Inter,sans-serif;color:#152A45;background:transparent;border:1px solid #DDE5EB;border-radius:10px;padding:13px 20px;cursor:pointer;min-height:48px" style-hover="border-color:#9FB3C6;background:#fff">Back to homepage</button>
+</div>
+</div>
+</sc-if>
+
+<div style="background:#152A45;color:#9FB3C6;padding:44px 20px 28px">
+<div style="max-width:1200px;margin:0 auto">
+<div style="display:grid;grid-template-columns:{{ footCols }};gap:32px">
+<div>
+<div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+<div style="width:34px;height:34px;border-radius:8px;overflow:hidden;flex:none"><img src="assets/itm-logo.png" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+<div style="font-size:14px;font-weight:600;color:#fff">ITM Business Solutions</div>
+</div>
+<div style="font-size:14px;line-height:1.6;max-width:34ch;text-wrap:pretty">Practical support for starting, formalising and keeping Zimbabwean organisations compliant.</div>
+</div>
+<div>
+<div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#D79B2E;margin-bottom:14px">Services</div>
+<div style="display:flex;flex-direction:column;gap:9px;font-size:14px">
+<span style="cursor:pointer" style-hover="color:#fff">Company Registration</span>
+<span style="cursor:pointer" style-hover="color:#fff">Tax &amp; Fiscal Compliance</span>
+<span style="cursor:pointer" style-hover="color:#fff">Tender &amp; Supplier Registration</span>
+<span style="cursor:pointer" style-hover="color:#fff">NSSA &amp; Employer Compliance</span>
+<span style="cursor:pointer" style-hover="color:#fff">Trusts &amp; Organisations</span>
+</div>
+</div>
+<div>
+<div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#D79B2E;margin-bottom:14px">Resources</div>
+<div style="display:flex;flex-direction:column;gap:9px;font-size:14px">
+<span style="cursor:pointer" style-hover="color:#fff">Requirements Centre</span>
+<span style="cursor:pointer" style-hover="color:#fff">Compliance Calendar</span>
+<span style="cursor:pointer" style-hover="color:#fff">Articles</span>
+<span style="cursor:pointer" style-hover="color:#fff">Secure Document Handling</span>
+<span style="cursor:pointer" style-hover="color:#fff">Track Application</span>
+</div>
+</div>
+<div>
+<div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#D79B2E;margin-bottom:14px">Contact</div>
+<div style="display:flex;flex-direction:column;gap:9px;font-size:14px">
+<span>+263 —— ——</span>
+<span>hello@—.co.zw</span>
+<span style="line-height:1.5">Office address placeholder,<br>Harare</span>
+<span>Mon–Fri, 08:00–17:00</span>
+</div>
+</div>
+</div>
+<div style="margin-top:34px;padding-top:20px;border-top:1px solid rgba(233,238,243,.16);display:flex;gap:20px;justify-content:space-between;flex-wrap:wrap;font-size:13px">
+<div style="max-width:64ch;line-height:1.6;text-wrap:pretty">ITM Business Solutions supports applications and prepares documents. It does not control authority decisions, processing times or statutory fees. Content on this site is general information and may require current assessment.</div>
+<div style="display:flex;gap:18px;flex-wrap:wrap"><span style="cursor:pointer" style-hover="color:#fff">Privacy Policy</span><span style="cursor:pointer" style-hover="color:#fff">Terms of Service</span></div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:900}}">
+const NAMES = ["Service", "Situation", "Your details", "Scoping questions", "Review"];
+const ON = "#247BA0", OFF = "#DDE5EB", FON = "#E4F0F5", FOFF = "#fff", IOFF = "#DDE5EB";
+
+class Component extends DCLogic {
+  state = { route: "home", step: 1, svc: "company", stage: "new", mobile: false };
+
+  sel(a, b) { return { border: a === b ? ON : OFF, fill: a === b ? FON : FOFF, check: a === b ? ON : IOFF }; }
+
+  renderVals() {
+    const { route, step, svc, stage, mobile } = this.state;
+    const d = !mobile;
+    const a = this.sel(svc, "company"), b = this.sel(svc, "package"), c = this.sel(svc, "unsure");
+    const s1 = this.sel(stage, "new"), s2 = this.sel(stage, "progress"), s3 = this.sel(stage, "registered"), s4 = this.sel(stage, "client");
+    const go = r => () => this.setState({ route: r });
+    return {
+      isDesktop: d, isMobile: mobile,
+      headerWrap: d ? "wrap" : "nowrap",
+      frameWidth: d ? "1320px" : "360px",
+      heroCols: d ? "1.15fr .85fr" : "1fr",
+      detailCols: d ? "1.5fr .8fr" : "1fr",
+      twoCols: d ? "1fr 1fr" : "1fr",
+      pathCols: d ? "repeat(5,1fr)" : "1fr",
+      cardCols: d ? "repeat(4,1fr)" : "1fr",
+      stepCols: d ? "repeat(3,1fr)" : "1fr",
+      trustCols: d ? "repeat(3,1fr)" : "1fr",
+      footCols: d ? "1.3fr 1fr 1fr 1fr" : "1fr",
+      h1Size: d ? "46px" : "32px",
+      onHome: route === "home", onService: route === "service", onFlow: route === "flow", onDone: route === "done",
+      goHome: go("home"), goService: go("service"), goDone: go("done"),
+      goFlow: () => this.setState({ route: "flow", step: 1 }),
+      setDesktop: () => this.setState({ mobile: false }),
+      setMobile: () => this.setState({ mobile: true }),
+      step, stepName: NAMES[step - 1], pct: (step / 5 * 100) + "%",
+      s1: step === 1, s2: step === 2, s3: step === 3, s4: step === 4, s5: step === 5,
+      nextLabel: step === 5 ? "Request My Quotation" : "Continue",
+      next: () => step === 5 ? this.setState({ route: "done" }) : this.setState({ step: step + 1 }),
+      back: () => step === 1 ? this.setState({ route: "service" }) : this.setState({ step: step - 1 }),
+      pickCompany: () => this.setState({ svc: "company" }),
+      pickPackage: () => this.setState({ svc: "package" }),
+      pickUnsure: () => this.setState({ svc: "unsure" }),
+      b1a: a.border, f1a: a.fill, c1a: a.check,
+      b1b: b.border, f1b: b.fill, c1b: b.check,
+      b1c: c.border, f1c: c.fill, c1c: c.check,
+      pickStage1: () => this.setState({ stage: "new" }),
+      pickStage2: () => this.setState({ stage: "progress" }),
+      pickStage3: () => this.setState({ stage: "registered" }),
+      pickStage4: () => this.setState({ stage: "client" }),
+      b2a: s1.border, f2a: s1.fill, c2a: s1.check,
+      b2b: s2.border, f2b: s2.fill, c2b: s2.check,
+      b2c: s3.border, f2c: s3.fill, c2c: s3.check,
+      b2d: s4.border, f2d: s4.fill, c2d: s4.check
+    };
+  }
+}
+</script>
+</body>
+</html>

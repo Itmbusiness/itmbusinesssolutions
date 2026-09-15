@@ -1,0 +1,1127 @@
+@import 'tailwindcss';
+@import '@phosphor-icons/web/regular';
+@import '@phosphor-icons/web/fill';
+@import '../../vendor/livewire/flux/dist/flux.css';
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../vendor/livewire/flux/stubs/**/*.blade.php';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ==========================================================================
+   ITM Business Solutions — design tokens.
+   Source of truth: docs/Waiting on screen selections/ITM Design System.dc.html
+   (prompt 01, master visual system). The Nocturne system in _ds/ contributed
+   the method — Inter, OKLCH tonal ramps, outlined secondary actions, themed
+   focus rings, Phosphor icons — but ITM's own palette wins over its dark
+   blurple ground, per the "Assumption to confirm" note on that board.
+   ========================================================================== */
+
+@theme {
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    /* Tailwind ships its own green-cyan `teal`, and the board defines only seven
+       steps. Clear the family FIRST so an unspecified step fails loudly instead
+       of rendering the wrong hue — this wildcard also clears the bare
+       `--color-teal`, so the role below must be declared after it, not before. */
+    --color-teal-*: initial;
+
+    /* — Role colours (§01) — */
+    --color-navy: #152a45; /* authority: sidebar, footer, headings, section grounds */
+    --color-teal: #247ba0; /* every primary action, link and active state — one per view */
+    --color-page: #f4f7f9; /* warm off-white page ground; cards sit on it in #fff */
+    --color-gold: #d79b2e; /* small highlights only — never a fill */
+
+    /* Navy ramp */
+    --color-navy-900: #0b1524;
+    --color-navy-800: #101f35;
+    --color-navy-700: #152a45;
+    --color-navy-600: #2c4a6e;
+    --color-navy-500: #5a7796;
+    --color-navy-300: #9fb3c6;
+    --color-navy-100: #dde5eb;
+
+    /* Teal ramp (the family reset lives at the top of this block). */
+    --color-teal-900: #0f3c51;
+    --color-teal-800: #154e67;
+    --color-teal-700: #1a5c78;
+    --color-teal-500: #247ba0;
+    --color-teal-400: #4e97b6;
+    --color-teal-300: #9cc7d9;
+    --color-teal-100: #e4f0f5;
+
+    /* Semantic */
+    --color-success: #1f7a5c;
+    --color-attention: #b8792a;
+    --color-problem: #b33a3a;
+    --color-muted: #5a6b7d;
+    --color-ink: #3d5064; /* secondary body copy */
+    --color-line: #dde5eb;
+    --color-line-soft: #eef2f5;
+
+    /* Tinted grounds used by badges and alerts */
+    --color-teal-tint: #e4f0f5;
+    --color-teal-tint-line: #cde4ee;
+    --color-success-tint: #e6f2ee;
+    --color-success-tint-line: #c8e2d8;
+    --color-success-ink: #12543f;
+    --color-attention-tint: #fbf1df;
+    --color-attention-tint-line: #f0dfbc;
+    --color-attention-ink: #7d5218;
+    --color-problem-tint: #f8e9e9;
+    --color-problem-tint-line: #efd1d1;
+    --color-problem-ink: #7d2626;
+
+    /* — Type scale (§02). Inter throughout; weight carries hierarchy, not size alone. — */
+    --text-display: 3.5rem; /* 56 / 600 / -.02em */
+    --text-display--line-height: 1.06;
+    --text-display--letter-spacing: -0.02em;
+    --text-display--font-weight: 600;
+    --text-h1: 2.5rem; /* 40 / 600 */
+    --text-h1--line-height: 1.1;
+    --text-h1--letter-spacing: -0.018em;
+    --text-h1--font-weight: 600;
+    --text-h2: 1.75rem; /* 28 / 600 */
+    --text-h2--line-height: 1.2;
+    --text-h2--letter-spacing: -0.012em;
+    --text-h2--font-weight: 600;
+    --text-h3: 1.25rem; /* 20 / 600 */
+    --text-h3--line-height: 1.3;
+    --text-h3--font-weight: 600;
+    --text-lead: 1.0625rem; /* 17 / 400 / 1.6 */
+    --text-lead--line-height: 1.6;
+    --text-base: 0.9375rem; /* 15 / 400 / 1.6 — the default */
+    --text-base--line-height: 1.6;
+    --text-meta: 0.8125rem; /* 13 — floor for body; never smaller */
+    --text-meta--line-height: 1.5;
+    --text-eyebrow: 0.6875rem; /* 11 / 600 / .12em */
+    --text-eyebrow--line-height: 1.4;
+    --text-eyebrow--letter-spacing: 0.12em;
+    --text-eyebrow--font-weight: 600;
+
+    /* — Spacing, grid, radius (§03) — 8-point scale — */
+    --spacing: 0.25rem;
+    --container-content: 1200px; /* max content width; 24px gutter, 32px page margin */
+
+    --radius-control: 10px;
+    --radius-card: 18px;
+    --radius-alert: 14px;
+    --radius-pill: 999px;
+
+    --shadow-sm: 0 1px 2px rgb(21 42 69 / 0.06);
+    --shadow-md: 0 4px 14px rgb(21 42 69 / 0.09);
+    --shadow-lg: 0 12px 32px rgb(21 42 69 / 0.14);
+
+    /* Flux reads these for its own accent surfaces — keep it on ITM teal. */
+    --color-accent: var(--color-teal-500);
+    --color-accent-content: var(--color-teal-700);
+    --color-accent-foreground: #ffffff;
+}
+
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-line);
+    }
+
+    html {
+        -webkit-text-size-adjust: 100%;
+        color-scheme: light;
+    }
+
+    body {
+        background: var(--color-page);
+        color: var(--color-navy);
+        font-family: var(--font-sans);
+        font-size: var(--text-base);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-weight: 600;
+        text-wrap: balance;
+    }
+
+    p {
+        text-wrap: pretty;
+    }
+
+    a {
+        color: var(--color-teal);
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: var(--color-teal-700);
+        text-decoration: underline;
+    }
+
+    /* Themed focus, never the browser default (inherited from Nocturne's method). */
+    :focus {
+        outline: none;
+    }
+
+    :focus-visible {
+        outline: 2px solid var(--color-teal);
+        outline-offset: 2px;
+        border-radius: 4px;
+    }
+
+    ::selection {
+        background: var(--color-teal-tint-line);
+    }
+}
+
+/* ==========================================================================
+   Components — every class below maps to a numbered section of the board.
+   ========================================================================== */
+
+@layer components {
+    /* — §04 Buttons. 48px minimum target; primary is filled teal, secondary
+         is outlined. One primary action per view. — */
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        min-height: 48px;
+        padding: 13px 22px;
+        border: 1px solid transparent;
+        border-radius: var(--radius-control);
+        font-size: var(--text-base);
+        font-weight: 600;
+        line-height: 1.2;
+        text-decoration: none;
+        cursor: pointer;
+        transition:
+            background-color 0.15s,
+            border-color 0.15s;
+    }
+
+    .btn:hover {
+        text-decoration: none;
+    }
+
+    .btn:disabled,
+    .btn[aria-disabled='true'] {
+        opacity: 0.45;
+        cursor: not-allowed;
+    }
+
+    .btn-primary {
+        color: #fff;
+        background: var(--color-teal);
+    }
+
+    .btn-primary:not(:disabled):hover {
+        color: #fff;
+        background: var(--color-teal-700);
+    }
+
+    .btn-primary:not(:disabled):active {
+        background: var(--color-teal-800);
+    }
+
+    .btn-secondary {
+        padding: 12px 21px;
+        color: var(--color-teal);
+        background: transparent;
+        border-color: var(--color-teal);
+    }
+
+    .btn-secondary:not(:disabled):hover {
+        color: var(--color-teal);
+        background: var(--color-teal-100);
+    }
+
+    .btn-secondary:not(:disabled):active {
+        background: var(--color-teal-tint-line);
+    }
+
+    /* Quiet outline — "Save Draft": present without competing for the eye. */
+    .btn-quiet {
+        padding: 12px 21px;
+        color: var(--color-navy);
+        background: transparent;
+        border-color: var(--color-line);
+    }
+
+    .btn-quiet:not(:disabled):hover {
+        color: var(--color-navy);
+        background: var(--color-page);
+        border-color: var(--color-navy-300);
+    }
+
+    .btn-ghost {
+        padding: 12px;
+        color: var(--color-teal);
+        background: transparent;
+    }
+
+    .btn-ghost:not(:disabled):hover {
+        color: var(--color-teal);
+        background: var(--color-teal-100);
+    }
+
+    /* WhatsApp stays restrained: ITM chrome, brand colour only in the glyph. */
+    .btn-whatsapp {
+        padding: 12px 21px;
+        color: var(--color-navy);
+        background: transparent;
+        border-color: var(--color-navy-300);
+    }
+
+    .btn-whatsapp:not(:disabled):hover {
+        color: var(--color-navy);
+        background: #fff;
+        border-color: var(--color-navy);
+    }
+
+    .btn-whatsapp i {
+        color: var(--color-success);
+    }
+
+    .btn-icon {
+        width: 48px;
+        height: 48px;
+        padding: 0;
+        color: var(--color-ink);
+        background: #fff;
+        border-color: var(--color-line);
+    }
+
+    .btn-icon:not(:disabled):hover {
+        background: var(--color-page);
+        border-color: var(--color-navy-300);
+    }
+
+    .btn-block {
+        width: 100%;
+    }
+
+    /* Outlined action sitting on a navy ground (§08 work-list card, §10 close).
+       The teal outline loses contrast there, so it borrows the page's own light. */
+    .btn.on-navy {
+        color: #fff;
+        border-color: rgb(233 238 243 / 0.4);
+        background: transparent;
+    }
+
+    .btn.on-navy:not(:disabled):hover {
+        color: #fff;
+        background: rgb(233 238 243 / 0.12);
+        border-color: #e9eef3;
+    }
+
+    /* — §04 Status badges. Colour plus icon plus text, never colour alone. — */
+    .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 5px 12px;
+        border: 1px solid transparent;
+        border-radius: var(--radius-pill);
+        font-size: var(--text-meta);
+        font-weight: 500;
+        white-space: nowrap;
+    }
+
+    .badge-info {
+        color: var(--color-teal-900);
+        background: var(--color-teal-tint);
+        border-color: var(--color-teal-tint-line);
+    }
+
+    .badge-success {
+        color: var(--color-success-ink);
+        background: var(--color-success-tint);
+        border-color: var(--color-success-tint-line);
+    }
+
+    .badge-attention {
+        color: var(--color-attention-ink);
+        background: var(--color-attention-tint);
+        border-color: var(--color-attention-tint-line);
+    }
+
+    .badge-problem {
+        color: var(--color-problem-ink);
+        background: var(--color-problem-tint);
+        border-color: var(--color-problem-tint-line);
+    }
+
+    .badge-neutral {
+        color: var(--color-ink);
+        background: var(--color-page);
+        border-color: var(--color-line);
+    }
+
+    /* Gold appears here and nowhere else — an outline, never a fill. */
+    .badge-featured {
+        padding: 5px 11px;
+        color: var(--color-attention-ink);
+        background: transparent;
+        border-color: var(--color-gold);
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+    }
+
+    /* — §05 Forms — */
+    .field {
+        display: block;
+    }
+
+    .field-label {
+        display: block;
+        margin-bottom: 7px;
+        font-size: 0.875rem;
+        font-weight: 600;
+    }
+
+    .field-hint {
+        margin-top: 7px;
+        font-size: var(--text-meta);
+        color: var(--color-muted);
+    }
+
+    .field-error {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 7px;
+        font-size: var(--text-meta);
+        color: var(--color-problem);
+    }
+
+    .input {
+        width: 100%;
+        min-height: 48px;
+        padding: 13px 14px;
+        color: var(--color-navy);
+        background: #fff;
+        border: 1px solid var(--color-line);
+        border-radius: var(--radius-control);
+        font: inherit;
+        font-size: var(--text-base);
+        transition: border-color 0.15s;
+    }
+
+    .input::placeholder {
+        color: var(--color-navy-300);
+    }
+
+    .input:hover {
+        border-color: var(--color-navy-300);
+    }
+
+    .input:focus-visible {
+        border-color: var(--color-teal);
+        outline: 2px solid var(--color-teal-tint-line);
+        outline-offset: 0;
+    }
+
+    .input[aria-invalid='true'] {
+        border-color: var(--color-problem);
+    }
+
+    textarea.input {
+        min-height: 120px;
+        resize: vertical;
+    }
+
+    select.input {
+        appearance: none;
+        padding-right: 40px;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%235A6B7D' stroke-width='1.5'%3E%3Cpath d='m4 6 4 4 4-4'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 14px center;
+        background-size: 16px;
+    }
+
+    /* Choice chips — the whole tile is the label, so the target clears 48px. */
+    .choice {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        min-height: 48px;
+        padding: 12px 16px;
+        background: #fff;
+        border: 1px solid var(--color-line);
+        border-radius: var(--radius-control);
+        font-size: var(--text-base);
+        cursor: pointer;
+        transition:
+            border-color 0.15s,
+            background-color 0.15s;
+    }
+
+    .choice:hover {
+        border-color: var(--color-navy-300);
+    }
+
+    .choice input {
+        width: 17px;
+        height: 17px;
+        accent-color: var(--color-teal);
+    }
+
+    .choice:has(input:checked) {
+        background: var(--color-teal-100);
+        border-color: var(--color-teal);
+    }
+
+    .choice:has(input:focus-visible) {
+        outline: 2px solid var(--color-teal);
+        outline-offset: 2px;
+    }
+
+    /* — §08 Cards — */
+    .card {
+        background: #fff;
+        border: 1px solid var(--color-line);
+        border-radius: var(--radius-card);
+        padding: 26px 28px;
+    }
+
+    .card-kicker {
+        font-size: var(--text-eyebrow);
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--color-muted);
+    }
+
+    .card-title {
+        font-size: var(--text-h3);
+        font-weight: 600;
+        line-height: 1.3;
+    }
+
+    .card-body {
+        font-size: 0.875rem;
+        line-height: 1.55;
+        color: var(--color-ink);
+    }
+
+    .card-meta {
+        font-size: var(--text-meta);
+        color: var(--color-muted);
+    }
+
+    /* Navy card — the one dark surface in the light system (§08 work list). */
+    .card-navy {
+        background: var(--color-navy);
+        border-color: var(--color-navy);
+        color: #e9eef3;
+    }
+
+    /* The muted kicker and body greys are tuned for white; lift them on navy. */
+    .card-navy .card-kicker {
+        color: var(--color-attention-tint-line);
+    }
+
+    .card-navy .card-body,
+    .card-navy .card-meta {
+        color: var(--color-navy-300);
+    }
+
+    .elev-sm {
+        box-shadow: var(--shadow-sm);
+    }
+
+    .elev-md {
+        box-shadow: var(--shadow-md);
+    }
+
+    .elev-lg {
+        box-shadow: var(--shadow-lg);
+    }
+
+    /* — §09 Alerts — */
+    .alert {
+        display: flex;
+        gap: 13px;
+        padding: 16px 18px;
+        border: 1px solid transparent;
+        border-radius: var(--radius-alert);
+    }
+
+    .alert-title {
+        margin-bottom: 3px;
+        font-size: var(--text-base);
+        font-weight: 600;
+    }
+
+    .alert-body {
+        font-size: 0.875rem;
+        line-height: 1.55;
+        color: var(--color-ink);
+    }
+
+    .alert i {
+        flex: none;
+        font-size: 20px;
+        line-height: 1.35;
+    }
+
+    .alert-info {
+        background: var(--color-teal-tint);
+        border-color: var(--color-teal-tint-line);
+    }
+
+    .alert-info i {
+        color: var(--color-teal-700);
+    }
+
+    .alert-attention {
+        background: var(--color-attention-tint);
+        border-color: var(--color-attention-tint-line);
+    }
+
+    .alert-attention i {
+        color: var(--color-attention);
+    }
+
+    .alert-problem {
+        background: var(--color-problem-tint);
+        border-color: var(--color-problem-tint-line);
+    }
+
+    .alert-problem i {
+        color: var(--color-problem);
+    }
+
+    .alert-success {
+        background: var(--color-success-tint);
+        border-color: var(--color-success-tint-line);
+    }
+
+    .alert-success i {
+        color: var(--color-success);
+    }
+
+    /* — §07 Data table — */
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: var(--text-base);
+        text-align: left;
+    }
+
+    .table th {
+        padding: 12px 16px;
+        border-bottom: 1px solid var(--color-line);
+        font-size: var(--text-meta);
+        font-weight: 600;
+        color: var(--color-muted);
+    }
+
+    .table td {
+        padding: 16px;
+        border-bottom: 1px solid var(--color-line-soft);
+        vertical-align: top;
+    }
+
+    .table tbody tr:last-child td {
+        border-bottom: 0;
+    }
+
+    .table tbody tr:hover {
+        background: var(--color-page);
+    }
+
+    /* — §10 Navigation chrome. Flux drives the sidebar's behaviour; this paints
+         it in ITM's deep navy. Selectors are descendant-based so they outrank
+         the single-class Tailwind utilities Flux renders internally. — */
+    .sidebar-navy {
+        background: var(--color-navy);
+        border-inline-end: 0;
+        color: #e9eef3;
+    }
+
+    .sidebar-navy :is(a, button) {
+        color: var(--color-navy-300);
+        border-radius: var(--radius-control);
+    }
+
+    .sidebar-navy :is(a, button):hover {
+        color: #fff;
+        background: rgb(233 238 243 / 0.1);
+        text-decoration: none;
+    }
+
+    .sidebar-navy :is(a, button):is([aria-current], [data-current]) {
+        color: #fff;
+        background: rgb(233 238 243 / 0.14);
+        box-shadow: inset 2px 0 0 var(--color-teal-400);
+    }
+
+    /* Group headings sit back so the items carry the hierarchy. */
+    .sidebar-navy :is(h1, h2, h3, h4, h5, h6, [data-flux-sidebar-group-heading]) {
+        font-size: var(--text-eyebrow);
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--color-navy-500);
+    }
+
+    .sidebar-navy :focus-visible {
+        outline-color: var(--color-teal-300);
+    }
+
+    /* — Long-form content rendered from Markdown (articles, static pages) — */
+    .prose-itm {
+        max-width: 68ch;
+        color: var(--color-ink);
+    }
+
+    .prose-itm > * + * {
+        margin-top: 1.1em;
+    }
+
+    .prose-itm h2 {
+        margin-top: 2em;
+        font-size: var(--text-h3);
+        font-weight: 600;
+        letter-spacing: -0.015em;
+        color: var(--color-navy);
+    }
+
+    .prose-itm h3 {
+        margin-top: 1.6em;
+        font-size: 1.0625rem;
+        font-weight: 600;
+        color: var(--color-navy);
+    }
+
+    .prose-itm ul,
+    .prose-itm ol {
+        padding-left: 1.25rem;
+    }
+
+    .prose-itm ul {
+        list-style: disc;
+    }
+
+    .prose-itm ol {
+        list-style: decimal;
+    }
+
+    .prose-itm li + li {
+        margin-top: 0.4em;
+    }
+
+    .prose-itm li::marker {
+        color: var(--color-navy-300);
+    }
+
+    .prose-itm strong {
+        font-weight: 600;
+        color: var(--color-navy);
+    }
+
+    .prose-itm blockquote {
+        padding-left: 1rem;
+        border-left: 2px solid var(--color-teal);
+        color: var(--color-muted);
+    }
+
+    .prose-itm table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.875rem;
+    }
+
+    .prose-itm th,
+    .prose-itm td {
+        padding: 0.6rem 0.75rem;
+        border-bottom: 1px solid var(--color-line-soft);
+        text-align: left;
+    }
+
+    .prose-itm th {
+        font-weight: 600;
+        color: var(--color-navy);
+    }
+
+    /* — §06 Progress stepper — */
+    .step {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.875rem;
+        color: var(--color-muted);
+    }
+
+    .step-marker {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        flex: none;
+        border: 1px solid var(--color-line);
+        border-radius: var(--radius-pill);
+        background: #fff;
+        font-size: var(--text-meta);
+        font-weight: 600;
+    }
+
+    .step-done .step-marker {
+        color: #fff;
+        background: var(--color-success);
+        border-color: var(--color-success);
+    }
+
+    .step-current {
+        color: var(--color-navy);
+        font-weight: 600;
+    }
+
+    .step-current .step-marker {
+        color: #fff;
+        background: var(--color-teal);
+        border-color: var(--color-teal);
+    }
+}
+
+@layer utilities {
+    /* §03 — the 1200px content measure with its 32px page margin. */
+    .page-shell {
+        width: 100%;
+        max-width: calc(var(--container-content) + 64px);
+        margin-inline: auto;
+        padding-inline: 32px;
+    }
+
+    @media (max-width: 640px) {
+        .page-shell {
+            padding-inline: 20px;
+        }
+    }
+
+    /* A wider measure for full-bleed feature bands. */
+    .page-shell-wide {
+        width: 100%;
+        max-width: 1480px;
+        margin-inline: auto;
+        padding-inline: 32px;
+    }
+
+    @media (max-width: 640px) {
+        .page-shell-wide {
+            padding-inline: 20px;
+        }
+    }
+
+    /* Section rhythm — generous, and consistent, so the page breathes. */
+    .section {
+        padding-block: clamp(4.5rem, 9vw, 9rem);
+    }
+
+    .section-tight {
+        padding-block: clamp(3rem, 6vw, 5.5rem);
+    }
+}
+
+/* ==========================================================================
+   Atmosphere — depth, light and texture.
+
+   The 60-30-10 split the brand runs on:
+     60%  the off-white page ground and its white cards  (--color-page / #fff)
+     30%  deep navy, carrying the hero, the process band and the footer
+     10%  teal for action and links, with gold as the rarer spark
+   Navy is a role colour on the board ("authority … section grounds"), not the
+   accent, so grounding whole bands in it keeps the accent budget intact.
+   ========================================================================== */
+
+@layer components {
+    /* The navy ground, lit rather than flat: two off-centre radial pools over
+       a vertical ramp, so the band has a light source instead of a fill. */
+    .ground-navy {
+        position: relative;
+        isolation: isolate;
+        background:
+            radial-gradient(58rem 42rem at 12% -10%, rgb(36 123 160 / 0.28), transparent 62%),
+            radial-gradient(42rem 34rem at 92% 8%, rgb(215 155 46 / 0.13), transparent 58%),
+            linear-gradient(168deg, #1b3556 0%, var(--color-navy) 46%, var(--color-navy-900) 100%);
+        color: #e9eef3;
+    }
+
+    /* Film grain. Kept very low-contrast — it should read as paper, not noise. */
+    .grain::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        opacity: 0.5;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
+    }
+
+    /* A hairline of light along the top edge of a dark band. */
+    .edge-light {
+        position: relative;
+    }
+
+    .edge-light::before {
+        content: '';
+        position: absolute;
+        inset-inline: 0;
+        top: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgb(233 238 243 / 0.28) 22%, rgb(233 238 243 / 0.28) 78%, transparent);
+    }
+
+    /* Frosted panel for cards sitting on the navy ground. */
+    .glass {
+        background: rgb(233 238 243 / 0.07);
+        border: 1px solid rgb(233 238 243 / 0.14);
+        border-radius: var(--radius-card);
+        backdrop-filter: blur(14px);
+    }
+
+    @supports not (backdrop-filter: blur(4px)) {
+        .glass {
+            background: rgb(21 42 69 / 0.72);
+        }
+    }
+
+    /* Cards that lift toward the pointer. The teal edge is the only accent. */
+    .card-lift {
+        transition:
+            transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+            box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+            border-color 0.45s ease;
+        will-change: transform;
+    }
+
+    .card-lift:hover {
+        transform: translateY(-6px);
+        border-color: var(--color-teal-300);
+        box-shadow: var(--shadow-lg);
+    }
+
+    /* An eyebrow with a short accent rule — the board's "line, not a flood". */
+    .eyebrow-rule {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-size: var(--text-eyebrow);
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+    }
+
+    .eyebrow-rule::before {
+        content: '';
+        width: 2rem;
+        height: 1px;
+        background: currentColor;
+        opacity: 0.55;
+    }
+
+    /* Numerals in display positions: tabular, tight, quietly technical. */
+    .stat-figure {
+        font-variant-numeric: tabular-nums;
+        letter-spacing: -0.03em;
+        line-height: 1;
+    }
+
+    /* Header that condenses once the page has moved. */
+    .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        transition:
+            background-color 0.35s ease,
+            box-shadow 0.35s ease,
+            border-color 0.35s ease;
+    }
+
+    .site-header[data-stuck='true'] {
+        background: rgb(255 255 255 / 0.86);
+        backdrop-filter: blur(14px);
+        border-bottom-color: var(--color-line);
+        box-shadow: var(--shadow-sm);
+    }
+
+    /* Scroll progress rail under the header. */
+    .scroll-rail {
+        transform-origin: 0 50%;
+        transform: scaleX(0);
+        background: linear-gradient(90deg, var(--color-teal), var(--color-gold));
+    }
+}
+
+/* ==========================================================================
+   Motion.
+
+   Two tiers, so nothing depends on JavaScript succeeding:
+     • Reveals are driven by IntersectionObserver, and only ever hide content
+       once `html.js` proves the script ran.
+     • Scroll-linked motion (parallax, the progress rail) uses native CSS
+       scroll-driven animations where the browser has them — Chrome/Edge/Safari
+       today, Firefox behind a flag — and is simply absent elsewhere.
+   Everything collapses to "already visible, no movement" under
+   prefers-reduced-motion.
+   ========================================================================== */
+
+@layer utilities {
+    @media (prefers-reduced-motion: no-preference) {
+        .js [data-reveal] {
+            opacity: 0;
+            transition:
+                opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+                filter 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+            transition-delay: var(--reveal-delay, 0ms);
+            will-change: opacity, transform;
+        }
+
+        .js [data-reveal='up'] {
+            transform: translateY(28px);
+        }
+
+        .js [data-reveal='fade'] {
+            filter: blur(6px);
+        }
+
+        .js [data-reveal='scale'] {
+            transform: scale(0.965);
+        }
+
+        /* Words of a headline, rising in sequence. */
+        .js [data-reveal='word'] {
+            transform: translateY(0.7em);
+            opacity: 0;
+        }
+
+        .js [data-reveal].is-in {
+            opacity: 1;
+            transform: none;
+            filter: none;
+        }
+
+        /* Once revealed, drop the hint so hover transforms stay smooth. */
+        .js [data-reveal].is-in {
+            will-change: auto;
+        }
+    }
+
+    /* Headline words need a clipping box to rise out of. The padding/margin
+       pair widens that box beyond the glyphs — without it, tight display
+       leading clips ascenders and descenders permanently, not just mid-rise. */
+    .word-line {
+        display: inline-block;
+        overflow: hidden;
+        vertical-align: bottom;
+        padding-block: 0.2em;
+        margin-block: -0.2em;
+    }
+
+    .word-line > span {
+        display: inline-block;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        @supports (animation-timeline: view()) {
+            /* Parallax: the element drifts against the scroll it sits in. */
+            .parallax-slow {
+                animation: parallax-drift linear both;
+                animation-timeline: view();
+                animation-range: cover 0% cover 100%;
+                --parallax-distance: 4rem;
+            }
+
+            .parallax-fast {
+                animation: parallax-drift linear both;
+                animation-timeline: view();
+                animation-range: cover 0% cover 100%;
+                --parallax-distance: 9rem;
+            }
+
+            /* The rail fills as the document scrolls. */
+            .scroll-rail {
+                animation: rail-fill linear both;
+                animation-timeline: scroll(root block);
+            }
+        }
+    }
+
+    @keyframes parallax-drift {
+        from {
+            translate: 0 calc(var(--parallax-distance) * 0.5);
+        }
+        to {
+            translate: 0 calc(var(--parallax-distance) * -0.5);
+        }
+    }
+
+    @keyframes rail-fill {
+        to {
+            transform: scaleX(1);
+        }
+    }
+
+    /* A slow bloom behind the hero. Purely decorative. */
+    @media (prefers-reduced-motion: no-preference) {
+        .orb-drift {
+            animation: orb-drift 18s ease-in-out infinite alternate;
+        }
+    }
+
+    @keyframes orb-drift {
+        from {
+            transform: translate3d(0, 0, 0) scale(1);
+        }
+        to {
+            transform: translate3d(2.5rem, -1.75rem, 0) scale(1.08);
+        }
+    }
+}
+
+/* Flux control chrome, aligned to the ITM field spec. */
+[data-flux-field]:not(ui-radio, ui-checkbox) {
+    @apply grid gap-2;
+}
+
+[data-flux-label] {
+    @apply mb-0! leading-tight!;
+}
+
+input:focus[data-flux-control],
+textarea:focus[data-flux-control],
+select:focus[data-flux-control] {
+    @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-white;
+}
+
+/* ==========================================================================
+   Light-only guard. Deliberately unlayered.
+
+   The ITM board defines a light system only, but Flux's `@fluxAppearance`
+   adds `.dark` to <html> whenever the visitor's OS prefers dark, and injects
+   an inline `<style>:root.dark { color-scheme: dark }</style>` into the head.
+   Native controls then paint dark — unchecked radios and checkboxes render as
+   solid blobs — on an otherwise light page.
+
+   That injected style is unlayered, and unlayered CSS beats everything in a
+   cascade layer no matter how specific, so this override cannot live in
+   `@layer base`. Kept here, unlayered, where `html:root.dark` (0,2,1)
+   out-specifies Flux's `:root.dark` (0,2,0).
+   ========================================================================== */
+html:root.dark {
+    color-scheme: light;
+}

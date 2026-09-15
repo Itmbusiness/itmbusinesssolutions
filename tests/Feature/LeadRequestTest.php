@@ -1,0 +1,90 @@
+<?php
+
+namespace Tests\Feature;
+
+use App\Models\Lead;
+use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
+
+/**
+ * The signed-in "Request another service" flow (PRD Journey B).
+ */
+class LeadRequestTest extends TestCase
+{
+    use RefreshDatabase;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->withoutVite();
+    }
+
+    public function test_guests_cannot_open_the_request_form(): void
+    {
+        $this->get(route('service-requests.create'))->assertRedirect(route('login'));
+    }
+
+    public function test_an_authenticated_user_can_open_the_request_form(): void
+    {
+        $this->actingAs(User::factory()->create());
+
+        $this->get(route('service-requests.create'))
+            ->assertOk()
+            ->assertSee('Request a Service');
+    }
+
+    public function test_a_request_is_stored_against_the_signed_in_user(): void
+    {
+        $user = User::factory()->create();
+
+        $this->actingAs($user)->post(route('service-requests.store'), [
+            'goal' => 'tenders',
+            'message' => 'We want to bid on a council tender.',
+            'preferred_channel' => 'whatsapp',
+            'consent' => '1',
+        ])->assertRedirect(route('dashboard'))->assertSessionHas('status');
+
+        $lead = Lead::sole();
+        $this->assertSame($user->id, $lead->user_id);
+        $this->assertSame($user->email, $lead->email);
+        $this->assertSame('workspace', $lead->source);
+    }
+
+    public function test_a_request_without_consent_is_rejected(): void
+    {
+        $this->actingAs(User::factory()->create())->post(route('service-requests.store'), [
+            'goal' => 'tenders',
+            'preferred_channel' => 'whatsapp',
+        ])->assertSessionHasErrors('consent');
+
+        $this->assertSame(0, Lead::count());
+    }
+
+    public function test_an_unknown_goal_is_rejected(): void
+    {
+        $this->actingAs(User::factory()->create())->post(route('service-requests.store'), [
+            'goal' => 'something-invented',
+            'preferred_channel' => 'whatsapp',
+            'consent' => '1',
+        ])->assertSessionHasErrors('goal');
+
+        $this->assertSame(0, Lead::count());
+    }
+
+    public function test_a_request_cannot_be_filed_against_another_user(): void
+    {
+        $user = User::factory()->create();
+        $other = User::factory()->create();
+
+        $this->actingAs($user)->post(route('service-requests.store'), [
+            'user_id' => $other->id,
+            'goal' => 'tenders',
+            'preferred_channel' => 'whatsapp',
+            'consent' => '1',
+        ]);
+
+        $this->assertSame($user->id, Lead::sole()->user_id);
+    }
+}

@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><meta name="design_doc_mode" content="canvas"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css"><link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css"><style>body{margin:0;background:#F4F7F9;font-family:Inter,system-ui,sans-serif;color:#152A45;-webkit-font-smoothing:antialiased}*{box-sizing:border-box}a{color:#247BA0;text-decoration:none}a:hover{color:#1A5C78;text-decoration:underline}:focus-visible{outline:2px solid #247BA0;outline-offset:2px;border-radius:4px}::selection{background:#CDE4EE}</style></helmet>
+
+<div style="max-width:1240px;margin:0 auto;padding:0 32px 120px">
+
+<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:32px;padding:44px 0 28px;border-bottom:1px solid #DDE5EB;flex-wrap:wrap">
+<div>
+<div style="font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#247BA0;margin-bottom:12px">Prompt 01 · Master visual system</div>
+<h1 style="font-size:44px;font-weight:600;line-height:1.1;letter-spacing:-.02em;margin:0 0 12px;text-wrap:balance">ITM Business Solutions</h1>
+<p style="font-size:17px;line-height:1.55;color:#5A6B7D;margin:0;max-width:56ch;text-wrap:pretty">Component reference board. Every later screen — public website, consultant workspace and client portal — inherits the tokens, components and responsive rules defined here.</p>
+</div>
+<div style="width:132px;height:132px;border-radius:18px;overflow:hidden;flex:none;box-shadow:0 1px 3px rgba(21,42,69,.12)">
+<img src="assets/itm-logo.png" alt="ITM Business Solutions" style="width:100%;height:100%;object-fit:cover;display:block">
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:28px 0 0">
+<div style="background:#fff;border:1px solid #DDE5EB;border-left:3px solid #D79B2E;border-radius:18px;padding:20px 22px">
+<div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#B8792A;margin-bottom:10px">Assumption to confirm</div>
+<p style="margin:0;font-size:14px;line-height:1.6;color:#3D5064;text-wrap:pretty">The attached <strong style="font-weight:600">Nocturne</strong> design system is a dark, blurple interface — incompatible with your gold-on-navy mark and the prompt book's off-white page rule. I've kept <strong style="font-weight:600">ITM's palette as the source of truth</strong> and inherited Nocturne's method: Inter, tonal ramps in OKLCH, a compact spacing scale, outlined secondary actions, themed focus rings, Phosphor icons.</p>
+</div>
+<div style="background:#fff;border:1px solid #DDE5EB;border-left:3px solid #247BA0;border-radius:18px;padding:20px 22px">
+<div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#247BA0;margin-bottom:10px">Naming</div>
+<p style="margin:0;font-size:14px;line-height:1.6;color:#3D5064;text-wrap:pretty">Renamed throughout from <em>ITM Corporate Secretarial</em> to <strong style="font-weight:600">ITM Business Solutions</strong>, tagline "Ideas today. A brighter tomorrow." Positioning copy still reads corporate-secretarial — say the word if you want it broadened.</p>
+</div>
+<div style="background:#fff;border:1px solid #DDE5EB;border-left:3px solid #5A6B7D;border-radius:18px;padding:20px 22px">
+<div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#5A6B7D;margin-bottom:10px">Placeholders, deliberately</div>
+<p style="margin:0;font-size:14px;line-height:1.6;color:#3D5064;text-wrap:pretty">No statutory fees, authority logos, seals, processing guarantees or client data are invented anywhere. Every fee is a placeholder row; every document preview is neutral.</p>
+</div>
+</div>
+
+<h2 style="font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#5A6B7D;margin:64px 0 20px;padding-bottom:12px;border-bottom:1px solid #DDE5EB">01 · Colour roles</h2>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(216px,1fr));gap:14px">
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;overflow:hidden">
+<div style="height:104px;background:#152A45"></div>
+<div style="padding:16px 18px 18px">
+<div style="font-size:15px;font-weight:600;margin-bottom:4px">Deep navy</div>
+<div style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#247BA0;margin-bottom:8px">#152A45</div>
+<div style="font-size:13px;line-height:1.5;color:#5A6B7D">Authority. Sidebar, footer, headings, section grounds.</div>
+</div>
+</div>
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;overflow:hidden">
+<div style="height:104px;background:#247BA0"></div>
+<div style="padding:16px 18px 18px">
+<div style="font-size:15px;font-weight:600;margin-bottom:4px">Teal blue</div>
+<div style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#247BA0;margin-bottom:8px">#247BA0</div>
+<div style="font-size:13px;line-height:1.5;color:#5A6B7D">Every primary action, link and active state. One per view.</div>
+</div>
+</div>
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;overflow:hidden">
+<div style="height:104px;background:#F4F7F9;border-bottom:1px solid #DDE5EB"></div>
+<div style="padding:16px 18px 18px">
+<div style="font-size:15px;font-weight:600;margin-bottom:4px">Warm off-white</div>
+<div style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#247BA0;margin-bottom:8px">#F4F7F9</div>
+<div style="font-size:13px;line-height:1.5;color:#5A6B7D">Page ground. Cards sit on it in #FFFFFF.</div>
+</div>
+</div>
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;overflow:hidden">
+<div style="height:104px;background:#D79B2E"></div>
+<div style="padding:16px 18px 18px">
+<div style="font-size:15px;font-weight:600;margin-bottom:4px">Restrained gold</div>
+<div style="font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#247BA0;margin-bottom:8px">#D79B2E</div>
+<div style="font-size:13px;line-height:1.5;color:#5A6B7D">Small highlights only — one "Most requested" badge, never a fill.</div>
+</div>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:14px;margin-top:14px">
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;padding:20px 22px 22px">
+<div style="font-size:13px;font-weight:600;margin-bottom:14px">Navy ramp</div>
+<div style="display:flex;border-radius:10px;overflow:hidden">
+<div style="flex:1;height:60px;background:#0B1524"></div>
+<div style="flex:1;height:60px;background:#101F35"></div>
+<div style="flex:1;height:60px;background:#152A45"></div>
+<div style="flex:1;height:60px;background:#2C4A6E"></div>
+<div style="flex:1;height:60px;background:#5A7796"></div>
+<div style="flex:1;height:60px;background:#9FB3C6"></div>
+<div style="flex:1;height:60px;background:#DDE5EB"></div>
+</div>
+<div style="display:flex;margin-top:8px;font-family:ui-monospace,Menlo,monospace;font-size:10px;color:#5A6B7D">
+<div style="flex:1">900</div><div style="flex:1">800</div><div style="flex:1">700</div><div style="flex:1">600</div><div style="flex:1">500</div><div style="flex:1">300</div><div style="flex:1">100</div>
+</div>
+</div>
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;padding:20px 22px 22px">
+<div style="font-size:13px;font-weight:600;margin-bottom:14px">Teal ramp</div>
+<div style="display:flex;border-radius:10px;overflow:hidden">
+<div style="flex:1;height:60px;background:#0F3C51"></div>
+<div style="flex:1;height:60px;background:#154E67"></div>
+<div style="flex:1;height:60px;background:#1A5C78"></div>
+<div style="flex:1;height:60px;background:#247BA0"></div>
+<div style="flex:1;height:60px;background:#4E97B6"></div>
+<div style="flex:1;height:60px;background:#9CC7D9"></div>
+<div style="flex:1;height:60px;background:#E4F0F5"></div>
+</div>
+<div style="display:flex;margin-top:8px;font-family:ui-monospace,Menlo,monospace;font-size:10px;color:#5A6B7D">
+<div style="flex:1">900</div><div style="flex:1">800</div><div style="flex:1">700</div><div style="flex:1">500</div><div style="flex:1">400</div><div style="flex:1">300</div><div style="flex:1">100</div>
+</div>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:14px">
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;padding:16px 18px">
+<div style="width:28px;height:28px;border-radius:8px;background:#1F7A5C;margin-bottom:12px"></div>
+<div style="font-size:13px;font-weight:600">Success</div>
+<div style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#5A6B7D">#1F7A5C</div>
+</div>
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;padding:16px 18px">
+<div style="width:28px;height:28px;border-radius:8px;background:#B8792A;margin-bottom:12px"></div>
+<div style="font-size:13px;font-weight:600">Attention</div>
+<div style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#5A6B7D">#B8792A</div>
+</div>
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;padding:16px 18px">
+<div style="width:28px;height:28px;border-radius:8px;background:#B33A3A;margin-bottom:12px"></div>
+<div style="font-size:13px;font-weight:600">Problem</div>
+<div style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#5A6B7D">#B33A3A</div>
+</div>
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;padding:16px 18px">
+<div style="width:28px;height:28px;border-radius:8px;background:#5A6B7D;margin-bottom:12px"></div>
+<div style="font-size:13px;font-weight:600">Muted text</div>
+<div style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#5A6B7D">#5A6B7D</div>
+</div>
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;padding:16px 18px">
+<div style="width:28px;height:28px;border-radius:8px;background:#DDE5EB;margin-bottom:12px"></div>
+<div style="font-size:13px;font-weight:600">Border</div>
+<div style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#5A6B7D">#DDE5EB</div>
+</div>
+</div>
+
+<h2 style="font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#5A6B7D;margin:64px 0 20px;padding-bottom:12px;border-bottom:1px solid #DDE5EB">02 · Type scale — Inter</h2>
+
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;padding:8px 28px">
+<div style="display:flex;align-items:baseline;gap:28px;padding:22px 0;border-bottom:1px solid #EEF2F5;flex-wrap:wrap">
+<div style="width:130px;flex:none;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#5A6B7D">56 / 600 / -.02em</div>
+<div style="font-size:56px;font-weight:600;letter-spacing:-.02em;line-height:1.05">Display</div>
+</div>
+<div style="display:flex;align-items:baseline;gap:28px;padding:22px 0;border-bottom:1px solid #EEF2F5;flex-wrap:wrap">
+<div style="width:130px;flex:none;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#5A6B7D">40 / 600</div>
+<div style="font-size:40px;font-weight:600;letter-spacing:-.015em;line-height:1.15">Page heading H1</div>
+</div>
+<div style="display:flex;align-items:baseline;gap:28px;padding:22px 0;border-bottom:1px solid #EEF2F5;flex-wrap:wrap">
+<div style="width:130px;flex:none;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#5A6B7D">28 / 600</div>
+<div style="font-size:28px;font-weight:600;letter-spacing:-.01em">Section heading H2</div>
+</div>
+<div style="display:flex;align-items:baseline;gap:28px;padding:22px 0;border-bottom:1px solid #EEF2F5;flex-wrap:wrap">
+<div style="width:130px;flex:none;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#5A6B7D">20 / 600</div>
+<div style="font-size:20px;font-weight:600">Card title H3</div>
+</div>
+<div style="display:flex;align-items:baseline;gap:28px;padding:22px 0;border-bottom:1px solid #EEF2F5;flex-wrap:wrap">
+<div style="width:130px;flex:none;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#5A6B7D">17 / 400 / 1.6</div>
+<div style="font-size:17px;line-height:1.6;max-width:52ch;color:#3D5064">Body large — hero support and article lead. Sits at 1.6 line height so long compliance copy stays readable on a phone.</div>
+</div>
+<div style="display:flex;align-items:baseline;gap:28px;padding:22px 0;border-bottom:1px solid #EEF2F5;flex-wrap:wrap">
+<div style="width:130px;flex:none;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#5A6B7D">15 / 400 / 1.6</div>
+<div style="font-size:15px;line-height:1.6;max-width:60ch;color:#3D5064">Body — the default. Interface copy, table cells, form values and helper paragraphs.</div>
+</div>
+<div style="display:flex;align-items:baseline;gap:28px;padding:22px 0;border-bottom:1px solid #EEF2F5;flex-wrap:wrap">
+<div style="width:130px;flex:none;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#5A6B7D">13 / 400</div>
+<div style="font-size:13px;color:#5A6B7D">Meta — reviewed dates, helper text, table headers. Floor for body; never smaller.</div>
+</div>
+<div style="display:flex;align-items:baseline;gap:28px;padding:22px 0;flex-wrap:wrap">
+<div style="width:130px;flex:none;font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#5A6B7D">11 / 600 / .12em</div>
+<div style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#247BA0">Eyebrow label</div>
+</div>
+</div>
+
+<h2 style="font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#5A6B7D;margin:64px 0 20px;padding-bottom:12px;border-bottom:1px solid #DDE5EB">03 · Spacing, grid, radius</h2>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px">
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;padding:22px">
+<div style="font-size:13px;font-weight:600;margin-bottom:6px">8-point spacing</div>
+<div style="font-size:13px;color:#5A6B7D;margin-bottom:18px">4 · 8 · 12 · 16 · 24 · 32 · 48 · 64 · 96</div>
+<div style="display:flex;align-items:flex-end;gap:8px">
+<div style="width:4px;height:4px;background:#247BA0;border-radius:2px"></div>
+<div style="width:8px;height:8px;background:#247BA0;border-radius:2px"></div>
+<div style="width:12px;height:12px;background:#247BA0;border-radius:2px"></div>
+<div style="width:16px;height:16px;background:#247BA0;border-radius:2px"></div>
+<div style="width:24px;height:24px;background:#247BA0;border-radius:3px"></div>
+<div style="width:32px;height:32px;background:#247BA0;border-radius:4px"></div>
+<div style="width:48px;height:48px;background:#247BA0;border-radius:5px"></div>
+<div style="width:64px;height:64px;background:#247BA0;border-radius:6px"></div>
+</div>
+</div>
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;padding:22px">
+<div style="font-size:13px;font-weight:600;margin-bottom:6px">12-column desktop grid</div>
+<div style="font-size:13px;color:#5A6B7D;margin-bottom:18px">Max 1200px content · 24px gutter · 32px page margin</div>
+<div style="display:grid;grid-template-columns:repeat(12,1fr);gap:6px">
+<div style="height:56px;background:#E4F0F5;border-radius:4px"></div><div style="height:56px;background:#E4F0F5;border-radius:4px"></div><div style="height:56px;background:#E4F0F5;border-radius:4px"></div><div style="height:56px;background:#E4F0F5;border-radius:4px"></div><div style="height:56px;background:#E4F0F5;border-radius:4px"></div><div style="height:56px;background:#E4F0F5;border-radius:4px"></div><div style="height:56px;background:#E4F0F5;border-radius:4px"></div><div style="height:56px;background:#E4F0F5;border-radius:4px"></div><div style="height:56px;background:#E4F0F5;border-radius:4px"></div><div style="height:56px;background:#E4F0F5;border-radius:4px"></div><div style="height:56px;background:#E4F0F5;border-radius:4px"></div><div style="height:56px;background:#E4F0F5;border-radius:4px"></div>
+</div>
+</div>
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;padding:22px">
+<div style="font-size:13px;font-weight:600;margin-bottom:6px">Radius &amp; elevation</div>
+<div style="font-size:13px;color:#5A6B7D;margin-bottom:18px">Cards 18px · controls 10px · pills 999px</div>
+<div style="display:flex;gap:12px;flex-wrap:wrap">
+<div style="width:74px;height:56px;background:#fff;border:1px solid #DDE5EB;border-radius:18px;box-shadow:0 1px 2px rgba(21,42,69,.06);display:flex;align-items:center;justify-content:center;font-family:ui-monospace,Menlo,monospace;font-size:10px;color:#5A6B7D">sm</div>
+<div style="width:74px;height:56px;background:#fff;border:1px solid #DDE5EB;border-radius:18px;box-shadow:0 4px 14px rgba(21,42,69,.09);display:flex;align-items:center;justify-content:center;font-family:ui-monospace,Menlo,monospace;font-size:10px;color:#5A6B7D">md</div>
+<div style="width:74px;height:56px;background:#fff;border:1px solid #DDE5EB;border-radius:18px;box-shadow:0 12px 32px rgba(21,42,69,.14);display:flex;align-items:center;justify-content:center;font-family:ui-monospace,Menlo,monospace;font-size:10px;color:#5A6B7D">lg</div>
+</div>
+</div>
+</div>
+
+<h2 style="font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#5A6B7D;margin:64px 0 20px;padding-bottom:12px;border-bottom:1px solid #DDE5EB">04 · Buttons &amp; badges</h2>
+
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;padding:26px 28px">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px 20px">
+<div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+<div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#5A6B7D">Primary</div>
+<button style="font:600 15px Inter,sans-serif;color:#fff;background:#247BA0;border:none;border-radius:10px;padding:13px 22px;cursor:pointer;transition:background .15s;min-height:48px" style-hover="background:#1A5C78" style-active="background:#154E67">Request a Quotation</button>
+<button disabled="disabled" style="font:600 15px Inter,sans-serif;color:#fff;background:#247BA0;border:none;border-radius:10px;padding:13px 22px;opacity:.45;min-height:48px">Disabled</button>
+<button style="font:600 15px Inter,sans-serif;color:#fff;background:#1A5C78;border:none;border-radius:10px;padding:13px 22px;min-height:48px;display:flex;align-items:center;gap:9px"><i class="ph ph-circle-notch" style="font-size:17px"></i>Sending…</button>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+<div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#5A6B7D">Secondary — outlined</div>
+<button style="font:600 15px Inter,sans-serif;color:#247BA0;background:transparent;border:1px solid #247BA0;border-radius:10px;padding:12px 21px;cursor:pointer;transition:background .15s;min-height:48px" style-hover="background:#E4F0F5" style-active="background:#CDE4EE">View Service</button>
+<button style="font:600 15px Inter,sans-serif;color:#152A45;background:transparent;border:1px solid #DDE5EB;border-radius:10px;padding:12px 21px;cursor:pointer;transition:border-color .15s;min-height:48px" style-hover="border-color:#9FB3C6;background:#F4F7F9">Save Draft</button>
+<button style="font:600 15px Inter,sans-serif;color:#247BA0;background:transparent;border:none;border-radius:10px;padding:12px 12px;cursor:pointer;min-height:48px;display:flex;align-items:center;gap:8px" style-hover="background:#E4F0F5">Track Application<i class="ph ph-arrow-right" style="font-size:16px"></i></button>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+<div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#5A6B7D">WhatsApp — restrained</div>
+<button style="font:600 15px Inter,sans-serif;color:#152A45;background:transparent;border:1px solid #9FB3C6;border-radius:10px;padding:12px 21px;cursor:pointer;min-height:48px;display:flex;align-items:center;gap:9px" style-hover="border-color:#152A45;background:#fff"><i class="ph ph-whatsapp-logo" style="font-size:18px;color:#1F7A5C"></i>Chat on WhatsApp</button>
+<div style="display:flex;gap:8px">
+<button style="width:48px;height:48px;border-radius:10px;border:1px solid #DDE5EB;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#3D5064" style-hover="background:#F4F7F9;border-color:#9FB3C6"><i class="ph ph-download-simple" style="font-size:19px"></i></button>
+<button style="width:48px;height:48px;border-radius:10px;border:1px solid #DDE5EB;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#3D5064" style-hover="background:#F4F7F9;border-color:#9FB3C6"><i class="ph ph-paperclip" style="font-size:19px"></i></button>
+<button style="width:48px;height:48px;border-radius:10px;border:1px solid #DDE5EB;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#3D5064" style-hover="background:#F4F7F9;border-color:#9FB3C6"><i class="ph ph-dots-three" style="font-size:19px"></i></button>
+</div>
+</div>
+</div>
+<div style="height:1px;background:#EEF2F5;margin:26px 0"></div>
+<div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#5A6B7D;margin-bottom:14px">Status badges — colour plus icon plus text, never colour alone</div>
+<div style="display:flex;gap:10px;flex-wrap:wrap">
+<span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:#0F3C51;background:#E4F0F5;border:1px solid #CDE4EE;border-radius:999px;padding:5px 12px"><i class="ph-fill ph-clock" style="font-size:14px"></i>Awaiting Decision</span>
+<span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:#12543F;background:#E6F2EE;border:1px solid #C8E2D8;border-radius:999px;padding:5px 12px"><i class="ph-fill ph-check-circle" style="font-size:14px"></i>Approved</span>
+<span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:#7D5218;background:#FBF1DF;border:1px solid #F0DFBC;border-radius:999px;padding:5px 12px"><i class="ph-fill ph-warning" style="font-size:14px"></i>Client Action Required</span>
+<span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:#7D2626;background:#F8E9E9;border:1px solid #EFD1D1;border-radius:999px;padding:5px 12px"><i class="ph-fill ph-x-circle" style="font-size:14px"></i>Expired</span>
+<span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:#3D5064;background:#F4F7F9;border:1px solid #DDE5EB;border-radius:999px;padding:5px 12px"><i class="ph-fill ph-minus-circle" style="font-size:14px"></i>Draft</span>
+<span style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#7D5218;background:transparent;border:1px solid #D79B2E;border-radius:999px;padding:5px 11px">Most Requested</span>
+</div>
+</div>
+
+<h2 style="font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#5A6B7D;margin:64px 0 20px;padding-bottom:12px;border-bottom:1px solid #DDE5EB">05 · Forms</h2>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px">
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;padding:26px 28px;display:flex;flex-direction:column;gap:22px">
+<div>
+<label for="ds-org" style="display:block;font-size:14px;font-weight:600;margin-bottom:7px">Organisation name</label>
+<input id="ds-org" type="text" placeholder="As it should appear on the register" style="width:100%;font:400 15px Inter,sans-serif;color:#152A45;background:#fff;border:1px solid #DDE5EB;border-radius:10px;padding:13px 14px;min-height:48px;transition:border-color .15s" style-hover="border-color:#9FB3C6" style-focus="border-color:#247BA0;outline:2px solid #CDE4EE;outline-offset:0">
+<div style="font-size:13px;color:#5A6B7D;margin-top:7px">If you have not registered yet, use your preferred name.</div>
+</div>
+<div>
+<label for="ds-tin" style="display:block;font-size:14px;font-weight:600;margin-bottom:7px">Taxpayer identifier</label>
+<input id="ds-tin" type="text" value="0000" style="width:100%;font:400 15px Inter,sans-serif;color:#152A45;background:#fff;border:1px solid #B33A3A;border-radius:10px;padding:13px 14px;min-height:48px">
+<div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#B33A3A;margin-top:7px"><i class="ph-fill ph-warning-circle" style="font-size:15px"></i>This does not look like a valid identifier. Leave blank if unsure.</div>
+</div>
+<div>
+<label for="ds-goal" style="display:block;font-size:14px;font-weight:600;margin-bottom:7px">What is your goal?</label>
+<select id="ds-goal" style="width:100%;font:400 15px Inter,sans-serif;color:#152A45;background:#fff;border:1px solid #DDE5EB;border-radius:10px;padding:13px 14px;min-height:48px;appearance:none">
+<option>Register a new company</option>
+<option>Become tax compliant</option>
+<option>Prepare for tenders</option>
+<option>I am not sure</option>
+</select>
+</div>
+<div>
+<div style="font-size:14px;font-weight:600;margin-bottom:10px">Preferred channel</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<label style="display:flex;align-items:center;gap:9px;font-size:15px;border:1px solid #247BA0;background:#E4F0F5;border-radius:10px;padding:12px 16px;cursor:pointer;min-height:48px"><input type="radio" name="ds-ch" checked="checked" style="accent-color:#247BA0;width:17px;height:17px">WhatsApp</label>
+<label style="display:flex;align-items:center;gap:9px;font-size:15px;border:1px solid #DDE5EB;background:#fff;border-radius:10px;padding:12px 16px;cursor:pointer;min-height:48px" style-hover="border-color:#9FB3C6"><input type="radio" name="ds-ch" style="accent-color:#247BA0;width:17px;height:17px">Email</label>
+<label style="display:flex;align-items:center;gap:9px;font-size:15px;border:1px solid #DDE5EB;background:#fff;border-radius:10px;padding:12px 16px;cursor:pointer;min-height:48px" style-hover="border-color:#9FB3C6"><input type="radio" name="ds-ch" style="accent-color:#247BA0;width:17px;height:17px">Phone call</label>
+</div>
+</div>
+</div>
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;padding:26px 28px;display:flex;flex-direction:column;gap:22px">
+<div>
+<div style="font-size:14px;font-weight:600;margin-bottom:7px">Certificate of incorporation</div>
+<div style="border:1px dashed #9FB3C6;border-radius:12px;background:#F4F7F9;padding:26px 22px;text-align:center;cursor:pointer;transition:border-color .15s" style-hover="border-color:#247BA0;background:#E4F0F5">
+<i class="ph ph-upload-simple" style="font-size:26px;color:#247BA0"></i>
+<div style="font-size:15px;font-weight:600;margin:10px 0 4px">Choose a file or drop it here</div>
+<div style="font-size:13px;color:#5A6B7D">PDF, JPG or PNG · up to 10 MB</div>
+</div>
+<div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#7D5218;background:#FBF1DF;border-radius:8px;padding:9px 11px;margin-top:10px"><i class="ph-fill ph-shield-warning" style="font-size:15px;flex:none"></i>Never upload passwords, banking PINs or one-time codes.</div>
+</div>
+<div>
+<div style="font-size:14px;font-weight:600;margin-bottom:10px">Uploaded</div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;align-items:center;gap:12px;border:1px solid #DDE5EB;border-radius:10px;padding:12px 14px">
+<i class="ph ph-file-pdf" style="font-size:22px;color:#3D5064;flex:none"></i>
+<div style="flex:1;min-width:0">
+<div style="font-size:14px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">cr14-directors.pdf</div>
+<div style="font-size:12px;color:#12543F">Accepted · 12 Aug 2026</div>
+</div>
+<i class="ph-fill ph-check-circle" style="font-size:19px;color:#1F7A5C;flex:none"></i>
+</div>
+<div style="display:flex;align-items:center;gap:12px;border:1px solid #EFD1D1;background:#FDF7F7;border-radius:10px;padding:12px 14px">
+<i class="ph ph-file-image" style="font-size:22px;color:#3D5064;flex:none"></i>
+<div style="flex:1;min-width:0">
+<div style="font-size:14px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">id-scan.jpg</div>
+<div style="font-size:12px;color:#7D2626">Rejected — page 2 is unreadable. Replace it.</div>
+</div>
+<button style="font:600 13px Inter,sans-serif;color:#247BA0;background:transparent;border:1px solid #247BA0;border-radius:8px;padding:7px 12px;cursor:pointer;flex:none" style-hover="background:#E4F0F5">Replace</button>
+</div>
+</div>
+</div>
+<label style="display:flex;gap:11px;font-size:14px;line-height:1.5;color:#3D5064;cursor:pointer"><input type="checkbox" style="accent-color:#247BA0;width:18px;height:18px;flex:none;margin-top:1px">I agree that ITM may contact me about this request and store the information I have provided.</label>
+</div>
+</div>
+
+<h2 style="font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#5A6B7D;margin:64px 0 20px;padding-bottom:12px;border-bottom:1px solid #DDE5EB">06 · Progress &amp; process</h2>
+
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;padding:30px 28px">
+<div style="display:flex;align-items:flex-start;gap:0;flex-wrap:wrap">
+<div style="display:flex;flex-direction:column;align-items:center;gap:10px;width:120px;flex:none">
+<div style="width:34px;height:34px;border-radius:999px;background:#247BA0;color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600"><i class="ph-fill ph-check" style="font-size:16px"></i></div>
+<div style="font-size:13px;font-weight:600;text-align:center">Request</div>
+</div>
+<div style="flex:1;min-width:24px;height:2px;background:#247BA0;margin-top:16px"></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:10px;width:120px;flex:none">
+<div style="width:34px;height:34px;border-radius:999px;background:#247BA0;color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600"><i class="ph-fill ph-check" style="font-size:16px"></i></div>
+<div style="font-size:13px;font-weight:600;text-align:center">Assessment</div>
+</div>
+<div style="flex:1;min-width:24px;height:2px;background:#247BA0;margin-top:16px"></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:10px;width:120px;flex:none">
+<div style="width:34px;height:34px;border-radius:999px;background:#fff;border:2px solid #247BA0;color:#247BA0;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600">3</div>
+<div style="font-size:13px;font-weight:600;text-align:center;color:#247BA0">Quote approval</div>
+</div>
+<div style="flex:1;min-width:24px;height:2px;background:#DDE5EB;margin-top:16px"></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:10px;width:120px;flex:none">
+<div style="width:34px;height:34px;border-radius:999px;background:#F4F7F9;border:1px solid #DDE5EB;color:#5A6B7D;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600">4</div>
+<div style="font-size:13px;text-align:center;color:#5A6B7D">Payment</div>
+</div>
+<div style="flex:1;min-width:24px;height:2px;background:#DDE5EB;margin-top:16px"></div>
+<div style="display:flex;flex-direction:column;align-items:center;gap:10px;width:120px;flex:none">
+<div style="width:34px;height:34px;border-radius:999px;background:#F4F7F9;border:1px solid #DDE5EB;color:#5A6B7D;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600">5</div>
+<div style="font-size:13px;text-align:center;color:#5A6B7D">Application</div>
+</div>
+</div>
+<div style="height:1px;background:#EEF2F5;margin:28px 0 22px"></div>
+<div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#5A6B7D;margin-bottom:14px">Mobile stepper</div>
+<div style="max-width:300px">
+<div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:8px"><span style="font-weight:600">Step 3 of 5</span><span style="color:#5A6B7D">Quote approval</span></div>
+<div style="height:6px;border-radius:999px;background:#DDE5EB;overflow:hidden"><div style="width:60%;height:100%;background:#247BA0;border-radius:999px"></div></div>
+</div>
+</div>
+
+<h2 style="font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#5A6B7D;margin:64px 0 20px;padding-bottom:12px;border-bottom:1px solid #DDE5EB">07 · Data table &amp; fee breakdown</h2>
+
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;overflow:hidden">
+<div style="display:flex;align-items:center;gap:10px;padding:16px 20px;border-bottom:1px solid #DDE5EB;flex-wrap:wrap">
+<div style="position:relative;flex:1;min-width:180px">
+<i class="ph ph-magnifying-glass" style="position:absolute;left:12px;top:13px;font-size:17px;color:#5A6B7D"></i>
+<input type="text" placeholder="Search applications" style="width:100%;font:400 14px Inter,sans-serif;border:1px solid #DDE5EB;border-radius:10px;padding:11px 12px 11px 38px;min-height:44px" style-focus="border-color:#247BA0;outline:2px solid #CDE4EE;outline-offset:0">
+</div>
+<button style="font:500 14px Inter,sans-serif;color:#152A45;background:#fff;border:1px solid #DDE5EB;border-radius:10px;padding:10px 14px;cursor:pointer;min-height:44px;display:flex;align-items:center;gap:7px" style-hover="border-color:#9FB3C6;background:#F4F7F9"><i class="ph ph-funnel" style="font-size:16px"></i>Status</button>
+<button style="font:500 14px Inter,sans-serif;color:#152A45;background:#fff;border:1px solid #DDE5EB;border-radius:10px;padding:10px 14px;cursor:pointer;min-height:44px;display:flex;align-items:center;gap:7px" style-hover="border-color:#9FB3C6;background:#F4F7F9"><i class="ph ph-buildings" style="font-size:16px"></i>Organisation</button>
+</div>
+<div style="overflow-x:auto">
+<table style="width:100%;border-collapse:collapse;min-width:720px">
+<thead>
+<tr style="background:#F4F7F9">
+<th style="text-align:left;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#5A6B7D;padding:12px 20px;border-bottom:1px solid #DDE5EB">Reference</th>
+<th style="text-align:left;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#5A6B7D;padding:12px 20px;border-bottom:1px solid #DDE5EB">Organisation</th>
+<th style="text-align:left;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#5A6B7D;padding:12px 20px;border-bottom:1px solid #DDE5EB">Service</th>
+<th style="text-align:left;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#5A6B7D;padding:12px 20px;border-bottom:1px solid #DDE5EB">Status</th>
+<th style="text-align:left;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#5A6B7D;padding:12px 20px;border-bottom:1px solid #DDE5EB">Next action</th>
+</tr>
+</thead>
+<tbody>
+<tr style="cursor:pointer" style-hover="background:#F4F7F9">
+<td style="font-family:ui-monospace,Menlo,monospace;font-size:13px;padding:15px 20px;border-bottom:1px solid #EEF2F5">APP-2418</td>
+<td style="font-size:14px;font-weight:500;padding:15px 20px;border-bottom:1px solid #EEF2F5">Sunrise Logistics (Pvt) Ltd</td>
+<td style="font-size:14px;color:#3D5064;padding:15px 20px;border-bottom:1px solid #EEF2F5">PRAZ Registration Support</td>
+<td style="padding:15px 20px;border-bottom:1px solid #EEF2F5"><span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:#7D5218;background:#FBF1DF;border:1px solid #F0DFBC;border-radius:999px;padding:4px 10px"><i class="ph-fill ph-warning" style="font-size:13px"></i>Client action</span></td>
+<td style="font-size:14px;color:#3D5064;padding:15px 20px;border-bottom:1px solid #EEF2F5">Upload tax clearance</td>
+</tr>
+<tr style="cursor:pointer" style-hover="background:#F4F7F9">
+<td style="font-family:ui-monospace,Menlo,monospace;font-size:13px;padding:15px 20px;border-bottom:1px solid #EEF2F5">APP-2411</td>
+<td style="font-size:14px;font-weight:500;padding:15px 20px;border-bottom:1px solid #EEF2F5">Chenai Family Trust</td>
+<td style="font-size:14px;color:#3D5064;padding:15px 20px;border-bottom:1px solid #EEF2F5">Trust Registration</td>
+<td style="padding:15px 20px;border-bottom:1px solid #EEF2F5"><span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:#0F3C51;background:#E4F0F5;border:1px solid #CDE4EE;border-radius:999px;padding:4px 10px"><i class="ph-fill ph-arrows-clockwise" style="font-size:13px"></i>In progress</span></td>
+<td style="font-size:14px;color:#3D5064;padding:15px 20px;border-bottom:1px solid #EEF2F5">ITM preparing submission</td>
+</tr>
+<tr style="cursor:pointer" style-hover="background:#F4F7F9">
+<td style="font-family:ui-monospace,Menlo,monospace;font-size:13px;padding:15px 20px">APP-2402</td>
+<td style="font-size:14px;font-weight:500;padding:15px 20px">Mbare Hardware PBC</td>
+<td style="font-size:14px;color:#3D5064;padding:15px 20px">NSSA Employer Registration</td>
+<td style="padding:15px 20px"><span style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;color:#12543F;background:#E6F2EE;border:1px solid #C8E2D8;border-radius:999px;padding:4px 10px"><i class="ph-fill ph-check-circle" style="font-size:13px"></i>Completed</span></td>
+<td style="font-size:14px;color:#3D5064;padding:15px 20px">Deliverables available</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;padding:26px 28px;margin-top:14px;max-width:620px">
+<div style="font-size:20px;font-weight:600;margin-bottom:4px">Charges — placeholder</div>
+<div style="font-size:13px;color:#5A6B7D;margin-bottom:20px">Professional, statutory and optional costs are always separated. Confirmed in your written quotation.</div>
+<div style="display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px solid #EEF2F5">
+<div><div style="font-size:14px;font-weight:500">ITM professional fee</div><div style="font-size:12px;color:#5A6B7D">Preparation, lodgement and follow-up</div></div>
+<div style="font-family:ui-monospace,Menlo,monospace;font-size:14px;white-space:nowrap">USD — · —</div>
+</div>
+<div style="display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px solid #EEF2F5">
+<div><div style="font-size:14px;font-weight:500">Statutory / authority fee</div><div style="font-size:12px;color:#5A6B7D">Paid to the authority, not to ITM</div></div>
+<div style="font-family:ui-monospace,Menlo,monospace;font-size:14px;white-space:nowrap">USD — · —</div>
+</div>
+<div style="display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px solid #EEF2F5">
+<div><div style="font-size:14px;font-weight:500">Optional additions</div><div style="font-size:12px;color:#5A6B7D">Courier, certified copies, expedited handling</div></div>
+<div style="font-family:ui-monospace,Menlo,monospace;font-size:14px;white-space:nowrap">USD — · —</div>
+</div>
+<div style="display:flex;align-items:center;gap:8px;font-size:13px;color:#5A6B7D;margin-top:18px"><i class="ph ph-info" style="font-size:16px;flex:none"></i>Payment is requested only after you approve a written quotation.</div>
+</div>
+
+<h2 style="font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#5A6B7D;margin:64px 0 20px;padding-bottom:12px;border-bottom:1px solid #DDE5EB">08 · Cards</h2>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:14px">
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;overflow:hidden;cursor:pointer;transition:box-shadow .18s,border-color .18s" style-hover="box-shadow:0 8px 24px rgba(21,42,69,.10);border-color:#9FB3C6">
+<div style="aspect-ratio:1;background:repeating-linear-gradient(135deg,#E9EFF3 0 8px,#F4F7F9 8px 16px);display:flex;align-items:center;justify-content:center">
+<div style="font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#5A6B7D;text-align:center;line-height:1.5">1:1 service<br>thumbnail</div>
+</div>
+<div style="padding:18px 20px 20px">
+<div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#247BA0;margin-bottom:8px">Company Registration</div>
+<div style="font-size:18px;font-weight:600;line-height:1.3;margin-bottom:7px">Private Limited Company Registration</div>
+<div style="font-size:14px;line-height:1.55;color:#5A6B7D;margin-bottom:14px">Get a registered company with the documents banks and tenders ask for.</div>
+<div style="font-size:12px;color:#5A6B7D;margin-bottom:16px">Reviewed 14 Aug 2026</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<button style="font:600 14px Inter,sans-serif;color:#fff;background:#247BA0;border:none;border-radius:10px;padding:11px 16px;cursor:pointer;min-height:44px" style-hover="background:#1A5C78">Request Quote</button>
+<button style="font:600 14px Inter,sans-serif;color:#247BA0;background:transparent;border:1px solid #247BA0;border-radius:10px;padding:10px 15px;cursor:pointer;min-height:44px" style-hover="background:#E4F0F5">View Service</button>
+</div>
+</div>
+</div>
+
+<div style="background:#fff;border:1px solid #D79B2E;border-radius:18px;padding:24px 24px 26px;position:relative;display:flex;flex-direction:column">
+<span style="position:absolute;top:-11px;left:24px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#7D5218;background:#FBF1DF;border:1px solid #D79B2E;border-radius:999px;padding:4px 11px">Most Requested</span>
+<div style="font-size:20px;font-weight:600;margin:8px 0 6px">Startup Essentials</div>
+<div style="font-size:14px;line-height:1.55;color:#5A6B7D;margin-bottom:18px">For a founder who needs a company, a tax number and a usable brand at once.</div>
+<div style="display:flex;flex-direction:column;gap:9px;margin-bottom:18px">
+<div style="display:flex;gap:9px;font-size:14px"><i class="ph-fill ph-check-circle" style="font-size:17px;color:#1F7A5C;flex:none"></i>Private limited company registration</div>
+<div style="display:flex;gap:9px;font-size:14px"><i class="ph-fill ph-check-circle" style="font-size:17px;color:#1F7A5C;flex:none"></i>TIN and tax clearance support</div>
+<div style="display:flex;gap:9px;font-size:14px"><i class="ph-fill ph-check-circle" style="font-size:17px;color:#1F7A5C;flex:none"></i>Professional logo design</div>
+<div style="display:flex;gap:9px;font-size:14px;color:#5A6B7D"><i class="ph ph-minus-circle" style="font-size:17px;flex:none"></i>Statutory fees — quoted separately</div>
+</div>
+<button style="font:600 15px Inter,sans-serif;color:#fff;background:#247BA0;border:none;border-radius:10px;padding:13px 18px;cursor:pointer;min-height:48px;margin-top:auto;width:100%" style-hover="background:#1A5C78">Request Package Quotation</button>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:14px">
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;padding:20px 22px">
+<div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px">
+<div style="font-size:13px;color:#5A6B7D">Quotations awaiting review</div>
+<i class="ph ph-file-text" style="font-size:19px;color:#9FB3C6"></i>
+</div>
+<div style="font-size:36px;font-weight:600;letter-spacing:-.02em;margin:6px 0 4px">7</div>
+<div style="display:flex;align-items:center;gap:6px;font-size:13px;color:#7D5218"><i class="ph-fill ph-arrow-up" style="font-size:13px"></i>2 older than 48 hours</div>
+</div>
+<div style="background:#152A45;border-radius:18px;padding:20px 22px;color:#E9EEF3">
+<div style="display:flex;align-items:center;gap:9px;font-size:13px;font-weight:600;color:#F0DFBC;margin-bottom:10px"><i class="ph-fill ph-warning" style="font-size:16px"></i>Action required</div>
+<div style="font-size:16px;line-height:1.45;margin-bottom:14px">3 applications are waiting on documents from clients.</div>
+<button style="font:600 14px Inter,sans-serif;color:#fff;background:transparent;border:1px solid rgba(233,238,243,.4);border-radius:10px;padding:10px 15px;cursor:pointer;min-height:44px" style-hover="background:rgba(233,238,243,.1);border-color:#E9EEF3">Open work list</button>
+</div>
+</div>
+</div>
+
+<h2 style="font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#5A6B7D;margin:64px 0 20px;padding-bottom:12px;border-bottom:1px solid #DDE5EB">09 · Alerts, empty &amp; permission states</h2>
+
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;gap:13px;background:#E4F0F5;border:1px solid #CDE4EE;border-radius:14px;padding:16px 18px">
+<i class="ph-fill ph-info" style="font-size:20px;color:#1A5C78;flex:none"></i>
+<div><div style="font-size:15px;font-weight:600;margin-bottom:3px">Requirements may change after assessment</div><div style="font-size:14px;line-height:1.55;color:#3D5064">This checklist helps you prepare. A consultant confirms the final list in your quotation.</div></div>
+</div>
+<div style="display:flex;gap:13px;background:#FBF1DF;border:1px solid #F0DFBC;border-radius:14px;padding:16px 18px">
+<i class="ph-fill ph-warning" style="font-size:20px;color:#B8792A;flex:none"></i>
+<div><div style="font-size:15px;font-weight:600;margin-bottom:3px">This quotation expires in 3 days</div><div style="font-size:14px;line-height:1.55;color:#3D5064">Approve version 2 before 12 September 2026, or request an updated quote.</div></div>
+</div>
+<div style="display:flex;gap:13px;background:#F8E9E9;border:1px solid #EFD1D1;border-radius:14px;padding:16px 18px">
+<i class="ph-fill ph-x-circle" style="font-size:20px;color:#B33A3A;flex:none"></i>
+<div><div style="font-size:15px;font-weight:600;margin-bottom:3px">A document was rejected</div><div style="font-size:14px;line-height:1.55;color:#3D5064">Page 2 of your ID scan is unreadable. Replace it to continue — nothing else is affected.</div></div>
+</div>
+<div style="display:flex;gap:13px;background:#E6F2EE;border:1px solid #C8E2D8;border-radius:14px;padding:16px 18px">
+<i class="ph-fill ph-check-circle" style="font-size:20px;color:#1F7A5C;flex:none"></i>
+<div><div style="font-size:15px;font-weight:600;margin-bottom:3px">Quotation approved — reference QUO-1183 v2</div><div style="font-size:14px;line-height:1.55;color:#3D5064">Payment instructions are now available. ITM will not ask for passwords or one-time codes.</div></div>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;margin-top:14px">
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;padding:44px 28px;text-align:center">
+<div style="width:56px;height:56px;border-radius:999px;background:#F4F7F9;display:flex;align-items:center;justify-content:center;margin:0 auto 16px"><i class="ph ph-tray" style="font-size:26px;color:#9FB3C6"></i></div>
+<div style="font-size:18px;font-weight:600;margin-bottom:7px">No applications yet</div>
+<div style="font-size:14px;line-height:1.55;color:#5A6B7D;max-width:34ch;margin:0 auto 20px">When you request a service for this organisation, it will appear here with its progress.</div>
+<button style="font:600 15px Inter,sans-serif;color:#fff;background:#247BA0;border:none;border-radius:10px;padding:13px 20px;cursor:pointer;min-height:48px" style-hover="background:#1A5C78">Request a Service</button>
+</div>
+<div style="background:#fff;border:1px solid #DDE5EB;border-radius:18px;padding:44px 28px;text-align:center">
+<div style="width:56px;height:56px;border-radius:999px;background:#F4F7F9;display:flex;align-items:center;justify-content:center;margin:0 auto 16px"><i class="ph ph-lock-simple" style="font-size:26px;color:#9FB3C6"></i></div>
+<div style="font-size:18px;font-weight:600;margin-bottom:7px">You do not have access to payments</div>
+<div style="font-size:14px;line-height:1.55;color:#5A6B7D;max-width:36ch;margin:0 auto 20px">Your role in Sunrise Logistics is <strong style="font-weight:600">Contributor</strong>. An owner can change this.</div>
+<button style="font:600 15px Inter,sans-serif;color:#247BA0;background:transparent;border:1px solid #247BA0;border-radius:10px;padding:12px 19px;cursor:pointer;min-height:48px" style-hover="background:#E4F0F5">Request access</button>
+</div>
+</div>
+
+<h2 style="font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#5A6B7D;margin:64px 0 20px;padding-bottom:12px;border-bottom:1px solid #DDE5EB">10 · Navigation chrome</h2>
+
+<div style="border:1px solid #DDE5EB;border-radius:18px;overflow:hidden;background:#fff">
+<div style="background:#152A45;color:#9FB3C6;font-size:12px;padding:8px 22px;display:flex;gap:20px;flex-wrap:wrap">
+<span style="display:inline-flex;align-items:center;gap:6px"><i class="ph ph-phone" style="font-size:13px"></i>+263 —— ——</span>
+<span style="display:inline-flex;align-items:center;gap:6px"><i class="ph ph-clock" style="font-size:13px"></i>Mon–Fri, 08:00–17:00</span>
+<span style="margin-left:auto;color:#E9EEF3">Track Application</span>
+</div>
+<div style="display:flex;align-items:center;gap:24px;padding:14px 22px;border-bottom:1px solid #DDE5EB;flex-wrap:wrap">
+<div style="display:flex;align-items:center;gap:11px">
+<div style="width:38px;height:38px;border-radius:9px;overflow:hidden;flex:none"><img src="assets/itm-logo.png" alt="" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+<div><div style="font-size:15px;font-weight:600;line-height:1.15">ITM Business Solutions</div><div style="font-size:11px;color:#5A6B7D">Ideas today. A brighter tomorrow.</div></div>
+</div>
+<div style="display:flex;gap:22px;font-size:14px;font-weight:500;margin-left:8px;flex-wrap:wrap">
+<span style="color:#247BA0;border-bottom:2px solid #247BA0;padding-bottom:2px;cursor:pointer">Home</span>
+<span style="cursor:pointer;display:inline-flex;align-items:center;gap:5px" style-hover="color:#247BA0">Services<i class="ph ph-caret-down" style="font-size:12px"></i></span>
+<span style="cursor:pointer" style-hover="color:#247BA0">Packages</span>
+<span style="cursor:pointer" style-hover="color:#247BA0">Requirements</span>
+<span style="cursor:pointer" style-hover="color:#247BA0">Resources</span>
+<span style="cursor:pointer" style-hover="color:#247BA0">About</span>
+</div>
+<div style="display:flex;gap:9px;margin-left:auto">
+<button style="font:600 14px Inter,sans-serif;color:#152A45;background:transparent;border:1px solid #9FB3C6;border-radius:10px;padding:10px 14px;cursor:pointer;min-height:44px;display:flex;align-items:center;gap:7px" style-hover="border-color:#152A45"><i class="ph ph-whatsapp-logo" style="font-size:17px;color:#1F7A5C"></i>WhatsApp</button>
+<button style="font:600 14px Inter,sans-serif;color:#fff;background:#247BA0;border:none;border-radius:10px;padding:11px 16px;cursor:pointer;min-height:44px" style-hover="background:#1A5C78">Start Your Application</button>
+</div>
+</div>
+<div style="display:flex;min-height:220px">
+<div style="width:236px;flex:none;background:#152A45;padding:18px 12px;display:flex;flex-direction:column;gap:3px">
+<div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#5A7796;padding:8px 12px 6px">Workspace</div>
+<div style="display:flex;align-items:center;gap:11px;font-size:14px;font-weight:500;color:#fff;background:rgba(36,123,160,.28);border-left:2px solid #247BA0;border-radius:0 8px 8px 0;padding:11px 12px;cursor:pointer"><i class="ph-fill ph-squares-four" style="font-size:18px"></i>Overview</div>
+<div style="display:flex;align-items:center;gap:11px;font-size:14px;color:#9FB3C6;padding:11px 14px;border-radius:8px;cursor:pointer" style-hover="background:rgba(255,255,255,.06);color:#fff"><i class="ph ph-user-focus" style="font-size:18px"></i>Leads</div>
+<div style="display:flex;align-items:center;gap:11px;font-size:14px;color:#9FB3C6;padding:11px 14px;border-radius:8px;cursor:pointer" style-hover="background:rgba(255,255,255,.06);color:#fff"><i class="ph ph-buildings" style="font-size:18px"></i>Organisations</div>
+<div style="display:flex;align-items:center;gap:11px;font-size:14px;color:#9FB3C6;padding:11px 14px;border-radius:8px;cursor:pointer" style-hover="background:rgba(255,255,255,.06);color:#fff"><i class="ph ph-folders" style="font-size:18px"></i>Applications<span style="margin-left:auto;font-size:11px;font-weight:600;background:#D79B2E;color:#152A45;border-radius:999px;padding:2px 7px">12</span></div>
+<div style="display:flex;align-items:center;gap:11px;font-size:14px;color:#9FB3C6;padding:11px 14px;border-radius:8px;cursor:pointer" style-hover="background:rgba(255,255,255,.06);color:#fff"><i class="ph ph-file-text" style="font-size:18px"></i>Quotations</div>
+<div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#5A7796;padding:16px 12px 6px">Admin</div>
+<div style="display:flex;align-items:center;gap:11px;font-size:14px;color:#9FB3C6;padding:11px 14px;border-radius:8px;cursor:pointer" style-hover="background:rgba(255,255,255,.06);color:#fff"><i class="ph ph-gear-six" style="font-size:18px"></i>Settings</div>
+</div>
+<div style="flex:1;background:#F4F7F9;padding:0">
+<div style="display:flex;align-items:center;gap:14px;background:#fff;border-bottom:1px solid #DDE5EB;padding:12px 20px;flex-wrap:wrap">
+<div style="display:flex;align-items:center;gap:9px;border:1px solid #DDE5EB;border-radius:10px;padding:7px 12px;cursor:pointer;min-height:44px" style-hover="border-color:#9FB3C6">
+<div style="width:26px;height:26px;border-radius:7px;background:#152A45;color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600">SL</div>
+<div><div style="font-size:13px;font-weight:600;line-height:1.2">Sunrise Logistics</div><div style="font-size:11px;color:#5A6B7D">Owner</div></div>
+<i class="ph ph-caret-up-down" style="font-size:14px;color:#5A6B7D;margin-left:4px"></i>
+</div>
+<div style="font-size:13px;color:#5A6B7D">Applications <span style="color:#9FB3C6">/</span> <span style="color:#152A45">APP-2418</span></div>
+<div style="margin-left:auto;display:flex;gap:8px;align-items:center">
+<div style="width:40px;height:40px;border-radius:10px;border:1px solid #DDE5EB;display:flex;align-items:center;justify-content:center;color:#3D5064;cursor:pointer;position:relative" style-hover="background:#F4F7F9"><i class="ph ph-bell" style="font-size:18px"></i><span style="position:absolute;top:7px;right:8px;width:7px;height:7px;border-radius:999px;background:#B33A3A"></span></div>
+<div style="width:40px;height:40px;border-radius:999px;background:#E4F0F5;color:#1A5C78;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;cursor:pointer">TM</div>
+</div>
+</div>
+<div style="padding:20px;font-size:13px;color:#5A6B7D;font-family:ui-monospace,Menlo,monospace">content canvas</div>
+</div>
+</div>
+<div style="display:flex;background:#fff;border-top:1px solid #DDE5EB;padding:8px 0">
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#247BA0;font-size:11px;font-weight:600;cursor:pointer"><i class="ph-fill ph-squares-four" style="font-size:21px"></i>Overview</div>
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5A6B7D;font-size:11px;cursor:pointer" style-hover="color:#247BA0"><i class="ph ph-folders" style="font-size:21px"></i>Work</div>
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5A6B7D;font-size:11px;cursor:pointer" style-hover="color:#247BA0"><i class="ph ph-chat-circle-text" style="font-size:21px"></i>Messages</div>
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:#5A6B7D;font-size:11px;cursor:pointer" style-hover="color:#247BA0"><i class="ph ph-dots-three-outline" style="font-size:21px"></i>More</div>
+</div>
+</div>
+
+<div style="background:#152A45;border-radius:18px;padding:34px 32px;margin-top:64px;color:#9FB3C6">
+<div style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#D79B2E;margin-bottom:14px">Next up</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px">
+<div><div style="font-size:16px;font-weight:600;color:#fff;margin-bottom:6px">Public website</div><div style="font-size:14px;line-height:1.55">Homepage, services directory, service detail and the clickable Start Application flow through to Request Received.</div></div>
+<div><div style="font-size:16px;font-weight:600;color:#fff;margin-bottom:6px">Consultant workspace</div><div style="font-size:14px;line-height:1.55">Overview, applications queue, application detail and the versioned quotation builder.</div></div>
+<div><div style="font-size:16px;font-weight:600;color:#fff;margin-bottom:6px">Client portal</div><div style="font-size:14px;line-height:1.55">Multi-organisation overview, organisation workspace and the binding Review Quotation screen.</div></div>
+</div>
+<div style="font-size:13px;margin-top:26px;padding-top:20px;border-top:1px solid rgba(233,238,243,.16);text-wrap:pretty">ITM supports applications but does not control authority decisions. No authority logos, seals or statutory fees appear in these mockups.</div>
+</div>
+
+</div>
+</x-dc>
+</body>
+</html>

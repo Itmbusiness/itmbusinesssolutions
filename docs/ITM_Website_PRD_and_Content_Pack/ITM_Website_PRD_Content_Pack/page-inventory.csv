@@ -1,0 +1,101 @@
+file,route,page_type,title,audience
+content/public/home.md,/,Public page,Home,Public
+content/public/services.md,/services,Public page,Services,Public
+content/public/service-finder.md,/find-a-service,Public page,Find the Right Service,Public
+content/public/packages.md,/packages,Public page,Packages,Public
+content/public/requirements-centre.md,/requirements,Public page,Requirements Centre,Public
+content/public/resources.md,/resources,Public page,Resources,Public
+content/public/about.md,/about,Public page,About,Public
+content/public/contact.md,/contact,Public page,Contact,Public
+content/public/start-application.md,/start,Public page,Start Your Application,Public
+content/public/track-application.md,/track,Public page,Track Application,Public
+content/public/search.md,/search,Public page,Search,Public
+content/public/faq.md,/faq,Public page,Frequently Asked Questions,Public
+content/public/compliance-calendar.md,/resources/compliance-calendar,Public page,Compliance Calendar,Public
+content/public/privacy-policy.md,/privacy,Public page,Privacy Policy,Public
+content/public/terms-of-service.md,/terms,Public page,Terms of Service,Public
+content/public/document-handling.md,/document-handling,Public page,Document Handling,Public
+content/public/thank-you.md,/request-received,Public page,Request Received,Public
+content/public/404.md,/404,Public page,Page Not Found,Public
+content/categories/company-registration.md,/services/category/company-registration,Category page,Company Registration,Public
+content/categories/tax-fiscal-compliance.md,/services/category/tax-fiscal-compliance,Category page,Tax and Fiscal Compliance,Public
+content/categories/branding-business-documents.md,/services/category/branding-business-documents,Category page,Branding and Business Documents,Public
+content/categories/tender-supplier-registration.md,/services/category/tender-supplier-registration,Category page,Tender and Supplier Registration,Public
+content/categories/nssa-employer-compliance.md,/services/category/nssa-employer-compliance,Category page,NSSA and Employer Compliance,Public
+content/categories/trusts-organisations.md,/services/category/trusts-organisations,Category page,Trusts and Organisations,Public
+content/categories/business-operator-licences.md,/services/category/business-operator-licences,Category page,Business and Operator Licences,Public
+content/services/private-limited-company-registration.md,/services/private-limited-company-registration,Service page,Private Limited Company Registration,Public
+content/services/pbc-registration.md,/services/pbc-registration,Service page,PBC Registration,Public
+content/services/company-re-registration.md,/services/company-re-registration,Service page,Company Re-registration,Public
+content/services/tin-tax-clearance.md,/services/tin-tax-clearance,Service page,TIN and Tax Clearance Support,Public
+content/services/tax-returns-submission.md,/services/tax-returns-submission,Service page,Tax Returns Submission,Public
+content/services/vat-registration.md,/services/vat-registration,Service page,VAT Registration,Public
+content/services/virtual-fiscalisation.md,/services/virtual-fiscalisation,Service page,Virtual Fiscalisation,Public
+content/services/professional-logo-design.md,/services/professional-logo-design,Service page,Professional Logo Design,Public
+content/services/company-profile-design.md,/services/company-profile-design,Service page,Company Profile Design,Public
+content/services/praz-registration.md,/services/praz-registration,Service page,PRAZ Registration Support,Public
+content/services/vendor-number.md,/services/vendor-number,Service page,Vendor Number Support,Public
+content/services/nssa-employer-registration.md,/services/nssa-employer-registration,Service page,NSSA Employer Registration,Public
+content/services/nssa-compliance-certificate.md,/services/nssa-compliance-certificate,Service page,NSSA Compliance Certificate Support,Public
+content/services/nssa-p4-returns.md,/services/nssa-p4-returns,Service page,NSSA P4 Returns,Public
+content/services/trust-registration.md,/services/trust-registration,Service page,Trust Registration,Public
+content/services/pvo-registration.md,/services/pvo-registration,Service page,PVO Registration,Public
+content/services/association-registration.md,/services/association-registration,Service page,Association Registration,Public
+content/services/family-trust-registration.md,/services/family-trust-registration,Service page,Family Trust Registration,Public
+content/services/harare-business-licence.md,/services/harare-business-licence,Service page,Harare Shop and Business Licence Support,Public
+content/services/transport-operators-licence.md,/services/transport-operators-licence,Service page,Transport Operator’s Licence Support,Public
+content/articles/index.md,/articles,Article hub,Articles,Public
+content/articles/pbc-vs-private-limited-company-zimbabwe.md,/articles/pbc-vs-private-limited-company-zimbabwe,Article,PBC vs Private Limited Company in Zimbabwe,Public
+content/articles/documents-needed-company-registration-zimbabwe.md,/articles/documents-needed-company-registration-zimbabwe,Article,Documents and Information Needed for Company Registration,Public
+content/articles/what-to-do-after-registering-company-zimbabwe.md,/articles/what-to-do-after-registering-company-zimbabwe,Article,What to Do After Registering a Company in Zimbabwe,Public
+content/articles/what-is-a-tin-zimbabwe.md,/articles/what-is-a-tin-zimbabwe,Article,What Is a TIN and Why Does a Business Need One?,Public
+content/articles/why-tax-clearance-may-be-delayed.md,/articles/why-tax-clearance-may-be-delayed,Article,Why a Tax Clearance Request May Be Delayed,Public
+content/articles/paye-vat-qpd-income-tax-explained.md,/articles/paye-vat-qpd-income-tax-explained,Article,"PAYE, VAT, QPD and Income Tax: A Practical Introduction",Public
+content/articles/praz-and-vendor-number-difference.md,/articles/praz-and-vendor-number-difference,Article,PRAZ Registration and Vendor Numbers: What Is the Difference?,Public
+content/articles/tender-readiness-document-checklist.md,/articles/tender-readiness-document-checklist,Article,Tender-readiness Document Checklist for Zimbabwean Businesses,Public
+content/articles/when-employer-register-nssa.md,/articles/when-employer-register-nssa,Article,When Must an Employer Register with NSSA?,Public
+content/articles/what-is-nssa-p4-return.md,/articles/what-is-nssa-p4-return,Article,What Is an NSSA P4 Return?,Public
+content/articles/trust-pvo-association-differences.md,/articles/trust-pvo-association-differences,Article,"Trust, PVO or Association: Which Structure Fits the Purpose?",Public
+content/articles/questions-before-family-trust.md,/articles/questions-before-family-trust,Article,Questions to Answer Before Forming a Family Trust,Public
+content/auth/sign-in.md,/sign-in,Authentication page,Sign In,Account user
+content/auth/accept-invitation.md,/invitations/{token},Authentication page,Accept Organisation Invitation,Account user
+content/auth/forgot-password.md,/forgot-password,Authentication page,Forgot Password,Account user
+content/auth/reset-password.md,/reset-password/{token},Authentication page,Reset Password,Account user
+content/auth/verify-access.md,/verify-access,Authentication page,Verify Access,Account user
+content/consultant-dashboard/overview.md,/consultant/overview,Consultant dashboard,Consultant Overview,Consultant team
+content/consultant-dashboard/leads.md,/consultant/leads,Consultant dashboard,Leads,Consultant team
+content/consultant-dashboard/lead-detail.md,/consultant/lead-detail,Consultant dashboard,Lead Detail,Consultant team
+content/consultant-dashboard/clients.md,/consultant/clients,Consultant dashboard,Clients,Consultant team
+content/consultant-dashboard/organisations.md,/consultant/organisations,Consultant dashboard,Organisations,Consultant team
+content/consultant-dashboard/organisation-detail.md,/consultant/organisation-detail,Consultant dashboard,Organisation Detail,Consultant team
+content/consultant-dashboard/applications.md,/consultant/applications,Consultant dashboard,Applications,Consultant team
+content/consultant-dashboard/review-queue.md,/consultant/review-queue,Consultant dashboard,Review Queue,Consultant team
+content/consultant-dashboard/application-detail.md,/consultant/application-detail,Consultant dashboard,Application Detail,Consultant team
+content/consultant-dashboard/quotations.md,/consultant/quotations,Consultant dashboard,Quotations,Consultant team
+content/consultant-dashboard/quotation-detail.md,/consultant/quotation-detail,Consultant dashboard,Quotation Detail,Consultant team
+content/consultant-dashboard/payments.md,/consultant/payments,Consultant dashboard,Payments,Consultant team
+content/consultant-dashboard/tasks-calendar.md,/consultant/tasks-calendar,Consultant dashboard,Tasks and Calendar,Consultant team
+content/consultant-dashboard/documents.md,/consultant/documents,Consultant dashboard,Document Centre,Consultant team
+content/consultant-dashboard/messages.md,/consultant/messages,Consultant dashboard,Messages,Consultant team
+content/consultant-dashboard/notifications.md,/consultant/notifications,Consultant dashboard,Notifications,Consultant team
+content/consultant-dashboard/services-pricing.md,/consultant/services-pricing,Consultant dashboard,Services and Pricing,Consultant team
+content/consultant-dashboard/content.md,/consultant/content,Consultant dashboard,Content Management,Consultant team
+content/consultant-dashboard/reports.md,/consultant/reports,Consultant dashboard,Reports,Consultant team
+content/consultant-dashboard/team.md,/consultant/team,Consultant dashboard,Team and Permissions,Consultant team
+content/consultant-dashboard/audit-log.md,/consultant/audit-log,Consultant dashboard,Audit Log,Consultant team
+content/consultant-dashboard/settings.md,/consultant/settings,Consultant dashboard,Operational Settings,Consultant team
+content/client-dashboard/overview.md,/client/overview,Client dashboard,Client Overview,Client
+content/client-dashboard/organisations.md,/client/organisations,Client dashboard,My Organisations,Client
+content/client-dashboard/organisation-detail.md,/client/organisation-detail,Client dashboard,Organisation Workspace,Client
+content/client-dashboard/team.md,/client/team,Client dashboard,Organisation Team,Client
+content/client-dashboard/applications.md,/client/applications,Client dashboard,Applications,Client
+content/client-dashboard/new-service-request.md,/client/new-service-request,Client dashboard,Request Another Service,Client
+content/client-dashboard/application-detail.md,/client/application-detail,Client dashboard,Application Detail,Client
+content/client-dashboard/quotations.md,/client/quotations,Client dashboard,Quotations,Client
+content/client-dashboard/quotation-detail.md,/client/quotation-detail,Client dashboard,Review Quotation,Client
+content/client-dashboard/payments.md,/client/payments,Client dashboard,Payments and Receipts,Client
+content/client-dashboard/documents.md,/client/documents,Client dashboard,Documents,Client
+content/client-dashboard/compliance-calendar.md,/client/compliance-calendar,Client dashboard,Compliance Calendar,Client
+content/client-dashboard/messages.md,/client/messages,Client dashboard,Messages and Support,Client
+content/client-dashboard/notifications.md,/client/notifications,Client dashboard,Notifications,Client
+content/client-dashboard/profile-settings.md,/client/profile-settings,Client dashboard,Profile and Security,Client

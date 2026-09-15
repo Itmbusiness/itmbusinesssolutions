@@ -1,0 +1,491 @@
+
+
+@P@DIGITAL PRODUCT DESIGN GUIDE
+@P@Google StitchUI Prompt Book
+@P@ITM Corporate Secretarial website, quotation workflow, consultant dashboard and multi-organisation client portal
+@P@
+@P@
+@P@
+@P@
+@P@PURPOSE
+@P@A copy-and-paste prompt system for generating a coherent, premium and mobile-first ITM interface in Google Stitch. Use the prompts in order so later screens inherit the same design language.
+@P@
+@P@Prepared from the technology-neutral ITM Product Requirements Document and the approved quotation-first, multi-organisation account model.
+@P@
+@P@ITM GOOGLE STITCH PROMPT BOOK
+@P@How to Use This Prompt Book
+@P@Google Stitch produces stronger results when it receives one focused screen request at a time inside the same project. The sequence below establishes the system first, then creates public, consultant and client experiences.
+@P@Start one new Stitch project and paste Prompt 01 to establish the visual system.
+@P@Generate the shared public shell and dashboard shell before requesting individual pages.
+@P@Paste one screen prompt at a time. Keep the instruction “continue the same project” intact.
+@P@Generate desktop first, then ask Stitch for the responsive mobile version of the same screen.
+@P@For a weak result, revise only the problem area: spacing, hierarchy, mobile stacking or component density.
+@P@Export approved screens and component references for the development team. Stitch designs the interface; the PRD remains the source of truth for business rules.
+@P@CRITICAL RULE
+@P@Do not ask Stitch to invent official certificates, authority logos, statutory fees, processing guarantees or client data. Use realistic placeholders and neutral document previews.
+@P@
+@P@Prompt sequence
+@P@Prompts
+@P@Area
+@P@Purpose
+@P@01-05
+@P@Foundation
+@P@Brand system, shells and reusable components
+@P@06-26
+@P@Public website
+@P@Sales, SEO, articles, quotation and utility screens
+@P@27-44
+@P@Consultant workspace
+@P@CRM, applications, finance, operations and content
+@P@45-59
+@P@Client workspace
+@P@Organisations, quotations, applications, documents and compliance
+@P@
+@P@ITM GOOGLE STITCH PROMPT BOOK
+@P@Project Constants
+@P@These decisions should remain unchanged across every Stitch generation unless the business explicitly approves a redesign.
+@P@Constant
+@P@Approved direction
+@P@Brand
+@P@ITM Corporate Secretarial
+@P@Positioning
+@P@Practical support for starting, formalising and keeping Zimbabwean organisations compliant
+@P@Primary audience
+@P@Zimbabwean founders, SMEs, employers, suppliers, trusts, PVOs and associations
+@P@Palette
+@P@Deep navy #152A45, teal blue #247BA0, warm off-white #F4F7F9, restrained gold #D79B2E
+@P@Typography
+@P@Modern sans-serif such as Inter, Manrope or a close Google Fonts equivalent
+@P@Visual tone
+@P@Premium, trustworthy, calm, modern, highly legible and locally relevant without flag overload
+@P@Commercial flow
+@P@Request quotation -&gt; consultant assessment -&gt; quote approval -&gt; payment -&gt; service application
+@P@Account model
+@P@One client can belong to several organisation workspaces with role-based permissions
+@P@Mobile rule
+@P@Every core action must work from 320px upward without horizontal scrolling
+@P@
+@P@ITM GOOGLE STITCH PROMPT BOOK
+@P@Foundation Prompts
+@P@Generate these first. They establish the components and responsive rules inherited by every later page.
+@P@Prompt 01 - Master visual system
+@P@Use for: Creating the design language before individual screens
+@P@COPY INTO GOOGLE STITCH
+@P@Create a complete visual direction for “ITM Corporate Secretarial,” a premium Zimbabwean company-registration and compliance consultancy. Use deep navy #152A45 as the authority colour, teal blue #247BA0 for primary actions, warm off-white #F4F7F9 for page backgrounds and restrained gold #D79B2E for small highlights only. Use a clean modern sans-serif such as Inter or Manrope. The interface must feel trustworthy, calm, precise and premium rather than like a government portal or generic template.Define reusable tokens for type scale, 8-point spacing, 12-column desktop grid, mobile grid, 18px card radius, input styles, buttons, badges, progress steps, data tables, empty states and alert levels. Use generous whitespace, subtle borders, soft low-elevation shadows and limited translucent panels. Keep body text highly readable. Avoid neon colours, heavy gradients, excessive glassmorphism, giant decorative icons, fake official seals, flags and clutter.Design for desktop, tablet and mobile. Public pages use a maximum content width around 1200px. Dashboards use a fixed desktop sidebar and compact mobile navigation. Establish accessible colour contrast, visible focus states and plain-language status labels. Show the design system as a coherent component reference board that later screens can follow.
+@P@
+@P@Prompt 02 - Public website shell
+@P@Use for: Header, navigation, WhatsApp action and footer
+@P@COPY INTO GOOGLE STITCH
+@P@Continue the ITM project and create the responsive public website shell. Build a slim top utility strip for verified contact details, then a clean header with the ITM logo placeholder, navigation links Home, Services, Packages, Requirements, Resources and About. Add a strong “Start Your Application” button and a visible but restrained WhatsApp action. Services should open a well-organised mega menu containing the seven approved categories.On mobile, use a compact header with logo, WhatsApp shortcut and accessible menu trigger. The drawer must show the main routes, service categories, Track Application and Sign In without becoming crowded.Create a rich footer with a short trust statement, category links, resources, contact placeholders, legal links and a disclaimer that ITM supports applications but does not control authority decisions. Do not use authority logos. Keep the footer deep navy with off-white text and teal or gold accents. Show desktop and mobile shell states.
+@P@
+@P@Prompt 03 - Public component library
+@P@Use for: Reusable marketing and conversion components
+@P@COPY INTO GOOGLE STITCH
+@P@Continue the established ITM design system. Create a public-site component library containing: hero layouts, service category cards, service cards using the square catalogue thumbnails, package cards, testimonial cards, reviewed-content metadata, requirement checklists, process steps, fee breakdown tables, FAQ accordions, related-service cards, article cards, trust strips, quotation callouts, WhatsApp CTA blocks, form inputs, file-upload fields, progress steppers, success states and error states.Every component should have default, hover, focus, selected, disabled and loading states where relevant. Pricing components must visually separate professional fee, statutory fee and optional cost. Forms must use labels above fields, useful helper text and clear validation. Make components responsive and avoid tiny text. Do not fill cards with paragraphs; use strong hierarchy and concise copy.
+@P@
+@P@Prompt 04 - Authentication shell
+@P@Use for: Sign-in, invitation and access-verification screens
+@P@COPY INTO GOOGLE STITCH
+@P@Continue the ITM project. Design a secure, calm authentication shell for Sign In, Accept Invitation, Forgot Password, Reset Password and Verify Access. Use a split desktop layout with a compact trust panel and a focused form card; collapse to a single-column mobile screen. The trust panel should mention secure organisation workspaces, controlled team permissions and application tracking without making absolute security claims.Use labelled fields, password visibility control, forgot-password link, optional multi-factor code input, accessible error summaries, session-expiry messages and a support route that does not bypass verification. The invitation variant must show the inviting organisation, inviter, proposed role, permission summary and invitation expiry before the user accepts. Avoid social sign-in unless configured later. Never reveal whether an account exists in recovery error messages.
+@P@
+@P@Prompt 05 - Dashboard shell
+@P@Use for: Shared consultant and client application frame
+@P@COPY INTO GOOGLE STITCH
+@P@Continue the ITM design system and create the shared authenticated dashboard shell. On desktop use a deep-navy left sidebar, a light content canvas, compact top bar, breadcrumb, global search, notifications and user menu. The sidebar must support section labels, icons and active states without looking crowded. Consultant and client variants should share components but show different navigation.Add an organisation switcher for client users that always shows the current organisation and user role. Add a workspace context indicator to consultant records so staff never confuse organisations. On tablet use a collapsible sidebar. On mobile use a top bar plus bottom navigation for the four highest-frequency destinations and a “More” drawer.Provide reusable patterns for KPI cards, action-required banners, filter bars, responsive tables, timelines, detail tabs, document rows, message threads, drawers, confirmation modals, empty states and permission-limited states. Use colour plus text and icon for every status; never rely on colour alone.
+@P@
+@P@
+@P@ITM GOOGLE STITCH PROMPT BOOK
+@P@Public Website Prompts
+@P@These screens convert search and social visitors into informed quotation requests while providing useful content before asking for payment.
+@P@Prompt 06 - Homepage
+@P@Use for: Primary sales and trust landing page
+@P@COPY INTO GOOGLE STITCH
+@P@Design the ITM homepage inside the established public shell. Hero headline: “Start, Grow and Keep Your Organisation Compliant.” Supporting text should explain company registration, tax, NSSA, PRAZ, licensing and business-document support with clear requirements, written quotations and visible progress. Use two CTAs: “Find the Right Service” and “Chat on WhatsApp.” Place a premium service collage or abstract corporate illustration on the right, not an official certificate.Below the hero create five outcome paths: Start a Business, Become Tax Compliant, Prepare for Tenders, Manage Employer Compliance, and Register an Organisation or Trust. Add popular-service cards, a six-step “How It Works” journey, carefully separated package previews, trust reasons, real-testimonial placeholders, reviewed articles and a final recommendation CTA. Use the 1:1 service thumbnails where appropriate. The page should feel useful before it asks for a sale. Show desktop and mobile layouts with a sticky mobile CTA bar.
+@P@
+@P@Prompt 07 - Services directory
+@P@Use for: Browsing all seven categories and twenty services
+@P@COPY INTO GOOGLE STITCH
+@P@Design the ITM Services page. Begin with a concise hero, search field and outcome filter. Present seven category sections with clear icons, short descriptions and their service cards. Each service card should use its existing square thumbnail, service name, one-line outcome, review date where regulated, and actions “View Service” and “Request Quote.”Add filters for business stage, organisation type and goal, but keep the default experience easy. Include a comparison prompt for users choosing between structures, a “Not sure?” service-finder banner and a final multi-service assessment CTA. Desktop may use a left filter rail with a three-column results grid; mobile must use a filter drawer and single-column cards. Avoid showing unverified prices on directory cards.
+@P@
+@P@Prompt 08 - Service category template
+@P@Use for: Reusable layout for seven SEO category pages
+@P@COPY INTO GOOGLE STITCH
+@P@Design a reusable SEO category landing-page template for ITM. The template will be duplicated for Company Registration; Tax and Fiscal Compliance; Branding and Business Documents; Tender and Supplier Registration; NSSA and Employer Compliance; Trusts and Organisations; and Business and Operator Licences.Create a focused hero with category name, plain-language value statement, breadcrumb and “Request Category Assessment” CTA. Follow with who the category helps, service-card grid, a five-step quotation process, featured package, relevant requirements, three article cards, category FAQs and a final consultant-review CTA. Include reviewed-on metadata and official-source note for regulated categories. Use strong internal links and a layout that supports unique SEO text without becoming a wall of copy. Provide desktop and mobile variants.
+@P@
+@P@Prompt 09 - Service detail template
+@P@Use for: Reusable layout for all twenty SEO service pages
+@P@COPY INTO GOOGLE STITCH
+@P@Design a reusable, conversion-focused ITM service-detail page template. The hero must contain breadcrumb, category label, exact service name, short outcome statement, reviewed-on metadata, “Request a Written Quotation” primary CTA and “Ask on WhatsApp” secondary CTA. Add one relevant square service thumbnail or premium illustration, but never imitate an official document.Below, create sections for: Is This Service Right for You; What the Service Can Include; Starting Requirements with checkboxes; How It Works; Charges and Payment; Processing and Progress; FAQs; Related Services; Source and Review Note; and final CTA. The charge table must separate professional fee, statutory fee and optional costs, using placeholders until confirmed. Clearly state that payment follows quotation approval and authority decisions are not guaranteed. Add a sticky mobile quotation button and accordion treatment for long sections.
+@P@
+@P@Prompt 10 - Packages page
+@P@Use for: Selling grouped services transparently
+@P@COPY INTO GOOGLE STITCH
+@P@Design the ITM Packages page with a premium but honest sales approach. Include packages for Startup Essentials, Tax Ready, Tender Ready, Employer Compliance and Organisation Setup. Each card should show who it is for, included services, optional additions, what is not included and a “Request Package Quotation” action. Do not invent fixed prices.Add a comparison section explaining that professional fees, statutory charges and optional third-party costs appear separately in the written quotation. Include a short “Which package fits?” selector, package process, FAQ and final WhatsApp CTA. Use teal for recommended actions and gold only for a small “Most Requested” badge, not multiple competing highlights. On mobile use stacked cards with expandable inclusions.
+@P@
+@P@Prompt 11 - Service finder
+@P@Use for: Outcome-based recommendation questionnaire
+@P@COPY INTO GOOGLE STITCH
+@P@Design the ITM “Find the Right Service” questionnaire. Use a friendly multi-step flow with one decision per screen: new or existing organisation; desired outcome; registration status; employees; existing tax, NSSA or supplier records; and deadline or tender context. Show progress, Back, Save and Continue controls, clear selection cards and an option for “I am not sure.”The result screen should recommend one primary service plus supporting services, explain why, list starting requirements and offer “Request Consultant Review” and “Send Results to WhatsApp.” Label recommendations as preliminary until reviewed. Do not present legal or tax decisions as automated advice. Include mobile keyboard behaviour, validation, resume state and a no-result path.
+@P@
+@P@Prompt 12 - Requirements centre
+@P@Use for: Searchable preparation checklists
+@P@COPY INTO GOOGLE STITCH
+@P@Design a searchable ITM Requirements Centre. Hero should explain that the checklists help clients prepare but may change after assessment. Add search by service or document name, category filters and organisation-type filters. Results should display service, required versus conditional items, accepted file formats, last reviewed date and a link to the full service page.Include a clean checklist-detail drawer or page preview with “Save Checklist,” “Request a Quote” and secure-document guidance. Add warnings not to upload passwords, banking PINs or unnecessary personal information. Mobile filters should open in a bottom sheet and saved checklists should remain readable offline where possible.
+@P@
+@P@Prompt 13 - Resources hub
+@P@Use for: Organising useful educational content
+@P@COPY INTO GOOGLE STITCH
+@P@Design the ITM Resources hub as a practical knowledge centre, not a generic blog grid. Create topic navigation for Starting a Business, Tax Compliance, Tender Readiness, Employer Compliance, Organisations and Trusts, Licences and Business Presentation. Add a prominent search field, featured guide, latest reviewed articles, popular checklists and public compliance-calendar preview.Every card should show content type, title, short benefit, read time and reviewed date. Include a notice that content is general information and may require current assessment. Add a newsletter or WhatsApp update opt-in only as an optional secondary action. Ensure the mobile layout prioritises search and topic chips.
+@P@
+@P@Prompt 14 - Articles index
+@P@Use for: SEO article listing and filtering
+@P@COPY INTO GOOGLE STITCH
+@P@Design the ITM Articles page. Use a restrained editorial layout with one featured article, topic filters, search, newest reviewed content and a clean article-card grid. Cards must include title, excerpt, topic, named author placeholder, reviewed date and reading time. Provide a visible “requirements may change” notice without making the page feel alarming.Add pagination or load-more behaviour, an empty search state and contextual links back to service categories. Avoid magazine-style clutter and avoid huge image blocks. On mobile, topic chips should scroll horizontally and cards should remain compact.
+@P@
+@P@Prompt 15 - Article detail template
+@P@Use for: Reusable SEO article reading experience
+@P@COPY INTO GOOGLE STITCH
+@P@Design a reusable ITM article-detail page. Include breadcrumb, topic label, reader-focused H1, concise answer summary, named author, authorised reviewer where required, reviewed-on date, next-review indicator and reading time. Provide a narrow readable content column, table of contents for long articles and a quiet side rail on desktop.Within the article support headings, checklists, comparison tables, definition callouts, official-source links, common mistakes, FAQs and related articles. Place one relevant service CTA after the reader receives useful information, not before. End with sources and a general-information notice. On mobile, collapse the table of contents and use a non-obstructive sticky “Request Assessment” action.
+@P@
+@P@Prompt 16 - Public compliance calendar
+@P@Use for: Educational deadlines and renewal awareness
+@P@COPY INTO GOOGLE STITCH
+@P@Design the public ITM Compliance Calendar. Include filters for Tax, NSSA, PRAZ, Company Records, Municipal Licences, Transport Licences and Internal Governance. Provide month and list views. Each event should show obligation name, who it may affect, typical frequency, reviewed date, official-source link and “Request Assessment.”Clearly distinguish a general public guide from organisation-specific deadlines. Add a CTA inviting signed-in clients to view their own calendar. Use status legends with text labels, not colour alone. Mobile should default to an agenda list rather than a dense month grid.
+@P@
+@P@Prompt 17 - About page
+@P@Use for: Building credible human trust
+@P@COPY INTO GOOGLE STITCH
+@P@Design the ITM About page. Lead with the promise of practical support for starting and running organisations. Create sections for the ITM approach, values, service coverage, quotation-first process, what ITM does not promise, and verified business information. Include restrained team-profile placeholders and room for authentic credentials only after verification.Add a timeline or process illustration showing assessment, quotation, approval, payment, application and ongoing support. Avoid generic handshake photos, invented awards, fake statistics or official emblems. Finish with “View Our Services” and “Speak to a Consultant.”
+@P@
+@P@Prompt 18 - Contact page
+@P@Use for: General enquiries without oversharing data
+@P@COPY INTO GOOGLE STITCH
+@P@Design the ITM Contact page with a reassuring two-column desktop layout and single-column mobile flow. Left side: verified WhatsApp, phone, email, office address and operating-hours placeholders. Right side: a short form collecting name, WhatsApp or phone, email, existing-client status, organisation name if any, service or goal, preferred channel, message and privacy consent.Add a clear warning not to send passwords, PINs or unnecessary identity documents. Include response expectation, map placeholder only if the office is verified, and links to Start Your Application and Track Application. Keep WhatsApp prominent but do not make it the only route.
+@P@
+@P@Prompt 19 - Frequently asked questions
+@P@Use for: Answering commercial and process objections
+@P@COPY INTO GOOGLE STITCH
+@P@Design the ITM FAQ page with search and category tabs: Quotations, Fees, Documents, Applications, Accounts, Payments and Authority Decisions. Use accessible accordions with concise answers. Feature core questions about why a quotation comes before payment, separation of government fees, approval guarantees, multiple organisations, team permissions, document security and progress updates.Add contextual links to relevant service or policy pages and a final “Still unsure?” contact block. Do not repeat the same CTA after every answer. Mobile accordions must use large touch targets and retain search results clearly.
+@P@
+@P@Prompt 20 - Start application flow
+@P@Use for: Guest quotation request before account creation
+@P@COPY INTO GOOGLE STITCH
+@P@Design the ITM multi-step “Start Your Application” flow. Step 1 selects a service, package or “I am not sure.” Step 2 captures new idea, registration in progress, registered organisation or existing client. Step 3 collects basic contact and organisation details. Step 4 asks conditional questions needed to scope the selected service. Step 5 reviews answers and records privacy consent.Show a clear progress indicator, save-and-resume option, field-level validation and a summary sidebar on desktop. Do not request payment or a full set of sensitive documents in this flow. The submit button must read “Request My Quotation.” Mobile should use one focused section at a time with large controls and preserved entries if connectivity drops.
+@P@
+@P@Prompt 21 - Request received
+@P@Use for: Confirmation after quotation request
+@P@COPY INTO GOOGLE STITCH
+@P@Design the ITM quotation-request confirmation screen. Show a clear success state, dynamic reference number, expected next steps and a reminder that no payment is required until a written quotation is approved. Provide actions to save the reference, return home, view relevant requirements and continue on WhatsApp with a prefilled reference.Add a safety message that ITM will not request passwords, banking PINs or one-time codes during follow-up. Keep the screen calm and concise; do not turn it into another sales page.
+@P@
+@P@Prompt 22 - Track application
+@P@Use for: Limited guest progress lookup
+@P@COPY INTO GOOGLE STITCH
+@P@Design the public ITM Track Application screen. Use a compact form for application reference plus phone verification or a one-time code. Explain that full documents and messages require sign-in. The result state should show service, safely masked organisation name, client-visible status, last update, next expected action and support channel.Create states for not found, verification required, too many attempts, client action required, processing and completed. Never expose internal notes, identity numbers, taxpayer identifiers, payment details or document contents. Add a clear path to sign in for full access.
+@P@
+@P@Prompt 23 - Search results
+@P@Use for: Searching services, requirements and articles
+@P@COPY INTO GOOGLE STITCH
+@P@Design the ITM site-search results page. Use a large search field, tabs for All, Services, Requirements, Articles and Pages, plus optional topic filters. Each result displays content type, title, benefit-focused excerpt and reviewed date when regulated. Rank services for transactional queries and explanatory articles for informational queries.Create a helpful zero-result state suggesting outcome phrases such as “apply for tenders,” “register employees,” “submit returns” or “open a shop.” Add “Ask a Consultant” without forcing account creation. The mobile layout must keep filters compact and results easy to scan.
+@P@
+@P@Prompt 24 - Privacy and terms layouts
+@P@Use for: Long-form legal and policy content
+@P@COPY INTO GOOGLE STITCH
+@P@Design a shared long-form policy template for ITM Privacy Policy and Terms of Service. Use a restrained header, effective-date and reviewed-date metadata, sticky table of contents on desktop, narrow readable body column and clear headings. Support definition blocks, numbered clauses, contact details and version history.For Privacy, include sections for information collected, purposes, service providers, security, retention, organisation-team access, user rights, cookies and contact. For Terms, include quotations, fee separation, payment, refunds, client accuracy, authority decisions, processing estimates, account permissions, documents, complaints and governing law. These are layout placeholders pending legal review.
+@P@
+@P@Prompt 25 - Document handling guide
+@P@Use for: Safe upload preparation guidance
+@P@COPY INTO GOOGLE STITCH
+@P@Design the ITM Secure Document Handling page. Use a clean illustrated checklist covering readable scans, correct organisation, complete pages, secure upload, prohibited passwords and PINs, allowed redaction, accepted formats and how to report an incorrect upload. Add a comparison between the secure application upload and ordinary contact channels.Use calm security visuals, not padlock overload or fear-based warnings. Include links to Sign In, Requirements Centre and Contact Support. Make the mobile checklist easy to follow while preparing documents on a phone.
+@P@
+@P@Prompt 26 - 404 and recovery states
+@P@Use for: Branded page-not-found and safe recovery
+@P@COPY INTO GOOGLE STITCH
+@P@Design a useful ITM 404 page and general recovery-state pattern. The 404 should say the page could not be found, provide Services, Search, Start a Quotation and Contact Support actions, and suggest using Track Application for existing work. Use a subtle abstract illustration consistent with the brand.Also show reusable states for temporary service unavailability, expired link, permission denied and offline mode. Each state must explain what happened, what data was preserved and the safest next action. Avoid technical error codes as the main message.
+@P@
+@P@
+@P@ITM GOOGLE STITCH PROMPT BOOK
+@P@Consultant Workspace Prompts
+@P@These screens manage leads, quotations, applications, documents, payments, content and governance. Keep internal notes and permissions distinct from client-visible information.
+@P@Prompt 27 - Consultant overview
+@P@Use for: Daily operational command centre
+@P@COPY INTO GOOGLE STITCH
+@P@Create the consultant dashboard Overview inside the established authenticated shell. Show new leads, quotations awaiting review, client actions overdue, applications at risk, upcoming compliance deadlines and the signed-in consultant’s tasks. Use a balanced KPI row, urgent-work queue, today timeline, workload chart and recent activity.Prioritise action over decoration. Every card should lead to a filtered work list. Add role-aware quick actions for Create Lead, Prepare Quote and Create Task. Include empty, loading and permission-limited states. On mobile, show Actions Required, My Tasks and Today first.
+@P@
+@P@Prompt 28 - Leads list
+@P@Use for: Lead qualification and assignment
+@P@COPY INTO GOOGLE STITCH
+@P@Design the consultant Leads page. Include search and filters for stage, service interest, source, owner, last contact and next action. The responsive table should show reference, contact, organisation, service interest, source, owner, stage and next-action date. Add saved views such as New Today, Awaiting Information and Quote Needed.Primary actions: Create Lead, Assign, Qualify, Request Information, Merge Duplicate and Close. Use side-drawer preview for quick review without losing filters. Mobile should use lead cards with prominent next action.
+@P@
+@P@Prompt 29 - Lead detail
+@P@Use for: Turning an enquiry into a qualified quotation request
+@P@COPY INTO GOOGLE STITCH
+@P@Design the consultant Lead Detail page. Header should show lead reference, contact, stage, owner, service interest and next action. Use tabs or sections for Summary, Conversation, Recommendation Answers, Documents, Organisation Matches and Activity.Create an outcome panel with Contact Lead, Request Information, Create or Link Organisation, Prepare Quotation and Mark Unqualified. Show privacy consent and preferred channel clearly. Separate internal notes from client-visible communication. Include duplicate-match warnings without exposing unrelated client details.
+@P@
+@P@Prompt 30 - Clients and organisations
+@P@Use for: Managing people separately from entities
+@P@COPY INTO GOOGLE STITCH
+@P@Design two related consultant screens: Clients list and Organisations list. Clients should show verified contacts, organisation memberships, open work, last contact and account state. Organisations should show entity name, type, identifiers, primary contact, open applications, next deadline and risk flags.Use distinct terminology so staff never treat a person and an organisation as the same record. Add search, filters, safe merging and side-preview. Actions include Invite Client, Create Organisation, Link Membership, Open Workspace and Add Compliance Date. Mobile views should use cards and clear entity badges.
+@P@
+@P@Prompt 31 - Organisation detail
+@P@Use for: Complete back-office organisation workspace
+@P@COPY INTO GOOGLE STITCH
+@P@Design the consultant Organisation Detail screen. Persistent header: organisation name, type, verified identifiers, relationship owner and risk state. Create tabs for Summary, People, Registrations, Applications, Quotations, Payments, Documents, Compliance, Messages and Audit History.Summary should show verified details, incomplete fields, active work, expiring documents, upcoming deadlines and recent decisions. Actions: edit verified details, invite member, request service, add registration and export a permitted record. Show strong context before edits to prevent updating the wrong organisation.
+@P@
+@P@Prompt 32 - Applications queue
+@P@Use for: Operational list and status management
+@P@COPY INTO GOOGLE STITCH
+@P@Design the consultant Applications page. Include saved views for Awaiting Documents, Under Review, Ready to Start, In Progress, Submitted, Authority Feedback, Client Action Required, Overdue and Completed. Table fields: reference, organisation, service, client-visible status, internal stage, assignee, reviewer, age and next action.Provide search, filters, assignment, bulk reminder and export. Status colour must always include text. Use a side preview with requirement completion and latest activity. Mobile defaults to My Applications and urgent cards.
+@P@
+@P@Prompt 33 - Review queue
+@P@Use for: Independent checks before binding actions
+@P@COPY INTO GOOGLE STITCH
+@P@Design the consultant Review Queue for quotations, authority submissions, sensitive documents and regulated content. Show item type, organisation, submitted by, risk level, due date, age and review state. Add filters by review type, risk and reviewer.The review workspace should allow Approve, Return with Reasons, Escalate and Reassign. Display the reviewed version, changes since last version, supporting documents and conflict warnings. Require a written reason for return or override. Keep review actions visually distinct from ordinary editing.
+@P@
+@P@Prompt 34 - Application detail
+@P@Use for: Managing requirements, tasks and client progress
+@P@COPY INTO GOOGLE STITCH
+@P@Design the consultant Application Detail workspace. Header: application reference, organisation, service, client-visible status, internal stage, assignee, reviewer and next action. Create a progress timeline and tabs for Requirements, Documents, Tasks, Messages, Authority References, Reviews, Deliverables and Activity.The default view should show checklist completion, rejected or missing documents, due tasks, latest client message and status history. Actions include Request Document, Change Permitted Status, Add Task, Send Update, Request Review and Complete Handover. Require evidence or confirmation before marking “Submitted to Authority.” Separate internal notes from client-visible updates.
+@P@
+@P@Prompt 35 - Quotations list
+@P@Use for: Versioned quote management
+@P@COPY INTO GOOGLE STITCH
+@P@Design the consultant Quotations list with filters for Draft, Internal Review, Sent, Viewed, Change Requested, Approved, Rejected and Expired. Show quote number, client, organisation, services, current version, total value, currency, validity and decision state.Add saved views, search and Create Quotation. Use a clear visual warning for quotes expiring soon. Actions must respect role permissions. Mobile cards should emphasise decision state, value and next action.
+@P@
+@P@Prompt 36 - Quotation builder
+@P@Use for: Creating transparent quotes and revisions
+@P@COPY INTO GOOGLE STITCH
+@P@Design the consultant Quotation Detail and Builder. Header shows quote number, organisation, client, current version, validity and workflow state. Build an editable line-item table with mandatory types: Professional Fee, Statutory Fee and Optional Cost. Include quantity, description, amount, currency and notes. Add assumptions, exclusions, payment schedule, attachments and terms.Provide version history and comparison. Actions: Save Draft, Request Internal Review, Create Revision, Send Current Version and Withdraw. Once sent, edits must create a new version. Make it impossible to request payment from an unapproved or expired quote. Create desktop builder and mobile review-only layout.
+@P@
+@P@Prompt 37 - Payments and reconciliation
+@P@Use for: Confirming money only after approval
+@P@COPY INTO GOOGLE STITCH
+@P@Design the consultant Payments page. Show payment reference, organisation, approved quotation, amount, currency, method, proof, reconciliation state and received date. Saved views: Payment Requested, Proof Uploaded, Under Review, Confirmed, Partial, Failed and Refunded.The detail drawer should show quotation approval evidence, payment instructions, proof preview, finance notes and receipt history. Actions: Request Payment, Review Proof, Confirm, Record Partial Payment, Refund and Issue Receipt. Finance roles should not automatically receive access to unrelated identity documents.
+@P@
+@P@Prompt 38 - Tasks and calendar
+@P@Use for: Combined operational planning
+@P@COPY INTO GOOGLE STITCH
+@P@Design the consultant Tasks and Calendar page. Provide My Tasks, Team Tasks, Compliance Deadlines, Content Reviews, Follow-ups and Overdue views. Include agenda, week and month modes, plus filters for organisation, service, assignee, priority and task type.Each task card shows context, owner, due date, dependency and related record. Actions: Create, Assign, Reschedule, Complete and Escalate. Clearly distinguish a reminder from evidence that an obligation was completed. Mobile should default to an agenda list.
+@P@
+@P@Prompt 39 - Document centre
+@P@Use for: Secure cross-application document management
+@P@COPY INTO GOOGLE STITCH
+@P@Design the consultant Document Centre. Search and filter by organisation, application, document type, issue and expiry date, review state and version. Rows show document title, owner organisation, related application, validity, uploader, security classification and status.Use a secure preview drawer with version history, access log and actions Request, Accept, Reject with Reason, Replace and Download if Permitted. Avoid thumbnails that expose identity details in a general list. Display expiring and rejected states clearly.
+@P@
+@P@Prompt 40 - Messages and notifications
+@P@Use for: Contextual communication and alerts
+@P@COPY INTO GOOGLE STITCH
+@P@Design consultant Messages and Notifications as two related screens. Messages should group threads by lead, quotation, application or organisation and show channel, participants, response due, last message and unread state. Notifications should show priority, type, organisation, related record, owner and resolution state.Actions include Reply, Create Platform Summary for an external WhatsApp discussion, Link to Record, Assign, Resolve and Adjust Preference. Important decisions made externally must be summarised against the relevant record. Never display confidential message previews on a shared dashboard without permission.
+@P@
+@P@Prompt 41 - Services and pricing configuration
+@P@Use for: Administering catalogue rules without code changes
+@P@COPY INTO GOOGLE STITCH
+@P@Design the consultant Services and Pricing administration screen. List service status, category, requirement version, workflow, review cadence, indicative pricing guidance and related services. Service detail should support description, eligibility notes, requirement conditions, default quote items, workflow stages, content route and review owner.Actions: Create Service, Revise Requirements, Update Guidance, Suspend Sales and Publish Reviewed Version. Historical applications must retain the service and requirement versions used when created. Use clear change warnings before publishing.
+@P@
+@P@Prompt 42 - Content management
+@P@Use for: Publishing SEO pages and regulated articles safely
+@P@COPY INTO GOOGLE STITCH
+@P@Design the ITM Content Management screen. Support Static Pages, Categories, Services, Articles, FAQs and Redirects. The list shows title, type, owner, reviewer, SEO completeness, reviewed date, next review date and publication state.Editor view includes title, slug, metadata, structured body blocks, internal links, sources, author, reviewer, change summary and preview. Actions: Save Draft, Request Review, Schedule, Publish, Suspend and Create Redirect. Regulated content cannot publish without a reviewer and next-review date. Add a stale-content dashboard and change-history comparison.
+@P@
+@P@Prompt 43 - Reports and management
+@P@Use for: Commercial and operational decision support
+@P@COPY INTO GOOGLE STITCH
+@P@Design the consultant Reports page. Provide filters for date, service, category, lead source, consultant and organisation type. Create sections for acquisition funnel, quotation conversion, confirmed value, time in status, missing-document delays, consultant workload, renewal pipeline and content-assisted conversion.Use restrained charts with exact values, definitions and export controls. Do not invent performance targets; show baseline placeholders. Add drill-down from metrics to filtered records. Mobile reports should prioritise summaries and downloadable exports.
+@P@
+@P@Prompt 44 - Team, audit and settings
+@P@Use for: Administration and governance screens
+@P@COPY INTO GOOGLE STITCH
+@P@Design three related administration screens. Team and Permissions lists staff member, role, team, assigned work, MFA state, last access and account state, with Invite, Change Role, Review Access, Suspend and Reassign actions. Audit Log shows timestamp, actor, organisation, record, action, outcome and origin with immutable event detail.Operational Settings covers verified business identity, contact channels, payment methods, notification templates, working hours, currencies, document policy, workflow defaults and security controls. High-impact changes require confirmation, reason and change history. Keep these screens dense but readable and permission-aware.
+@P@
+@P@
+@P@ITM GOOGLE STITCH PROMPT BOOK
+@P@Client Workspace Prompts
+@P@These screens let one user manage several organisations with controlled team permissions, quotation approval and application tracking.
+@P@Prompt 45 - Client overview
+@P@Use for: Cross-organisation action summary
+@P@COPY INTO GOOGLE STITCH
+@P@Design the client dashboard Overview. Place the organisation switcher prominently and show the user’s role. Summarise actions required, open applications, quotations awaiting decision, payment status, expiring documents and upcoming compliance dates across permitted organisations.Use a clear “What needs your attention” queue before general statistics. Add Request Another Service and Contact Consultant actions. Never mix records from different organisations without an organisation label. Mobile should show urgent actions, current organisation and application progress first.
+@P@
+@P@Prompt 46 - My organisations
+@P@Use for: Managing several entities from one account
+@P@COPY INTO GOOGLE STITCH
+@P@Design the client My Organisations page. Cards or rows should show organisation name, entity type, user role, registration summary, open applications, next compliance date and team count. Include pending invitations and a controlled “Request Another Organisation” action.Add search and status filters for users with many entities. Distinguish companies, PBCs, trusts, PVOs and associations visually with text labels and restrained icons. Mobile cards must make switching organisations immediate and unambiguous.
+@P@
+@P@Prompt 47 - Organisation workspace
+@P@Use for: Client view of one registered entity
+@P@COPY INTO GOOGLE STITCH
+@P@Design the client Organisation Workspace. Header must always show organisation name, type, user role and a switcher. Create sections for verified organisation details, registration records, team, open work, documents, quotations, payments and compliance timeline.Show incomplete or unverified information as actionable notices, not red errors. Actions include Request Correction, Invite Team Member, Request Service and Download Permitted Record. Protect sensitive identifiers with partial masking in summary views.
+@P@
+@P@Prompt 48 - Organisation team
+@P@Use for: Inviting staff with controlled access
+@P@COPY INTO GOOGLE STITCH
+@P@Design the client Organisation Team page. List member, role, permission summary, invitation state and last active date. Provide Invite Member, Change Role, Revoke Invitation, Remove Member and Transfer Ownership actions according to permission.The invitation form should ask email or mobile, role, optional expiry and a plain-language permission preview. Prevent removal of the last active owner. Use strong confirmation for ownership transfer and show an audit-friendly activity history.
+@P@
+@P@Prompt 49 - Client applications list
+@P@Use for: Tracking all services for an organisation
+@P@COPY INTO GOOGLE STITCH
+@P@Design the client Applications page. Show reference, organisation, service, current client-visible status, last update and next action. Add filters for organisation, service, status and action required.Use a progress indicator that avoids implying authority certainty. Status cards should explain what ITM is doing and what the client needs to do. Actions include Open Application, Upload Requested Document and Message Consultant. Mobile should use timeline-oriented cards.
+@P@
+@P@Prompt 50 - Request another service
+@P@Use for: Fast repeat purchase using existing information
+@P@COPY INTO GOOGLE STITCH
+@P@Design the client Request Another Service flow. Begin with organisation selection, then desired outcome or service. Reuse verified organisation information and show exactly which existing documents may satisfy requirements. Ask only for new, missing or expired details.The final step submits a quotation request; it does not charge the client. Include Save Draft, Submit Request and Continue on WhatsApp. Show when consultant assessment is required and preserve separation between organisations.
+@P@
+@P@Prompt 51 - Client application detail
+@P@Use for: Shared progress, documents and communication
+@P@COPY INTO GOOGLE STITCH
+@P@Design the client Application Detail page. Header: reference, organisation, service, current status, last update and assigned support contact. Use a plain-language progress timeline and sections for Next Action, Requirements, Uploaded Documents, Messages, Payment Summary and Deliverables.Actions include Upload or Replace File, Confirm Information, Approve Submission Data, Send Message and Download Final Document. Rejected documents must show a specific reason and replacement route. Do not expose internal notes, internal risk ratings or unrelated authority credentials.
+@P@
+@P@Prompt 52 - Client quotations list
+@P@Use for: Finding quotes awaiting decision
+@P@COPY INTO GOOGLE STITCH
+@P@Design the client Quotations page. List quote number, organisation, included services, current version, total, valid-until date and decision state. Add filters for Awaiting Decision, Approved, Change Requested, Rejected and Expired.Use prominent but calm action labels. An expired quotation should offer Request Updated Quote rather than Approve. Mobile cards should show organisation, total, version and decision action clearly.
+@P@
+@P@Prompt 53 - Review quotation
+@P@Use for: Binding quote review before payment
+@P@COPY INTO GOOGLE STITCH
+@P@Design the client Review Quotation screen. Show quote number, organisation, current version, validity and service scope. Separate Professional Fees, Statutory Charges and Optional Costs in a clear line-item table. Follow with assumptions, exclusions, payment schedule, attachments, terms and version history.Actions: Approve Current Version, Request Changes, Reject and Download. Approval must require confirmation of the exact version and accepted terms. Do not show payment controls until approval succeeds. Create a mobile review pattern that keeps totals and version visible without a wide table.
+@P@
+@P@Prompt 54 - Client payments and receipts
+@P@Use for: Paying against approved quotations
+@P@COPY INTO GOOGLE STITCH
+@P@Design the client Payments and Receipts page. Show approved quotation, organisation, amount due, currency, payment instructions, proof-upload status, confirmation state and receipts. Present supported payment methods as configurable cards without inventing providers.Actions include View Instructions, Upload Proof, Contact Finance and Download Receipt. Explain that proof upload is not the same as confirmed payment. Use secure file handling and clear partial-payment status where allowed.
+@P@
+@P@Prompt 55 - Client documents
+@P@Use for: Organisation-scoped file library and requests
+@P@COPY INTO GOOGLE STITCH
+@P@Design the client Documents page. Use organisation filter, search and categories such as Registration, Tax, NSSA, Supplier, Licence, Identity and Deliverables. Rows show document name, organisation, type, related application, issue and expiry date and review state.Support Upload, Replace Requested File, Preview, Download and Report Incorrect Document. Clearly distinguish documents requested by ITM from documents already accepted. Mask sensitive previews and make permissions visible when a team member has limited access.
+@P@
+@P@Prompt 56 - Client compliance calendar
+@P@Use for: Organisation-specific deadlines and reminders
+@P@COPY INTO GOOGLE STITCH
+@P@Design the client Compliance Calendar. Combine confirmed organisation obligations, document expiries, renewals and recurring service reminders. Provide agenda, month and list views plus filters by organisation and obligation type.Each item shows due date, responsible team member, status, related document or service and Request Support action. Make it explicit that a reminder does not prove submission or compliance. Mobile should default to upcoming agenda items with one-tap actions.
+@P@
+@P@Prompt 57 - Client messages
+@P@Use for: Contextual support conversations
+@P@COPY INTO GOOGLE STITCH
+@P@Design the client Messages page. Group threads by application, quotation or organisation question. Show organisation, subject, consultant, last response, unread state and expected response timing. Inside a thread, keep the related record summary visible and provide safe attachment guidance.Actions: Start Permitted Thread, Reply, Attach Requested Document through the secure route and Close Resolved Thread. External WhatsApp contact can be offered, but key decisions should be summarised in the platform.
+@P@
+@P@Prompt 58 - Client notifications
+@P@Use for: Actionable updates without noise
+@P@COPY INTO GOOGLE STITCH
+@P@Design the client Notifications page. Group items into Action Required, Updates, Compliance Reminders, Invitations and Security. Each notification shows organisation, related record, concise message, date and read state.Actions include Open Action, Mark Read, Mark All Read and Change Notification Preferences. Allow per-channel preferences for operational updates, reminders and marketing separately. Never reveal sensitive application information in notification previews shown on shared devices.
+@P@
+@P@Prompt 59 - Profile and security
+@P@Use for: Personal account and session controls
+@P@COPY INTO GOOGLE STITCH
+@P@Design the client Profile and Security screen. Sections: Personal Details, Verified Contacts, Password, Multi-factor Authentication, Active Sessions, Notification Preferences and Privacy Requests. Show last changed dates and account-safety guidance.Actions: Edit, Verify Contact, Change Password, Enable MFA, Revoke Session and Request Data Export. Changing a personal profile must not silently change organisation registration records. Use step-up verification for sensitive changes and ownership actions.
+@P@
+@P@
+@P@ITM GOOGLE STITCH PROMPT BOOK
+@P@Service Page Duplication Map
+@P@After Stitch produces the approved service-detail template, duplicate it for the following 20 routes. Replace the title, category, thumbnail and page copy with the corresponding content file from the PRD pack.
+@P@Service
+@P@Category
+@P@Route
+@P@Private Limited Company Registration
+@P@Company Registration
+@P@/services/private-limited-company-registration
+@P@PBC Registration
+@P@Company Registration
+@P@/services/pbc-registration
+@P@Company Re-registration
+@P@Company Registration
+@P@/services/company-re-registration
+@P@TIN and Tax Clearance Support
+@P@Tax and Fiscal Compliance
+@P@/services/tin-tax-clearance
+@P@Tax Returns Submission
+@P@Tax and Fiscal Compliance
+@P@/services/tax-returns-submission
+@P@VAT Registration
+@P@Tax and Fiscal Compliance
+@P@/services/vat-registration
+@P@Virtual Fiscalisation
+@P@Tax and Fiscal Compliance
+@P@/services/virtual-fiscalisation
+@P@Professional Logo Design
+@P@Branding and Business Documents
+@P@/services/professional-logo-design
+@P@Company Profile Design
+@P@Branding and Business Documents
+@P@/services/company-profile-design
+@P@PRAZ Registration Support
+@P@Tender and Supplier Registration
+@P@/services/praz-registration
+@P@Vendor Number Support
+@P@Tender and Supplier Registration
+@P@/services/vendor-number
+@P@NSSA Employer Registration
+@P@NSSA and Employer Compliance
+@P@/services/nssa-employer-registration
+@P@NSSA Compliance Certificate Support
+@P@NSSA and Employer Compliance
+@P@/services/nssa-compliance-certificate
+@P@NSSA P4 Returns
+@P@NSSA and Employer Compliance
+@P@/services/nssa-p4-returns
+@P@Trust Registration
+@P@Trusts and Organisations
+@P@/services/trust-registration
+@P@PVO Registration
+@P@Trusts and Organisations
+@P@/services/pvo-registration
+@P@Association Registration
+@P@Trusts and Organisations
+@P@/services/association-registration
+@P@Family Trust Registration
+@P@Trusts and Organisations
+@P@/services/family-trust-registration
+@P@Harare Shop and Business Licence Support
+@P@Business and Operator Licences
+@P@/services/harare-business-licence
+@P@Transport Operator’s Licence Support
+@P@Business and Operator Licences
+@P@/services/transport-operators-licence
+@P@
+@P@ITM GOOGLE STITCH PROMPT BOOK
+@P@Stitch Refinement Prompts
+@P@Use these short follow-ups when a screen is structurally correct but needs a focused improvement. Do not regenerate the entire product for a local issue.
+@P@Mobile simplification
+@P@COPY INTO GOOGLE STITCH
+@P@Rework this same screen for a 360px-wide mobile viewport. Preserve all core actions, remove non-essential decoration, stack content naturally, replace wide tables with cards or drill-down rows, use large touch targets and keep the current organisation or service context visible.
+@P@
+@P@Hierarchy correction
+@P@COPY INTO GOOGLE STITCH
+@P@Keep the existing ITM design system and content, but improve visual hierarchy. Make the page title, current status, next action and primary CTA immediately clear. Reduce competing colours and buttons. Increase whitespace between major sections and shorten dense cards.
+@P@
+@P@Low-bandwidth version
+@P@COPY INTO GOOGLE STITCH
+@P@Create a low-bandwidth variation of this screen. Remove autoplay media and decorative effects, use optimised static images, preserve form progress, prioritise text and primary actions, and keep the experience useful if secondary content loads later.
+@P@
+@P@Accessibility pass
+@P@COPY INTO GOOGLE STITCH
+@P@Audit and revise this screen for WCAG 2.2 AA. Improve contrast, keyboard focus, labels, error summaries, touch targets, heading order and status communication. Do not rely on colour alone and do not remove the premium ITM visual identity.
+@P@
+@P@Content-density correction
+@P@COPY INTO GOOGLE STITCH
+@P@Reduce visual crowding without deleting required information. Group related details, use progressive disclosure for secondary content, convert long card text into concise labels and place supporting explanations in accordions, drawers or detail sections.
+@P@
+@P@Consistency pass
+@P@COPY INTO GOOGLE STITCH
+@P@Compare this screen with the approved ITM homepage and dashboard shell. Correct any drift in colours, typography, radii, spacing, button hierarchy, icon style, form treatment and navigation. Do not introduce a new visual theme.
+@P@
+@P@
+@P@ITM GOOGLE STITCH PROMPT BOOK
+@P@Final Review Checklist
+@P@Before accepting a Stitch screen, confirm the following. A beautiful screen that breaks the commercial or permission model is not approved.
+@P@•  The screen follows the approved navy, teal, off-white and restrained gold palette.
+@P@•  The primary action is obvious and secondary actions do not compete with it.
+@P@•  Quotation approval occurs before payment controls appear.
+@P@•  Professional, statutory and optional charges remain visually separate.
+@P@•  The current organisation is unmistakable in authenticated client screens.
+@P@•  Consultant internal notes cannot be confused with client-visible updates.
+@P@•  No authority approval, deadline, fee or processing time is invented.
+@P@•  No official logo, fake certificate, fake seal or client identity data appears.
+@P@•  Mobile layouts work without horizontal scrolling or tiny controls.
+@P@•  Empty, loading, error, permission-limited and action-required states are designed.
+@P@•  SEO pages contain useful readable content rather than decorative cards only.
+@P@•  The PRD remains the source of truth for workflow, permissions, security and data behaviour.
+@P@RECOMMENDED BUILD ORDER
+@P@Approve the homepage, public shell, service-detail template, quotation-request flow, dashboard shell, consultant application detail and client application detail first. These screens establish most reusable components needed by the rest of the product.
+@P@
