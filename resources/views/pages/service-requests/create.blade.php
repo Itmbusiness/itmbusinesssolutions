@@ -57,7 +57,7 @@
 
             <x-ui.field :error="$errors->first('consent')">
                 <x-ui.choice type="checkbox" name="consent" value="1" required>
-                    {{ __('I agree that ITM may contact me about this request and store the information I have provided.') }}
+                    {{ __('I agree that ITM Business Solutions may contact me about this request and store the information I have provided.') }}
                 </x-ui.choice>
             </x-ui.field>
 

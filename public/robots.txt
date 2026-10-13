@@ -1,2 +1,8 @@
 User-agent: *
-Disallow:
+Disallow: /admin
+Disallow: /dashboard
+Disallow: /consultant
+Disallow: /settings
+Disallow: /design-system
+
+Sitemap: https://itmbusinesssolutions.co.zw/sitemap.xml

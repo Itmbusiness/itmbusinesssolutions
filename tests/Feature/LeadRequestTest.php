@@ -2,9 +2,13 @@
 
 namespace Tests\Feature;
 
+use App\Mail\LeadConfirmation;
+use App\Mail\NewLeadReceived;
 use App\Models\Lead;
+use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 
 /**
@@ -50,6 +54,27 @@ class LeadRequestTest extends TestCase
         $this->assertSame($user->id, $lead->user_id);
         $this->assertSame($user->email, $lead->email);
         $this->assertSame('workspace', $lead->source);
+    }
+
+    public function test_a_request_confirms_to_the_client(): void
+    {
+        Mail::fake();
+
+        Setting::put('contact.email', 'hello@itmbusinesssolutions.co.zw', 'contact');
+
+        $user = User::factory()->create();
+
+        $this->actingAs($user)->post(route('service-requests.store'), [
+            'goal' => 'tenders',
+            'preferred_channel' => 'whatsapp',
+            'consent' => '1',
+        ]);
+
+        $lead = Lead::sole();
+
+        Mail::assertQueued(LeadConfirmation::class, fn ($mail) => $mail->hasTo($user->email)
+            && $mail->lead->is($lead));
+        Mail::assertQueued(NewLeadReceived::class);
     }
 
     public function test_a_request_without_consent_is_rejected(): void

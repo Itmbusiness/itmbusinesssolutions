@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Middleware\CaptureLeadAttribution;
 use App\Http\Middleware\EnsureUserIsAdmin;
+use App\Http\Middleware\EnsureUserIsConsultant;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -13,8 +15,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        $middleware->web(append: [CaptureLeadAttribution::class]);
+
         $middleware->alias([
             'admin' => EnsureUserIsAdmin::class,
+            'consultant' => EnsureUserIsConsultant::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

@@ -1,5 +1,5 @@
 ---
-seo_title: "Accept Organisation Invitation | ITM"
+seo_title: "Accept Organisation Invitation | ITM Business Solutions"
 indexable: false
 ---
 

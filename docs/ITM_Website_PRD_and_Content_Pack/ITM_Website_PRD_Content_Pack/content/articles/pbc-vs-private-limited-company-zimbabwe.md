@@ -1,5 +1,5 @@
 ---
-seo_title: "PBC vs Private Limited Company in Zimbabwe | ITM"
+seo_title: "PBC vs Private Limited Company in Zimbabwe | ITM Business Solutions"
 meta_description: "A practical guide to pbc vs private limited company in zimbabwe, including preparation questions, common risks and the next appropriate step."
 slug: "pbc-vs-private-limited-company-zimbabwe"
 primary_keyword: "PBC vs private limited company Zimbabwe"
@@ -42,7 +42,7 @@ Registry rules and transition procedures can change. A current eligibility and r
 
 ## What to do next
 
-Prepare the available records and request an assessment. ITM will identify missing information and send a written quotation before payment is requested.
+Prepare the available records and request an assessment. ITM Business Solutions will identify missing information and send a written quotation before payment is requested.
 
 **CTA:** Compare Structures
 

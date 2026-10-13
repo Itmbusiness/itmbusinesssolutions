@@ -20,9 +20,28 @@
                 <x-ui.card>
                     <h2 class="card-title">{{ __('Body') }}</h2>
                     <p class="card-body mt-1">{{ __('Markdown is supported. The FAQ page renders its questions from the FAQ section instead of this body.') }}</p>
+                    @if ($page->slug === 'contact')
+                        <p class="field-hint mt-3">
+                            {{ __('Contact details come from Settings. This body controls the introduction and any additional sections; the Contact form and Contact channels sections are supplied by the contact layout.') }}
+                            <a href="{{ route('admin.settings.edit') }}">{{ __('Edit contact details') }}</a>
+                        </p>
+                    @endif
                     <x-ui.field class="mt-4" for="body" :error="$errors->first('body')">
-                        <x-ui.textarea id="body" name="body" rows="24" class="min-h-[28rem] font-mono text-meta">{{ old('body', $page->body) }}</x-ui.textarea>
+                        <x-ui.textarea id="body" name="body" rows="24" class="min-h-112 font-mono text-meta">{{ old('body', $page->body) }}</x-ui.textarea>
                     </x-ui.field>
+                </x-ui.card>
+
+                <x-ui.card>
+                    <h2 class="card-title">{{ __('In-page call to action') }}</h2>
+                    <p class="card-body mt-1">{{ __('Optional. Renders as a button between the page content and the closing quotation prompt. Leave both blank to omit it.') }}</p>
+                    <div class="mt-4 grid gap-4 sm:grid-cols-2">
+                        <x-ui.field :label="__('Button label')" for="cta_label" :error="$errors->first('cta_label')">
+                            <x-ui.input id="cta_label" name="cta_label" :value="old('cta_label', $page->cta_label)" />
+                        </x-ui.field>
+                        <x-ui.field :label="__('Link')" for="cta_url" hint="{{ __('An absolute URL, or a path such as /services.') }}" :error="$errors->first('cta_url')">
+                            <x-ui.input id="cta_url" name="cta_url" :value="old('cta_url', $page->cta_url)" />
+                        </x-ui.field>
+                    </div>
                 </x-ui.card>
             </div>
 

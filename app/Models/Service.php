@@ -91,7 +91,7 @@ class Service extends Model
     /** @param Builder<$this> $query */
     public function scopePublished(Builder $query): void
     {
-        $query->where('is_published', true);
+        $query->where('services.is_published', true)->whereHas('category', fn ($category) => $category->where('is_published', true));
     }
 
     /** @param Builder<$this> $query */

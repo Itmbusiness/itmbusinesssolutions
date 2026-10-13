@@ -19,6 +19,19 @@ workaround.
 Useful routes: `/` (public homepage), `/login`, `/register`, `/dashboard`,
 and `/design-system` (the component reference board, non-production only).
 
+Lead-notification emails (`App\Mail\NewLeadReceived`, `LeadConfirmation`) are
+queued (`QUEUE_CONNECTION=database`), so submitting the quote form or a
+workspace request only inserts a row into the `jobs` table — nothing actually
+sends until a worker processes it:
+
+```powershell
+php artisan queue:work
+```
+
+With `MAIL_MAILER=log` (the default), a processed job writes the rendered
+email to `storage/logs/laravel.log` instead of delivering it — set real SMTP
+credentials in `.env` to send for real.
+
 ## This machine's quirks
 
 Six things had to be worked around to get a first install through. They are

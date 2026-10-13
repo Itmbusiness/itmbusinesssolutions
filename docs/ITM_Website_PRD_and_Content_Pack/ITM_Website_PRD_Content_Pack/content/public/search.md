@@ -1,6 +1,6 @@
 ---
-seo_title: "Search ITM Services and Resources"
-meta_description: "Search ITM service pages, requirements and Zimbabwean business-compliance articles."
+seo_title: "Search ITM Business Solutions Services and Resources"
+meta_description: "Search ITM Business Solutions service pages, requirements and Zimbabwean business-compliance articles."
 indexable: false
 ---
 

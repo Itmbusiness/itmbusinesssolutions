@@ -2,7 +2,7 @@
 
 @P@DIGITAL PRODUCT DESIGN GUIDE
 @P@Google StitchUI Prompt Book
-@P@ITM Corporate Secretarial website, quotation workflow, consultant dashboard and multi-organisation client portal
+@P@ITM Business Solutions website, quotation workflow, consultant dashboard and multi-organisation client portal
 @P@
 @P@
 @P@
@@ -47,7 +47,7 @@
 @P@Constant
 @P@Approved direction
 @P@Brand
-@P@ITM Corporate Secretarial
+@P@ITM Business Solutions
 @P@Positioning
 @P@Practical support for starting, formalising and keeping Zimbabwean organisations compliant
 @P@Primary audience
@@ -71,7 +71,7 @@
 @P@Prompt 01 - Master visual system
 @P@Use for: Creating the design language before individual screens
 @P@COPY INTO GOOGLE STITCH
-@P@Create a complete visual direction for “ITM Corporate Secretarial,” a premium Zimbabwean company-registration and compliance consultancy. Use deep navy #152A45 as the authority colour, teal blue #247BA0 for primary actions, warm off-white #F4F7F9 for page backgrounds and restrained gold #D79B2E for small highlights only. Use a clean modern sans-serif such as Inter or Manrope. The interface must feel trustworthy, calm, precise and premium rather than like a government portal or generic template.Define reusable tokens for type scale, 8-point spacing, 12-column desktop grid, mobile grid, 18px card radius, input styles, buttons, badges, progress steps, data tables, empty states and alert levels. Use generous whitespace, subtle borders, soft low-elevation shadows and limited translucent panels. Keep body text highly readable. Avoid neon colours, heavy gradients, excessive glassmorphism, giant decorative icons, fake official seals, flags and clutter.Design for desktop, tablet and mobile. Public pages use a maximum content width around 1200px. Dashboards use a fixed desktop sidebar and compact mobile navigation. Establish accessible colour contrast, visible focus states and plain-language status labels. Show the design system as a coherent component reference board that later screens can follow.
+@P@Create a complete visual direction for “ITM Business Solutions,” a premium Zimbabwean company-registration and compliance consultancy. Use deep navy #152A45 as the authority colour, teal blue #247BA0 for primary actions, warm off-white #F4F7F9 for page backgrounds and restrained gold #D79B2E for small highlights only. Use a clean modern sans-serif such as Inter or Manrope. The interface must feel trustworthy, calm, precise and premium rather than like a government portal or generic template.Define reusable tokens for type scale, 8-point spacing, 12-column desktop grid, mobile grid, 18px card radius, input styles, buttons, badges, progress steps, data tables, empty states and alert levels. Use generous whitespace, subtle borders, soft low-elevation shadows and limited translucent panels. Keep body text highly readable. Avoid neon colours, heavy gradients, excessive glassmorphism, giant decorative icons, fake official seals, flags and clutter.Design for desktop, tablet and mobile. Public pages use a maximum content width around 1200px. Dashboards use a fixed desktop sidebar and compact mobile navigation. Establish accessible colour contrast, visible focus states and plain-language status labels. Show the design system as a coherent component reference board that later screens can follow.
 @P@
 @P@Prompt 02 - Public website shell
 @P@Use for: Header, navigation, WhatsApp action and footer

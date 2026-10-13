@@ -1,5 +1,5 @@
 ---
-seo_title: "PAYE, VAT, QPD and Income Tax: A Practical Introduction | ITM"
+seo_title: "PAYE, VAT, QPD and Income Tax: A Practical Introduction | ITM Business Solutions"
 meta_description: "A practical guide to paye, vat, qpd and income tax: a practical introduction, including preparation questions, common risks and the next appropriate step."
 slug: "paye-vat-qpd-income-tax-explained"
 primary_keyword: "PAYE VAT QPD income tax Zimbabwe"
@@ -42,7 +42,7 @@ Once obligations are confirmed, save frequencies, due dates, document requests a
 
 ## What to do next
 
-Prepare the available records and request an assessment. ITM will identify missing information and send a written quotation before payment is requested.
+Prepare the available records and request an assessment. ITM Business Solutions will identify missing information and send a written quotation before payment is requested.
 
 **CTA:** Review My Tax Obligations
 

@@ -27,6 +27,8 @@ class PageController extends Controller
             'seo_title' => ['nullable', 'string', 'max:255'],
             'meta_description' => ['nullable', 'string', 'max:500'],
             'body' => ['nullable', 'string'],
+            'cta_label' => ['nullable', 'string', 'max:255', 'required_with:cta_url'],
+            'cta_url' => ['nullable', 'string', 'max:2048', 'required_with:cta_label'],
         ]);
 
         $validated['is_published'] = $request->boolean('is_published');

@@ -7,6 +7,10 @@
 ])
 
 @inject('chrome', 'App\Support\SiteChrome')
+@php
+    $canonicalUrl = \App\Support\Seo::url($canonical ?? url()->current());
+    $shareImage = \App\Support\Seo::url(asset(\App\Support\PublicMedia::path('registration') ?? 'images/itm-logo.png'));
+@endphp
 
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
@@ -17,9 +21,9 @@
         <meta name="description" content="{{ $metaDescription }}">
     @endif
 
-    <link rel="canonical" href="{{ $canonical ?? url()->current() }}">
+    <link rel="canonical" href="{{ $canonicalUrl }}">
 
-    @unless ($indexable)
+    @unless ($indexable && app()->isProduction())
         <meta name="robots" content="noindex, follow">
     @endunless
 
@@ -29,14 +33,14 @@
         <meta property="og:description" content="{{ $metaDescription }}">
     @endif
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:url" content="{{ $canonicalUrl }}">
+    <meta property="og:image" content="{{ $shareImage }}">
+    <meta name="twitter:card" content="summary_large_image">
 
-    @if ($schema)
-        <script type="application/ld+json">@json($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)</script>
-    @endif
+    <script type="application/ld+json">@json(\App\Support\Seo::graph($schema), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)</script>
 </head>
 <body>
-    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-[60] focus:m-3 focus:rounded-control focus:bg-white focus:px-4 focus:py-2">
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-60 focus:m-3 focus:rounded-control focus:bg-white focus:px-4 focus:py-2">
         {{ __('Skip to content') }}
     </a>
 
@@ -61,7 +65,7 @@
 
     {{-- ── Header ──────────────────────────────────────────────────── --}}
     <header class="site-header border-b border-transparent">
-        <div class="page-shell-wide flex items-center gap-6 py-3.5">
+        <div class="page-shell-wide relative flex items-center gap-6 py-3.5">
             <a href="{{ route('home') }}" class="flex flex-none items-center gap-3 no-underline hover:no-underline">
                 <img src="{{ asset('images/itm-logo.png') }}" alt="" class="size-10 rounded-control object-cover">
                 <span class="leading-tight">
@@ -73,26 +77,30 @@
             </a>
 
             <nav aria-label="{{ __('Primary') }}" class="hidden min-w-0 flex-1 items-center justify-center gap-7 text-meta lg:flex">
-                <a href="{{ route('services.index') }}" @class(['whitespace-nowrap no-underline hover:no-underline', 'text-teal' => request()->routeIs('services.*'), 'text-navy hover:text-teal' => ! request()->routeIs('services.*')])>{{ __('Services') }}</a>
-                <a href="{{ route('packages') }}" @class(['whitespace-nowrap no-underline hover:no-underline', 'text-teal' => request()->routeIs('packages'), 'text-navy hover:text-teal' => ! request()->routeIs('packages')])>{{ __('Packages') }}</a>
-                <a href="{{ route('page', 'requirements') }}" class="whitespace-nowrap text-navy no-underline hover:text-teal hover:no-underline">{{ __('Requirements') }}</a>
-                <a href="{{ route('articles.index') }}" @class(['whitespace-nowrap no-underline hover:no-underline', 'text-teal' => request()->routeIs('articles.*'), 'text-navy hover:text-teal' => ! request()->routeIs('articles.*')])>{{ __('Resources') }}</a>
+                <a href="{{ route('home') }}" @class(['whitespace-nowrap no-underline hover:no-underline', 'text-teal' => request()->routeIs('home'), 'text-navy hover:text-teal' => ! request()->routeIs('home')])>{{ __('Home') }}</a>
                 <a href="{{ route('page', 'about') }}" class="whitespace-nowrap text-navy no-underline hover:text-teal hover:no-underline">{{ __('About') }}</a>
+                <x-public.services-menu :categories="$chrome->categoriesWithServices()" />
+                <a href="{{ route('articles.index') }}" @class(['whitespace-nowrap no-underline hover:no-underline', 'text-teal' => request()->routeIs('articles.*'), 'text-navy hover:text-teal' => ! request()->routeIs('articles.*')])>{{ __('Resources') }}</a>
+                <a href="{{ route('page', 'requirements') }}" class="whitespace-nowrap text-navy no-underline hover:text-teal hover:no-underline">{{ __('Requirements') }}</a>
+                <a href="{{ route('packages') }}" @class(['whitespace-nowrap no-underline hover:no-underline', 'text-teal' => request()->routeIs('packages'), 'text-navy hover:text-teal' => ! request()->routeIs('packages')])>{{ __('Packages') }}</a>
             </nav>
 
-            <div class="ms-auto flex flex-none items-center gap-2 lg:ms-0">
+            <div class="ms-auto flex flex-none items-center gap-3 lg:ms-0">
                 @auth
-                    <x-ui.button variant="quiet" href="{{ route('dashboard') }}" class="hidden sm:inline-flex">
-                        {{ __('My workspace') }}
-                    </x-ui.button>
+                    <x-public.account-menu class="hidden sm:flex" />
                 @else
                     <x-ui.button variant="quiet" href="{{ route('login') }}" class="hidden xl:inline-flex">
                         {{ __('Sign in') }}
                     </x-ui.button>
+                    <x-ui.button variant="secondary" href="{{ route('register') }}" class="hidden sm:inline-flex">
+                        {{ __('Register') }}
+                    </x-ui.button>
                 @endauth
-                <x-ui.button href="{{ route('quote.create') }}" icon-trailing="arrow-right" class="whitespace-nowrap">
+                <x-ui.button href="{{ route('quote.create') }}" icon-trailing="arrow-right" class="hidden whitespace-nowrap sm:inline-flex">
                     {{ __('Start Your Application') }}
                 </x-ui.button>
+
+                <x-public.mobile-nav :categories="$chrome->categories()" />
             </div>
         </div>
 

@@ -1,5 +1,5 @@
 ---
-seo_title: "Family Trust Registration Zimbabwe | ITM"
+seo_title: "Family Trust Registration Zimbabwe | ITM Business Solutions"
 meta_description: "Plan a family trust with guided collection of purpose, trustee, beneficiary, governance and asset information."
 slug: "family-trust-registration"
 primary_keyword: "family trust registration Zimbabwe"
@@ -24,7 +24,7 @@ Create a documented family stewardship plan only after the purpose, assets, resp
 - Families reviewing succession arrangements
 - Households seeking a structured asset discussion
 
-If the correct route depends on your circumstances, ITM will assess the information before asking you to approve a quotation.
+If the correct route depends on your circumstances, ITM Business Solutions will assess the information before asking you to approve a quotation.
 
 ## What the service can include
 
@@ -60,7 +60,7 @@ This is a preparation checklist. A consultant may request fewer or additional it
 
 | Charge type | Amount | Notes |
 | --- | ---: | --- |
-| Professional fee | US$[Set after assessment] | Work performed by ITM |
+| Professional fee | US$[Set after assessment] | Work performed by ITM Business Solutions |
 | Statutory or authority fee | US$[Confirm current amount] | Paid to or for the responsible authority where applicable |
 | Optional costs | US$[If selected] | Third-party, delivery, urgent or additional work |
 | Total quotation | US$[Calculated] | Valid until the date shown on the quotation |

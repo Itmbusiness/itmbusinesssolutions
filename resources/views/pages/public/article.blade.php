@@ -1,10 +1,11 @@
 <x-layouts::public
     :title="$article->seo_title ?? $article->title"
-    :meta-description="$article->meta_description"
+    :meta-description="$article->meta_description ?? $article->excerpt"
     :canonical="route('articles.show', $article)"
     :schema="$schema"
 >
     <x-public.page-header
+        :image="$article->category?->slug ?? 'resources'"
         :eyebrow="$article->category?->name ?? __('Resources')"
         :heading="$article->title"
         :lead="$article->excerpt"
@@ -18,9 +19,11 @@
             </x-ui.alert>
         @endif
 
-        <article class="prose-itm">
-            {!! Str::markdown($article->body ?? '') !!}
-        </article>
+        <x-public.rich-content :blocks="$blocks" />
+
+        @if ($article->cta_label && $article->cta_url)
+            <x-public.inline-cta :label="$article->cta_label" :url="$article->cta_url" class="mt-6" />
+        @endif
 
         <footer class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-line pt-5 text-meta text-muted">
             @if ($article->author)

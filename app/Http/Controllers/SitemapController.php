@@ -6,18 +6,22 @@ use App\Models\Article;
 use App\Models\Page;
 use App\Models\Service;
 use App\Models\ServiceCategory;
+use App\Support\Seo;
 use Illuminate\Http\Response;
 
 class SitemapController extends Controller
 {
     public function __invoke(): Response
     {
-        $urls = [
-            ['loc' => route('home'), 'priority' => '1.0', 'lastmod' => null],
-            ['loc' => route('services.index'), 'priority' => '0.9', 'lastmod' => null],
-            ['loc' => route('packages'), 'priority' => '0.8', 'lastmod' => null],
-            ['loc' => route('articles.index'), 'priority' => '0.7', 'lastmod' => null],
-        ];
+        $urls = [];
+        $pages = Page::query()->get()->keyBy('slug');
+        foreach (['home' => 'home', 'services.index' => 'services', 'packages' => 'packages', 'articles.index' => 'resources'] as $route => $slug) {
+            $page = $pages->get($slug);
+            if ($page !== null && (! $page->is_published || ! $page->is_indexable)) {
+                continue;
+            }
+            $urls[] = ['loc' => route($route), 'priority' => '0.8', 'lastmod' => $page?->updated_at?->toAtomString()];
+        }
 
         foreach (ServiceCategory::published()->ordered()->get() as $category) {
             $urls[] = [
@@ -44,7 +48,7 @@ class SitemapController extends Controller
         }
 
         foreach (Page::published()->where('is_indexable', true)->get() as $page) {
-            if (in_array($page->slug, ['home', 'services', 'packages'], true)) {
+            if (in_array($page->slug, ['home', 'services', 'packages', 'articles', 'track', 'request-received', 'request-a-quotation', 'login', 'register', 'dashboard', 'admin', 'settings', 'design-system'], true)) {
                 continue;
             }
 
@@ -56,7 +60,7 @@ class SitemapController extends Controller
         }
 
         return response()
-            ->view('sitemap', ['urls' => $urls])
+            ->view('sitemap', ['urls' => collect($urls)->map(fn ($entry) => [...$entry, 'loc' => Seo::url($entry['loc'])])->unique('loc')->values()->all()])
             ->header('Content-Type', 'application/xml');
     }
 }

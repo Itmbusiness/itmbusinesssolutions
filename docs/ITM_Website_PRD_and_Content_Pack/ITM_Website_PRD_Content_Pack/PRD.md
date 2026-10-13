@@ -2,7 +2,7 @@
 
 ## Product
 
-**Working name:** ITM Corporate Secretarial Digital Service Platform  
+**Working name:** ITM Business Solutions Digital Service Platform  
 **Document status:** Implementation-ready baseline  
 **Technology direction:** Technology-neutral  
 **Primary market:** Zimbabwe  

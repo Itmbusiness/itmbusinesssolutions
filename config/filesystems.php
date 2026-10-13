@@ -29,6 +29,12 @@ return [
     */
 
     'disks' => [
+        'public_images' => [
+            'driver' => 'local',
+            'root' => public_path('images/uploads'),
+            'visibility' => 'public',
+            'throw' => true,
+        ],
 
         'local' => [
             'driver' => 'local',

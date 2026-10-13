@@ -1,5 +1,5 @@
 ---
-seo_title: "Tender and Supplier Registration Services Zimbabwe | ITM"
+seo_title: "Tender and Supplier Registration Services Zimbabwe | ITM Business Solutions"
 meta_description: "Prepare the organisation information and supporting documents commonly needed for supplier onboarding and procurement opportunities."
 primary_keyword: "PRAZ and vendor registration Zimbabwe"
 reviewed_on: "[YYYY-MM-DD]"

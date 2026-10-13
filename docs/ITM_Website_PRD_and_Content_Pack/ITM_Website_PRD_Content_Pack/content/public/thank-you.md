@@ -1,5 +1,5 @@
 ---
-seo_title: "Quotation Request Received | ITM"
+seo_title: "Quotation Request Received | ITM Business Solutions"
 indexable: false
 ---
 
@@ -18,4 +18,4 @@ A consultant will review the information and contact you through the selected ch
 **CTA:** Save Reference  
 **Secondary CTA:** Continue on WhatsApp
 
-Keep the reference private. ITM will never ask for a password, banking PIN or one-time security code when following up on this request.
+Keep the reference private. ITM Business Solutions will never ask for a password, banking PIN or one-time security code when following up on this request.

@@ -258,12 +258,30 @@ class ContentPackSeeder extends Seeder
 
             $categorySlug = $doc->frontMatter('category');
             $categorySlug = $categorySlug !== null ? Str::slug($categorySlug) : null;
+            // The pack's free-text "category:" front matter (e.g. "Starting a
+            // Business") doesn't always match one of the site's real service
+            // categories — only trust it as a link target once it does.
+            $resolvedCategorySlug = $categorySlug !== null && $categories->has($categorySlug) ? $categorySlug : null;
+
+            // Same "**CTA:** Label" convention as static pages — pulled into
+            // its own field so it renders as a real button, not bold text.
+            $ctaLabel = null;
+            $ctaUrl = null;
+            $body = $doc->body;
+
+            if (preg_match('/^\*\*CTA:\*\*\s*(.+?)\s*$/mi', $body, $m) === 1) {
+                $body = trim(preg_replace('/^\*\*CTA:\*\*.*$/mi', '', $body) ?? $body);
+                $ctaLabel = MarkdownDocument::plain($m[1]);
+                $ctaUrl = $this->resolveArticleCtaUrl($ctaLabel, $resolvedCategorySlug);
+            }
 
             Article::updateOrCreate(['slug' => $slug], [
-                'service_category_id' => $categorySlug !== null ? ($categories[$categorySlug] ?? null) : null,
+                'service_category_id' => $resolvedCategorySlug !== null ? $categories[$resolvedCategorySlug] : null,
                 'title' => $doc->title() ?? Str::headline($slug),
                 'excerpt' => $doc->frontMatter('meta_description') ?? $doc->intro(),
-                'body' => $doc->body,
+                'body' => $body,
+                'cta_label' => $ctaLabel,
+                'cta_url' => $ctaUrl,
                 'seo_title' => $doc->frontMatter('seo_title'),
                 'meta_description' => $doc->frontMatter('meta_description'),
                 'primary_keyword' => $doc->frontMatter('primary_keyword'),
@@ -274,6 +292,23 @@ class ContentPackSeeder extends Seeder
                 'position' => $position++,
             ]);
         }
+    }
+
+    /**
+     * An article's CTA almost always points at requesting an assessment, the
+     * same intent behind every generic label the pack uses ("Request a Tax
+     * Readiness Assessment", "Compare Structures", …). The one exception is
+     * a label that names "Services" directly, which browses services instead
+     * — the article's own category if it resolved to a real one, else the
+     * full services index.
+     */
+    private function resolveArticleCtaUrl(string $label, ?string $categorySlug): string
+    {
+        if (str_contains($label, 'Services')) {
+            return $categorySlug !== null ? route('services.category', $categorySlug) : route('services.index');
+        }
+
+        return route('quote.create');
     }
 
     /**
@@ -297,11 +332,26 @@ class ContentPackSeeder extends Seeder
         foreach ($pages as $slug => $relativePath) {
             $doc = $this->document($relativePath);
 
+            // The pack marks an in-body call to action as "**CTA:** Label" —
+            // pull it into its own field so it renders as a real button
+            // component instead of being dumped into the prose as bold text.
+            $ctaLabel = null;
+            $ctaUrl = null;
+            $body = $doc->body;
+
+            if (preg_match('/^\*\*CTA:\*\*\s*(.+?)\s*$/mi', $body, $m) === 1) {
+                $body = trim(preg_replace('/^\*\*CTA:\*\*.*$/mi', '', $body) ?? $body);
+                $ctaUrl = $this->resolvePageCtaUrl(MarkdownDocument::plain($m[1]));
+                $ctaLabel = $ctaUrl !== null ? MarkdownDocument::plain($m[1]) : null;
+            }
+
             Page::updateOrCreate(['slug' => $slug], [
                 'title' => $doc->title() ?? Str::headline($slug),
                 'seo_title' => $doc->frontMatter('seo_title'),
                 'meta_description' => $doc->frontMatter('meta_description'),
-                'body' => $doc->body,
+                'body' => $body,
+                'cta_label' => $ctaLabel,
+                'cta_url' => $ctaUrl,
                 'is_indexable' => $doc->frontMatter('indexable') !== 'false',
                 'is_system' => true,
             ]);
@@ -329,5 +379,19 @@ class ContentPackSeeder extends Seeder
                 'position' => $position++,
             ]);
         }
+    }
+
+    /**
+     * Maps a content pack CTA label to the route it should link to. Only
+     * labels the pack actually uses are recognised — an unresolved label
+     * leaves the page without an in-body CTA rather than linking nowhere.
+     */
+    private function resolvePageCtaUrl(string $label): ?string
+    {
+        return match ($label) {
+            'View Our Services', 'Choose a Service Checklist' => route('services.index'),
+            'Browse All Articles' => route('articles.index'),
+            default => null,
+        };
     }
 }

@@ -1,8 +1,10 @@
 <x-layouts::public
-    :title="__('Resources')"
-    :meta-description="__('Plain-language guidance on company registration, tax, NSSA, tenders and organisation structures in Zimbabwe.')"
+    :title="$page?->seo_title ?? __('Resources')"
+    :meta-description="$page?->meta_description ?? __('Plain-language guidance on company registration, tax, NSSA, tenders and organisation structures in Zimbabwe.')"
+    :indexable="$page?->is_indexable ?? true"
 >
     <x-public.page-header
+        image="resources"
         :eyebrow="__('Resources')"
         :heading="__('Written by consultants, dated and reviewed.')"
         :lead="__('Practical explanations of the questions clients ask most. Guidance is general — a consultant confirms what applies to your organisation.')"
@@ -11,7 +13,8 @@
     <div class="page-shell-wide section-tight">
         <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3" data-reveal-stagger="70">
             @forelse ($articles as $article)
-                <a href="{{ route('articles.show', $article) }}" class="card card-lift group flex flex-col no-underline hover:no-underline" data-reveal="up">
+                <a href="{{ route('articles.show', $article) }}" class="card card-lift public-image-card group flex flex-col no-underline hover:no-underline" data-reveal="up">
+                    <x-public.media :subject="$article->slug" class="public-card-image" />
                     @if ($article->category)
                         <p class="card-kicker text-teal">{{ $article->category->name }}</p>
                     @endif

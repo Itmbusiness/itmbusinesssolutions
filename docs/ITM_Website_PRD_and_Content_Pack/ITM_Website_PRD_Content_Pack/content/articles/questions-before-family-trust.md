@@ -1,5 +1,5 @@
 ---
-seo_title: "Questions to Answer Before Forming a Family Trust | ITM"
+seo_title: "Questions to Answer Before Forming a Family Trust | ITM Business Solutions"
 meta_description: "A practical guide to questions to answer before forming a family trust, including preparation questions, common risks and the next appropriate step."
 slug: "questions-before-family-trust"
 primary_keyword: "family trust planning Zimbabwe"
@@ -42,7 +42,7 @@ Asset transfers, taxes, family rights and legal drafting may require coordinated
 
 ## What to do next
 
-Prepare the available records and request an assessment. ITM will identify missing information and send a written quotation before payment is requested.
+Prepare the available records and request an assessment. ITM Business Solutions will identify missing information and send a written quotation before payment is requested.
 
 **CTA:** Request a Confidential Assessment
 

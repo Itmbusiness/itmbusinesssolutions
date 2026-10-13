@@ -1,6 +1,6 @@
 ---
-seo_title: "Secure Document Handling | ITM"
-meta_description: "Learn how to prepare, upload, replace and protect documents used for ITM business-service applications."
+seo_title: "Secure Document Handling | ITM Business Solutions"
+meta_description: "Learn how to prepare, upload, replace and protect documents used for ITM Business Solutions business-service applications."
 indexable: true
 ---
 

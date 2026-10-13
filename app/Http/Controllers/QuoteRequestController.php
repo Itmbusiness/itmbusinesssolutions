@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Enums\ServiceGoal;
+use App\Mail\LeadConfirmation;
+use App\Mail\NewLeadReceived;
 use App\Models\Lead;
 use App\Models\Service;
+use App\Models\Setting;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 
@@ -47,7 +51,7 @@ class QuoteRequestController extends Controller
             // Honeypot: a real person never fills a hidden field.
             'website' => ['prohibited'],
         ], [
-            'consent.accepted' => 'Please confirm that ITM may contact you about this request.',
+            'consent.accepted' => 'Please confirm that ITM Business Solutions may contact you about this request.',
         ]);
 
         $lead = Lead::create([
@@ -63,7 +67,15 @@ class QuoteRequestController extends Controller
             'preferred_channel' => $validated['preferred_channel'],
             'urgency' => $validated['urgency'] ?? null,
             'consent_at' => now(),
+            'utm_source' => $request->session()->get('lead_attribution.utm_source') ?: null,
+            'utm_medium' => $request->session()->get('lead_attribution.utm_medium') ?: null,
+            'utm_campaign' => $request->session()->get('lead_attribution.utm_campaign') ?: null,
         ]);
+
+        if ($contactEmail = Setting::get('contact.email')) {
+            Mail::to($contactEmail)->send(new NewLeadReceived($lead));
+        }
+        Mail::to($lead->email)->send(new LeadConfirmation($lead));
 
         return redirect()
             ->route('quote.received')

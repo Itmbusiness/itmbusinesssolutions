@@ -1,9 +1,10 @@
 <x-layouts::public
     :title="__('Request a Quotation')"
-    :meta-description="__('Tell ITM what you need. No account, no documents and no payment to start — a consultant reviews every request and replies with a written quotation.')"
+    :meta-description="__('Tell ITM Business Solutions what you need. No account, no documents and no payment to start — a consultant reviews every request and replies with a written quotation.')"
     :indexable="false"
 >
     <x-public.page-header
+        image="quotation"
         :eyebrow="__('Step 1 of the process')"
         :heading="$service ? __('Request a quotation for :service', ['service' => $service->name]) : __('Request a written quotation')"
         :lead="__('No account, no documents and no payment to start. A consultant reviews your request and confirms what is actually needed.')"
@@ -16,7 +17,8 @@
             </x-ui.alert>
         @endif
 
-        <form method="POST" action="{{ route('quote.store') }}" class="flex flex-col gap-6">
+        <div class="public-quote-layout">
+        <form method="POST" action="{{ route('quote.store') }}" class="flex min-w-0 flex-col gap-6" x-data="{ submitting: false }" x-on:submit="submitting = true" x-bind:aria-busy="submitting">
             @csrf
 
             {{-- Honeypot: hidden from people, irresistible to bots. --}}
@@ -130,16 +132,18 @@
 
                     <x-ui.field :error="$errors->first('consent')">
                         <x-ui.choice type="checkbox" name="consent" value="1" :checked="(bool) old('consent')" required>
-                            {{ __('I agree that ITM may contact me about this request and store the information I have provided.') }}
+                            {{ __('I agree that ITM Business Solutions may contact me about this request and store the information I have provided.') }}
                         </x-ui.choice>
                     </x-ui.field>
                 </div>
             </x-ui.card>
 
             <div class="flex flex-wrap items-center gap-3">
-                <x-ui.button type="submit" icon="paper-plane-tilt">{{ __('Send Request') }}</x-ui.button>
+                <x-ui.button type="submit" icon="paper-plane-tilt" x-bind:disabled="submitting"><span x-show="!submitting">{{ __('Send Request') }}</span><span x-cloak x-show="submitting">{{ __('Sending...') }}</span></x-ui.button>
                 <p class="text-meta text-muted">{{ __('No payment is requested until you approve a written quotation.') }}</p>
             </div>
         </form>
+        <x-public.quote-next />
+        </div>
     </div>
 </x-layouts::public>

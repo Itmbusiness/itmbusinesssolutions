@@ -1,5 +1,5 @@
 ---
-seo_title: "Why a Tax Clearance Request May Be Delayed | ITM"
+seo_title: "Why a Tax Clearance Request May Be Delayed | ITM Business Solutions"
 meta_description: "A practical guide to why a tax clearance request may be delayed, including preparation questions, common risks and the next appropriate step."
 slug: "why-tax-clearance-may-be-delayed"
 primary_keyword: "tax clearance delays Zimbabwe"
@@ -42,7 +42,7 @@ A consultant can prepare, submit and follow up, but cannot guarantee a certifica
 
 ## What to do next
 
-Prepare the available records and request an assessment. ITM will identify missing information and send a written quotation before payment is requested.
+Prepare the available records and request an assessment. ITM Business Solutions will identify missing information and send a written quotation before payment is requested.
 
 **CTA:** Assess My Tax Position
 

@@ -1,5 +1,5 @@
 ---
-seo_title: "What to Do After Registering a Company in Zimbabwe | ITM"
+seo_title: "What to Do After Registering a Company in Zimbabwe | ITM Business Solutions"
 meta_description: "A practical guide to what to do after registering a company in zimbabwe, including preparation questions, common risks and the next appropriate step."
 slug: "what-to-do-after-registering-company-zimbabwe"
 primary_keyword: "after company registration Zimbabwe"
@@ -42,7 +42,7 @@ A consistent logo, company profile, contact channel and invoicing process help t
 
 ## What to do next
 
-Prepare the available records and request an assessment. ITM will identify missing information and send a written quotation before payment is requested.
+Prepare the available records and request an assessment. ITM Business Solutions will identify missing information and send a written quotation before payment is requested.
 
 **CTA:** Request a Post-registration Assessment
 

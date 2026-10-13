@@ -1,5 +1,5 @@
 ---
-seo_title: "Company Registration Services Zimbabwe | ITM"
+seo_title: "Company Registration Services Zimbabwe | ITM Business Solutions"
 meta_description: "Choose a suitable formal structure, prepare accurate information and move from an idea to a registered business with guided support."
 primary_keyword: "company registration services Zimbabwe"
 reviewed_on: "[YYYY-MM-DD]"

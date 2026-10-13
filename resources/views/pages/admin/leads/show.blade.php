@@ -22,6 +22,9 @@
                         __('Organisation status') => $lead->organisation_status ? Str::headline($lead->organisation_status) : null,
                         __('Urgency') => $lead->urgency ? Str::headline($lead->urgency) : null,
                         __('Source') => Str::headline($lead->source),
+                        __('Campaign source') => $lead->utm_source,
+                        __('Campaign medium') => $lead->utm_medium,
+                        __('Campaign name') => $lead->utm_campaign,
                     ] as $label => $value)
                         <div>
                             <dt class="card-meta">{{ $label }}</dt>
@@ -107,12 +110,12 @@
             <x-ui.card>
                 <h2 class="card-title">{{ __('Reply') }}</h2>
                 <div class="mt-3 flex flex-col gap-2">
-                    <x-ui.button variant="secondary" href="mailto:{{ $lead->email }}?subject={{ rawurlencode('Your ITM request '.$lead->reference) }}">
+                    <x-ui.button variant="secondary" href="mailto:{{ $lead->email }}?subject={{ rawurlencode('Your ITM Business Solutions request '.$lead->reference) }}">
                         {{ __('Email this person') }}
                     </x-ui.button>
                     @if ($lead->phone)
                         <x-ui.button variant="whatsapp" icon="whatsapp-logo"
-                            href="https://wa.me/{{ preg_replace('/\D/', '', $lead->phone) }}?text={{ rawurlencode('Hello '.$lead->name.', regarding your ITM request '.$lead->reference.':') }}">
+                            href="https://wa.me/{{ preg_replace('/\D/', '', $lead->phone) }}?text={{ rawurlencode('Hello '.$lead->name.', regarding your ITM Business Solutions request '.$lead->reference.':') }}">
                             {{ __('Open WhatsApp') }}
                         </x-ui.button>
                     @endif

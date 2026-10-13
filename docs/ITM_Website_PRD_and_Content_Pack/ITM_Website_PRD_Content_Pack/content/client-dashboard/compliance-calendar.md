@@ -12,7 +12,7 @@ Combine organisation-specific obligations, renewals, reminders and responsible t
 - Persistent organisation switcher with organisation name and user role.
 - Plain-language status and next action.
 - Relevant records only for organisations the user can access.
-- Help text that explains what ITM is waiting for and what happens next.
+- Help text that explains what ITM Business Solutions is waiting for and what happens next.
 - Primary action positioned near the item that requires attention.
 
 ## Page-specific information

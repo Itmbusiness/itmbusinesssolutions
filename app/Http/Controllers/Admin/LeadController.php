@@ -51,7 +51,7 @@ class LeadController extends Controller
     {
         $validated = $request->validate([
             'status' => ['required', Rule::enum(LeadStatus::class)],
-            'assigned_to' => ['nullable', 'exists:users,id'],
+            'assigned_to' => ['nullable', Rule::exists('users', 'id')->whereIn('role', [UserRole::Consultant->value, UserRole::Admin->value])],
             'internal_notes' => ['nullable', 'string', 'max:5000'],
         ]);
 

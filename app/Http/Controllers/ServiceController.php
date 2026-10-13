@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Page;
 use App\Models\Service;
 use App\Models\ServiceCategory;
+use App\Support\Seo;
 use Illuminate\View\View;
 
 class ServiceController extends Controller
@@ -11,6 +13,7 @@ class ServiceController extends Controller
     public function index(): View
     {
         return view('pages.public.services', [
+            'page' => Page::published()->where('slug', 'services')->first(),
             'categories' => ServiceCategory::published()
                 ->ordered()
                 ->with(['services' => fn ($query) => $query->published()])
@@ -32,9 +35,9 @@ class ServiceController extends Controller
 
     public function show(Service $service): View
     {
-        abort_unless($service->is_published, 404);
+        abort_unless($service->is_published && $service->category->is_published, 404);
 
-        $service->load(['category', 'faqs' => fn ($query) => $query->published(), 'relatedServices']);
+        $service->load(['category', 'faqs' => fn ($query) => $query->published(), 'relatedServices' => fn ($query) => $query->published()]);
 
         return view('pages.public.service', [
             'service' => $service,
@@ -59,15 +62,16 @@ class ServiceController extends Controller
             'provider' => [
                 '@type' => 'Organization',
                 'name' => config('app.name'),
-                'url' => url('/'),
+                '@id' => Seo::url(url('/')).'#organization',
+                'url' => Seo::url(url('/')),
             ],
-            'url' => route('services.show', $service),
+            'url' => Seo::url(route('services.show', $service)),
         ], [
             '@type' => 'BreadcrumbList',
             'itemListElement' => [
-                ['@type' => 'ListItem', 'position' => 1, 'name' => 'Services', 'item' => route('services.index')],
-                ['@type' => 'ListItem', 'position' => 2, 'name' => $service->category->name, 'item' => route('services.category', $service->category)],
-                ['@type' => 'ListItem', 'position' => 3, 'name' => $service->name, 'item' => route('services.show', $service)],
+                ['@type' => 'ListItem', 'position' => 1, 'name' => 'Services', 'item' => Seo::url(route('services.index'))],
+                ['@type' => 'ListItem', 'position' => 2, 'name' => $service->category->name, 'item' => Seo::url(route('services.category', $service->category))],
+                ['@type' => 'ListItem', 'position' => 3, 'name' => $service->name, 'item' => Seo::url(route('services.show', $service))],
             ],
         ]];
 

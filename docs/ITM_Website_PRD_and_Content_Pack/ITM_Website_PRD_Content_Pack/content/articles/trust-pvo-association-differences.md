@@ -1,5 +1,5 @@
 ---
-seo_title: "Trust, PVO or Association: Which Structure Fits the Purpose? | ITM"
+seo_title: "Trust, PVO or Association: Which Structure Fits the Purpose? | ITM Business Solutions"
 meta_description: "A practical guide to trust, pvo or association: which structure fits the purpose?, including preparation questions, common risks and the next appropriate step."
 slug: "trust-pvo-association-differences"
 primary_keyword: "trust PVO association Zimbabwe"
@@ -42,7 +42,7 @@ The choice can have legal and tax consequences. Website content should guide pre
 
 ## What to do next
 
-Prepare the available records and request an assessment. ITM will identify missing information and send a written quotation before payment is requested.
+Prepare the available records and request an assessment. ITM Business Solutions will identify missing information and send a written quotation before payment is requested.
 
 **CTA:** Request a Structure Assessment
 

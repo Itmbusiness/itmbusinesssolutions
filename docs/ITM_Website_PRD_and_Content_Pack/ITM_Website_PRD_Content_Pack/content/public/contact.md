@@ -1,6 +1,6 @@
 ---
-seo_title: "Contact ITM Corporate Secretarial"
-meta_description: "Contact ITM for Zimbabwean company registration, tax, NSSA, PRAZ, licensing, trust and business-document support."
+seo_title: "Contact ITM Business Solutions"
+meta_description: "Contact ITM Business Solutions for Zimbabwean company registration, tax, NSSA, PRAZ, licensing, trust and business-document support."
 indexable: true
 ---
 

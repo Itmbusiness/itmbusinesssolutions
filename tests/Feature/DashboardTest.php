@@ -33,17 +33,17 @@ class DashboardTest extends TestCase
             ->assertOk()
             ->assertSee('No quotations yet')
             ->assertSee('Request a Service')
-            ->assertDontSee('No leads yet');
+            ->assertDontSee('My customers');
     }
 
-    public function test_a_consultant_sees_the_back_office_instead(): void
+    public function test_a_consultant_sees_their_own_customer_book_instead(): void
     {
         $this->withoutVite()->actingAs(User::factory()->consultant()->create());
 
         $this->get(route('dashboard'))
             ->assertOk()
-            ->assertSee('Back office')
-            ->assertSee('No leads yet')
+            ->assertSee('My business')
+            ->assertSee('No customers yet')
             ->assertDontSee('No quotations yet');
     }
 

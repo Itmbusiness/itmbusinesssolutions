@@ -1,5 +1,5 @@
 ---
-seo_title: "What Is a TIN and Why Does a Business Need One? | ITM"
+seo_title: "What Is a TIN and Why Does a Business Need One? | ITM Business Solutions"
 meta_description: "A practical guide to what is a tin and why does a business need one?, including preparation questions, common risks and the next appropriate step."
 slug: "what-is-a-tin-zimbabwe"
 primary_keyword: "TIN number Zimbabwe"
@@ -42,7 +42,7 @@ Seek an assessment when records are missing, details have changed or a third par
 
 ## What to do next
 
-Prepare the available records and request an assessment. ITM will identify missing information and send a written quotation before payment is requested.
+Prepare the available records and request an assessment. ITM Business Solutions will identify missing information and send a written quotation before payment is requested.
 
 **CTA:** Request a Tax Readiness Assessment
 

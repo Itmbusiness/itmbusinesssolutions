@@ -20,6 +20,14 @@
                     <flux:sidebar.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>
                         {{ __('Overview') }}
                     </flux:sidebar.item>
+                    @if (auth()->user()->isConsultant())
+                        <flux:sidebar.item icon="users" :href="route('consultant.customers.index')" :current="request()->routeIs('consultant.customers.*')" wire:navigate>
+                            {{ __('My customers') }}
+                        </flux:sidebar.item>
+                    @endif
+                    <flux:sidebar.item icon="cog-6-tooth" :href="route('profile.edit')" :current="request()->routeIs('profile.edit', 'appearance.edit', 'security.edit')" wire:navigate>
+                        {{ __('Settings') }}
+                    </flux:sidebar.item>
                 </flux:sidebar.group>
             </flux:sidebar.nav>
 

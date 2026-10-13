@@ -1,9 +1,10 @@
 <x-layouts::public
     :title="$category->seo_title ?? $category->name"
-    :meta-description="$category->meta_description"
+    :meta-description="$category->meta_description ?? $category->summary"
     :canonical="route('services.category', $category)"
 >
     <x-public.page-header
+        :image="$category->slug"
         :eyebrow="__('Services')"
         :heading="$category->name"
         :lead="$category->summary"
@@ -17,7 +18,8 @@
 
                 <div class="mt-5 flex flex-col gap-3" data-reveal-stagger="70">
                     @forelse ($category->services as $service)
-                        <a href="{{ route('services.show', $service) }}" class="card card-lift group flex flex-col no-underline hover:no-underline" data-reveal="up">
+                        <a href="{{ route('services.show', $service) }}" class="card card-lift public-service-row group no-underline hover:no-underline" data-reveal="up">
+                            <x-public.media :subject="$service->slug" class="public-service-row-image" />
                             <div class="flex items-start justify-between gap-4">
                                 <h3 class="text-h3 font-semibold text-navy">{{ $service->name }}</h3>
                                 <x-ui.icon name="arrow-right" size="18px" class="mt-1 flex-none text-teal transition-transform duration-300 group-hover:translate-x-1" />

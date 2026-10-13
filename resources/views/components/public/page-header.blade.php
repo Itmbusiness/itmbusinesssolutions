@@ -3,11 +3,15 @@
     'heading',
     'lead' => null,
     'breadcrumbs' => [],
+    'image' => null,
 ])
 
 {{-- The navy band every inner page opens with — §01's "authority" ground. --}}
-<section class="ground-navy grain edge-light relative overflow-hidden">
-    <div class="page-shell-wide py-14 lg:py-20">
+<section class="ground-navy edge-light public-hero {{ $image ? 'public-hero-image' : '' }} {{ Str::contains($image ?? '', ['employer', 'nssa', 'brand', 'licen']) ? 'public-hero-photo' : '' }}">
+    @if ($image)
+        <x-public.media :subject="$image" priority class="public-hero-backdrop" />
+    @endif
+    <div class="page-shell-wide public-hero-content py-14 lg:py-20">
         @if (! empty($breadcrumbs))
             <nav aria-label="{{ __('Breadcrumb') }}" class="mb-6">
                 <ol class="flex flex-wrap items-center gap-2 text-meta text-navy-300">
@@ -29,7 +33,7 @@
             <p class="eyebrow-rule text-teal-300">{{ $eyebrow }}</p>
         @endif
 
-        <h1 class="mt-5 max-w-[24ch] text-balance text-[clamp(2rem,4.4vw,3.2rem)] font-semibold leading-[1.08] tracking-[-0.025em] text-white">
+        <h1 class="public-heading mt-5 max-w-[24ch] text-balance font-semibold text-white">
             {{ $heading }}
         </h1>
 

@@ -1,5 +1,5 @@
 ---
-seo_title: "Branding and Business Documents Services Zimbabwe | ITM"
+seo_title: "Branding and Business Documents Services Zimbabwe | ITM Business Solutions"
 meta_description: "Present your business professionally with a consistent identity and a company profile built for customers, partners and procurement opportunities."
 primary_keyword: "company profile and logo design Zimbabwe"
 reviewed_on: "[YYYY-MM-DD]"

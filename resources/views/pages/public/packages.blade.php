@@ -3,6 +3,7 @@
     :meta-description="$page?->meta_description"
 >
     <x-public.page-header
+        image="registration"
         :eyebrow="__('Packages')"
         :heading="$page?->title ?? __('Practical packages built around your goal')"
         :lead="__('Packages reduce duplicate requirements while keeping every professional, statutory and optional charge visible.')"

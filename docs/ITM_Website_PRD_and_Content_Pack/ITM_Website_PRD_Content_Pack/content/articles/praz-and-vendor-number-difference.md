@@ -1,5 +1,5 @@
 ---
-seo_title: "PRAZ Registration and Vendor Numbers: What Is the Difference? | ITM"
+seo_title: "PRAZ Registration and Vendor Numbers: What Is the Difference? | ITM Business Solutions"
 meta_description: "A practical guide to praz registration and vendor numbers: what is the difference?, including preparation questions, common risks and the next appropriate step."
 slug: "praz-and-vendor-number-difference"
 primary_keyword: "PRAZ vs vendor number Zimbabwe"
@@ -42,7 +42,7 @@ Supplier onboarding helps an organisation participate or transact; it does not g
 
 ## What to do next
 
-Prepare the available records and request an assessment. ITM will identify missing information and send a written quotation before payment is requested.
+Prepare the available records and request an assessment. ITM Business Solutions will identify missing information and send a written quotation before payment is requested.
 
 **CTA:** Prepare for Supplier Registration
 

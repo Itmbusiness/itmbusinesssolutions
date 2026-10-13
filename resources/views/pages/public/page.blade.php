@@ -3,9 +3,15 @@
     :meta-description="$page->meta_description"
     :indexable="$page->is_indexable"
 >
-    <x-public.page-header :heading="$page->title" />
+    <x-public.page-header :heading="$page->title" :lead="$lead" :image="in_array($page->slug, ['about', 'requirements', 'contact']) ? ($page->slug === 'about' ? 'registration' : $page->slug) : null" />
 
     <div class="page-shell section-tight">
+        @if (in_array($page->slug, ['privacy', 'terms']))
+            <x-public.legal-content :blocks="$blocks" />
+        @else
+        @if ($page->slug === 'requirements')
+            <x-public.checklist-finder :services="$checklists" />
+        @endif
         @if ($faqs->isNotEmpty())
             <div class="flex flex-col gap-2">
                 @foreach ($faqs as $faq)
@@ -19,11 +25,16 @@
                 @endforeach
             </div>
         @else
-            <article class="prose-itm">
-                {!! Str::markdown($page->body ?? '') !!}
-            </article>
+            <x-public.rich-content :blocks="$blocks" :illustrated="in_array($page->slug, ['about', 'requirements'])" :subject="$page->slug" />
+
+            @if ($page->cta_label && $page->cta_url)
+                <x-public.inline-cta :label="$page->cta_label" :url="$page->cta_url" class="mt-6" />
+            @endif
+        @endif
         @endif
     </div>
 
-    <x-public.cta />
+    @unless (in_array($page->slug, ['privacy', 'terms']))
+        <x-public.cta />
+    @endunless
 </x-layouts::public>

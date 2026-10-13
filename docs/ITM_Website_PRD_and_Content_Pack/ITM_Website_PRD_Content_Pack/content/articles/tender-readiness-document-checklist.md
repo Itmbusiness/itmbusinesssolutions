@@ -1,5 +1,5 @@
 ---
-seo_title: "Tender-readiness Document Checklist for Zimbabwean Businesses | ITM"
+seo_title: "Tender-readiness Document Checklist for Zimbabwean Businesses | ITM Business Solutions"
 meta_description: "A practical guide to tender-readiness document checklist for zimbabwean businesses, including preparation questions, common risks and the next appropriate step."
 slug: "tender-readiness-document-checklist"
 primary_keyword: "tender documents checklist Zimbabwe"
@@ -42,7 +42,7 @@ Eligibility, mandatory forms, signatures, format and deadline need a separate re
 
 ## What to do next
 
-Prepare the available records and request an assessment. ITM will identify missing information and send a written quotation before payment is requested.
+Prepare the available records and request an assessment. ITM Business Solutions will identify missing information and send a written quotation before payment is requested.
 
 **CTA:** Request a Tender Readiness Review
 

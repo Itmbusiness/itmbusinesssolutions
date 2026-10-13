@@ -3,10 +3,14 @@
 namespace Tests\Feature;
 
 use App\Enums\LeadStatus;
+use App\Mail\LeadConfirmation;
+use App\Mail\NewLeadReceived;
 use App\Models\Lead;
 use App\Models\Service;
 use App\Models\ServiceCategory;
+use App\Models\Setting;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
 
 class QuoteRequestTest extends TestCase
@@ -77,6 +81,48 @@ class QuoteRequestTest extends TestCase
         $this->assertNull($lead->user_id);
         $this->assertSame(LeadStatus::New, $lead->status);
         $this->assertNotNull($lead->consent_at);
+    }
+
+    public function test_campaign_tags_follow_a_visitor_from_landing_page_to_enquiry(): void
+    {
+        $this->get(route('home', [
+            'utm_source' => 'facebook',
+            'utm_medium' => 'paid_social',
+            'utm_campaign' => 'October enquiries',
+        ]))->assertOk();
+
+        $this->post(route('quote.store'), $this->validPayload([
+            'utm_source' => 'forged',
+        ]))->assertRedirect(route('quote.received'));
+
+        $lead = Lead::sole();
+        $this->assertSame('facebook', $lead->utm_source);
+        $this->assertSame('paid_social', $lead->utm_medium);
+        $this->assertSame('October enquiries', $lead->utm_campaign);
+    }
+
+    public function test_a_direct_enquiry_has_no_campaign_attribution(): void
+    {
+        $this->post(route('quote.store'), $this->validPayload())
+            ->assertRedirect(route('quote.received'));
+
+        $this->assertNull(Lead::sole()->utm_source);
+    }
+
+    public function test_a_submission_notifies_itm_and_confirms_to_the_client(): void
+    {
+        Mail::fake();
+
+        Setting::put('contact.email', 'hello@itmbusinesssolutions.co.zw', 'contact');
+
+        $this->post(route('quote.store'), $this->validPayload());
+        $lead = Lead::sole();
+
+        Mail::assertQueued(NewLeadReceived::class, fn ($mail) => $mail->hasTo('hello@itmbusinesssolutions.co.zw')
+            && $mail->lead->is($lead));
+
+        Mail::assertQueued(LeadConfirmation::class, fn ($mail) => $mail->hasTo('tendai@example.co.zw')
+            && $mail->lead->is($lead));
     }
 
     public function test_the_reference_is_shown_once_on_the_confirmation_page(): void

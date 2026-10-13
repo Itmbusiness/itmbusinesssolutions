@@ -5,7 +5,9 @@ change them**. Read this before exploring — it is meant to replace a search.
 
 - Conventions and rules: `AGENTS.md` (loaded automatically each session)
 - Local setup quirks on this machine: `docs/running-locally.md`
+- Live cPanel/SSH connection, deployment paths and backups: `docs/deployment-cpanel.md`
 - Design tokens and components: `docs/design-system.md`
+- Client vs. consultant dashboard role definitions: `docs/dashboards-spec.md`
 
 ---
 
@@ -19,8 +21,10 @@ and give the owner an admin to manage everything without a deploy.
 
 Source of truth for requirements: `docs/ITM_Website_PRD_and_Content_Pack/`.
 
-**Built:** public site, SEO, lead capture, full admin CMS, client/consultant
-dashboards.
+**Built:** public site, SEO, lead capture, full admin CMS, client dashboard
+(their own requests to ITM), and a consultant dashboard/CRM (an independent
+consultant's own customers, notes and tasks — unrelated to ITM's leads; see
+`docs/dashboards-spec.md`).
 **Not built** (PRD Releases 2–4, needs a CRM spine first — do not half-build
 these into the lead flow): organisations and teams, versioned quotations,
 payments, document vault, applications workflow, compliance calendar.
@@ -40,14 +44,19 @@ payments, document vault, applications workflow, compliance calendar.
 | Colours, spacing, type, motion | `resources/css/app.css` (all tokens in `@theme`) |
 | A reusable UI element (button, card, badge…) | `resources/views/components/ui/` |
 | Scroll/reveal animations | `resources/js/motion.js` |
+| Public page images / image management | Admin Settings previews and upload/replace/remove/restore controls; `Admin/PublicImageController`, `app/Support/PublicMedia.php`, `resources/views/components/admin/public-image.blade.php`; uploads use the `public_images` disk |
+| Requirements checklist search | `resources/views/components/public/checklist-finder.blade.php` + `PageController@show` |
+| Contact layout / live contact details | `resources/views/pages/public/contact.blade.php`, `components/public/contact-{form,channels}.blade.php` + `PageController@show`; details come from Admin Settings, enquiries use `QuoteRequestController@store` |
 | Add a public route | `routes/web.php` — **keep the catch-all `{slug}` route last** |
 | Add an admin screen | `routes/admin.php` + `app/Http/Controllers/Admin/` + `resources/views/pages/admin/` |
 | Admin sidebar links | `resources/views/layouts/admin.blade.php` |
 | Quotation request form / validation | `app/Http/Controllers/QuoteRequestController.php` + `resources/views/pages/public/quote.blade.php` |
+| Lead notification / confirmation emails | `app/Mail/{NewLeadReceived,LeadConfirmation}.php` + `resources/views/emails/`. Sent from `QuoteRequestController@store` and `LeadController@store`, queued — see `docs/running-locally.md` for running a worker |
 | Lead statuses | `app/Enums/LeadStatus.php` |
 | Who can reach the admin | `app/Http/Middleware/EnsureUserIsAdmin.php`, `app/Enums/UserRole.php` |
 | Registration fields / roles | `app/Actions/Fortify/CreateNewUser.php` + `resources/views/pages/auth/register.blade.php` |
-| Client vs consultant dashboard | `resources/views/dashboard.blade.php` dispatches to `pages/dashboard/{client,consultant}.blade.php` |
+| Client vs consultant dashboard | `app/Http/Controllers/DashboardController.php` prepares role-scoped data; `resources/views/dashboard.blade.php` dispatches to `pages/dashboard/{client,consultant}.blade.php` |
+| Consultant's own customers/notes/tasks | `routes/consultant.php` + `app/Http/Controllers/Consultant/` + `resources/views/pages/consultant/customers/` |
 | Workspace sidebar | `resources/views/layouts/app/sidebar.blade.php` |
 | Re-import the PRD content pack | `database/seeders/ContentPackSeeder.php`, then `php artisan db:seed` |
 | SEO metadata / JSON-LD | Per-page in the controller (`schema` key) + `layouts/public.blade.php` `<head>` |
@@ -79,8 +88,10 @@ Defined in `routes/web.php` (public) and `routes/admin.php` (admin).
 
 | URL | Notes |
 | --- | --- |
-| `/dashboard` | Branches on role → `pages/dashboard/client` or `consultant` |
+| `/dashboard` | `DashboardController`; branches on role → `pages/dashboard/client` or `consultant` |
 | `/service-requests/create`, POST `/service-requests` | `LeadController` (signed-in request; creates a `Lead` with `source=workspace`) |
+| `/consultant/customers/*` | `Consultant\CustomerController` — a consultant's own customer CRUD, scoped to `consultant_id`. Middleware `auth,verified,consultant` |
+| `/consultant/customers/{customer}/notes`, `/tasks` | `Consultant\CustomerNoteController`, `Consultant\TaskController` |
 | `/settings/*` | `routes/settings.php`, Livewire pages |
 | `/design-system` | Component reference board. Non-production only, unlinked |
 
@@ -110,11 +121,15 @@ Migrations in `database/migrations/`. Content tables are in
 | `pages` | `Page` | Editable static pages. `is_system` = has a fixed route, cannot be deleted |
 | `faqs` | `Faq` | **Polymorphic**: attached to a service, or `faqable_type = null` for the site-wide `/faq` page |
 | `settings` | `Setting` | Key/value, cached. Read via `Setting::get()` / `Setting::values()` |
-| `leads` | `Lead` | Every quotation request, guest or signed-in |
+| `leads` | `Lead` | Every quotation request, guest or signed-in — **ITM's own clients only**, never a consultant's |
 | `users` | `User` | `role` is a `UserRole` enum: client, consultant, admin |
+| `consultant_customers` | `ConsultantCustomer` | A consultant's own customer book, scoped by `consultant_id`. Deliberately separate from `leads` |
+| `consultant_customer_notes` | `ConsultantCustomerNote` | Timestamped activity log per consultant customer |
+| `consultant_tasks` | `ConsultantTask` | A consultant's own follow-up reminders, tied to one of their customers |
 
 Enums: `app/Enums/` — `UserRole`, `LeadStatus` (the PRD's status model),
-`ServiceGoal` (mirrors the homepage's five outcomes).
+`ServiceGoal` (mirrors the homepage's five outcomes), `ConsultantCustomerStage`
+(a consultant's own lightweight status — not `LeadStatus`).
 
 Support classes: `app/Support/MarkdownDocument.php` (front-matter + section
 parser used by the importer), `app/Support/SiteChrome.php` (header/footer data).
@@ -167,10 +182,11 @@ These are non-obvious and were each found the hard way.
 | File | Covers |
 | --- | --- |
 | `PublicSiteTest` | Pages render from the DB; unpublished content 404s; JSON-LD; sitemap |
-| `QuoteRequestTest` | Guest lead capture, consent, honeypot, reference format, tracking privacy |
+| `QuoteRequestTest` | Guest lead capture, consent, honeypot, reference format, tracking privacy, lead notification/confirmation emails |
 | `AdminTest` | Access control, CRUD round-trips to the public site, last-admin protection |
 | `LeadRequestTest` | Signed-in request flow |
 | `DashboardTest` | Role-based dashboard branching |
+| `ConsultantCrmTest` | Consultant customer/note/task CRUD, ownership isolation between consultants and from clients |
 | `DesignSystemTest` | UI components render correctly |
 | `Auth/`, `Settings/` | Starter-kit auth and settings |
 

@@ -1,12 +1,12 @@
 ---
-seo_title: "About ITM Corporate Secretarial"
-meta_description: "Learn how ITM Corporate Secretarial supports Zimbabwean organisations with clear requirements, quotations and application progress."
+seo_title: "About ITM Business Solutions"
+meta_description: "Learn how ITM Business Solutions supports Zimbabwean organisations with clear requirements, quotations and application progress."
 indexable: true
 ---
 
 # Practical Support for Starting and Running an Organisation
 
-ITM Corporate Secretarial helps founders and established organisations navigate formation, compliance, supplier onboarding, licensing and professional business-document services.
+ITM Business Solutions helps founders and established organisations navigate formation, compliance, supplier onboarding, licensing and professional business-document services.
 
 ## Our approach
 

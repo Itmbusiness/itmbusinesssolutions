@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LeadController;
 use App\Http\Controllers\PageController;
@@ -55,7 +56,7 @@ if (! app()->isProduction()) {
 */
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::view('dashboard', 'dashboard')->name('dashboard');
+    Route::get('dashboard', DashboardController::class)->name('dashboard');
 
     Route::get('service-requests/create', [LeadController::class, 'create'])
         ->name('service-requests.create');
@@ -64,6 +65,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 require __DIR__.'/admin.php';
+require __DIR__.'/consultant.php';
 require __DIR__.'/settings.php';
 
 /*

@@ -21,7 +21,7 @@
                 </x-ui.card>
 
                 <p class="text-center text-meta text-muted">
-                    ITM will never ask for your password, banking PIN or a one-time code.
+                    ITM Business Solutions will never ask for your password, banking PIN or a one-time code.
                 </p>
             </div>
         </div>

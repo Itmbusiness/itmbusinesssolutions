@@ -1,5 +1,5 @@
 ---
-seo_title: "Business and Operator Licences Services Zimbabwe | ITM"
+seo_title: "Business and Operator Licences Services Zimbabwe | ITM Business Solutions"
 meta_description: "Prepare for municipal or sector-specific licensing with a clear checklist, document review and application support."
 primary_keyword: "business licence application support Zimbabwe"
 reviewed_on: "[YYYY-MM-DD]"

@@ -1,6 +1,6 @@
 <x-layouts::public
     :title="__('Track Application')"
-    :meta-description="__('Check the progress of an ITM request using your reference and email address.')"
+    :meta-description="__('Check the progress of an ITM Business Solutions request using your reference and email address.')"
     :indexable="false"
 >
     <x-public.page-header

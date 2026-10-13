@@ -1,10 +1,11 @@
 <x-layouts::public
     :title="$service->seo_title ?? $service->name"
-    :meta-description="$service->meta_description"
+    :meta-description="$service->meta_description ?? $service->summary"
     :canonical="route('services.show', $service)"
     :schema="$schema"
 >
     <x-public.page-header
+        :image="$service->category->slug"
         :eyebrow="$service->category->name"
         :heading="$service->name"
         :lead="$service->intro"
@@ -46,7 +47,7 @@
                             @endforeach
                         </ul>
                         <p class="field-hint mt-4">
-                            {{ __('If the correct route depends on your circumstances, ITM will assess the information before asking you to approve a quotation.') }}
+                            {{ __('If the correct route depends on your circumstances, ITM Business Solutions will assess the information before asking you to approve a quotation.') }}
                         </p>
                     </section>
                 @endif
@@ -75,7 +76,7 @@
                             <ul class="flex flex-col gap-3">
                                 @foreach ($service->requirements as $item)
                                     <li class="flex gap-3 text-ink">
-                                        <span class="mt-0.5 flex size-5 flex-none items-center justify-center rounded-[4px] border border-line bg-page"></span>
+                                        <span class="mt-0.5 flex size-5 flex-none items-center justify-center rounded-sm border border-line bg-page"></span>
                                         <span>{{ $item }}</span>
                                     </li>
                                 @endforeach
@@ -117,7 +118,7 @@
                         </thead>
                         <tbody>
                             @foreach ([
-                                [__('Professional fee'), __('Quoted after assessment'), __('Work performed by ITM')],
+                                [__('Professional fee'), __('Quoted after assessment'), __('Work performed by ITM Business Solutions')],
                                 [__('Statutory / authority fee'), __('Confirmed at quotation'), __('Paid to or for the responsible authority')],
                                 [__('Optional costs'), __('If selected'), __('Courier, certified copies, expedited handling')],
                             ] as [$type, $amount, $note])

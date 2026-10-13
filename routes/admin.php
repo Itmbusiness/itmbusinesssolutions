@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\LeadController;
 use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\PublicImageController;
 use App\Http\Controllers\Admin\ServiceCategoryController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\SettingController;
@@ -44,6 +45,9 @@ Route::middleware(['auth', 'verified', 'admin'])
 
         Route::get('settings', [SettingController::class, 'edit'])->name('settings.edit');
         Route::put('settings', [SettingController::class, 'update'])->name('settings.update');
+        Route::put('settings/images/{subject}', [PublicImageController::class, 'update'])->name('images.update');
+        Route::delete('settings/images/{subject}', [PublicImageController::class, 'destroy'])->name('images.destroy');
+        Route::post('settings/images/{subject}/restore', [PublicImageController::class, 'restore'])->name('images.restore');
 
         Route::get('users', [UserController::class, 'index'])->name('users.index');
         Route::patch('users/{user}', [UserController::class, 'update'])->name('users.update');

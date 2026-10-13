@@ -1,6 +1,6 @@
-# ITM Corporate Secretarial Website PRD and Content Pack
+# ITM Business Solutions Website PRD and Content Pack
 
-This pack defines a technology-neutral sales, service-delivery and compliance-support platform for ITM Corporate Secretarial.
+This pack defines a technology-neutral sales, service-delivery and compliance-support platform for ITM Business Solutions.
 
 ## Confirmed product decisions
 

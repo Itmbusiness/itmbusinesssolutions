@@ -1,5 +1,5 @@
 ---
-seo_title: "Trust Registration Zimbabwe | ITM"
+seo_title: "Trust Registration Zimbabwe | ITM Business Solutions"
 meta_description: "Receive guided trust-formation support with an initial purpose, trustee and document-requirements assessment."
 slug: "trust-registration"
 primary_keyword: "trust registration Zimbabwe"
@@ -24,7 +24,7 @@ Clarify the purpose, participants, property and governance information before tr
 - Asset-holding arrangements requiring professional advice
 - Organisations formalising governance
 
-If the correct route depends on your circumstances, ITM will assess the information before asking you to approve a quotation.
+If the correct route depends on your circumstances, ITM Business Solutions will assess the information before asking you to approve a quotation.
 
 ## What the service can include
 
@@ -60,7 +60,7 @@ This is a preparation checklist. A consultant may request fewer or additional it
 
 | Charge type | Amount | Notes |
 | --- | ---: | --- |
-| Professional fee | US$[Set after assessment] | Work performed by ITM |
+| Professional fee | US$[Set after assessment] | Work performed by ITM Business Solutions |
 | Statutory or authority fee | US$[Confirm current amount] | Paid to or for the responsible authority where applicable |
 | Optional costs | US$[If selected] | Third-party, delivery, urgent or additional work |
 | Total quotation | US$[Calculated] | Valid until the date shown on the quotation |

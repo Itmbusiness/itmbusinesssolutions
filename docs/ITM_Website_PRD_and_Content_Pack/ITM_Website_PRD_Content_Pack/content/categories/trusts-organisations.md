@@ -1,5 +1,5 @@
 ---
-seo_title: "Trusts and Organisations Services Zimbabwe | ITM"
+seo_title: "Trusts and Organisations Services Zimbabwe | ITM Business Solutions"
 meta_description: "Receive guided formation support for trusts, family structures, associations and private voluntary organisations."
 primary_keyword: "trust PVO association registration Zimbabwe"
 reviewed_on: "[YYYY-MM-DD]"

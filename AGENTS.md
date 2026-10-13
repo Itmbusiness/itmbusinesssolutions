@@ -9,6 +9,13 @@ it is written to answer "where does this live?" in one file.
 
 This file holds the conventions. The map holds the layout.
 
+## Live deployment
+
+Read `docs/deployment-cpanel.md` before connecting or deploying. The existing
+SSH alias is `itm-cpanel`; the ITM domain uses its own web root, not
+`public_html`. Back up first, preserve the live environment, records and
+uploads, and never run a full content reseed as part of deployment.
+
 ## Stack
 
 - Laravel 13 on PHP 8.3+.

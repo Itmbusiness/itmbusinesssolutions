@@ -73,6 +73,8 @@ class ArticleController extends Controller
             'service_category_id' => ['nullable', 'exists:service_categories,id'],
             'excerpt' => ['nullable', 'string', 'max:500'],
             'body' => ['nullable', 'string'],
+            'cta_label' => ['nullable', 'string', 'max:255', 'required_with:cta_url'],
+            'cta_url' => ['nullable', 'string', 'max:2048', 'required_with:cta_label'],
             'seo_title' => ['nullable', 'string', 'max:255'],
             'meta_description' => ['nullable', 'string', 'max:500'],
             'primary_keyword' => ['nullable', 'string', 'max:255'],

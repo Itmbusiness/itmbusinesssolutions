@@ -97,4 +97,22 @@ class User extends Authenticatable implements PasskeyUser
     {
         return $this->role === UserRole::Admin;
     }
+
+    /**
+     * A consultant's own customer book — entirely separate from `leads`.
+     *
+     * @return HasMany<ConsultantCustomer, $this>
+     */
+    public function consultantCustomers(): HasMany
+    {
+        return $this->hasMany(ConsultantCustomer::class, 'consultant_id');
+    }
+
+    /**
+     * @return HasMany<ConsultantTask, $this>
+     */
+    public function consultantTasks(): HasMany
+    {
+        return $this->hasMany(ConsultantTask::class, 'consultant_id');
+    }
 }

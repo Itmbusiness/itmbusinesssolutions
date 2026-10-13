@@ -1,5 +1,5 @@
 ---
-seo_title: "NSSA Employer Registration Zimbabwe | ITM"
+seo_title: "NSSA Employer Registration Zimbabwe | ITM Business Solutions"
 meta_description: "Register an organisation as an employer with guided preparation of business, banking, director and contact information."
 slug: "nssa-employer-registration"
 primary_keyword: "NSSA employer registration Zimbabwe"
@@ -24,7 +24,7 @@ Set up the employer record correctly and understand the recurring responsibiliti
 - Organisations correcting missing employer registration
 - Growing SMEs formalising payroll compliance
 
-If the correct route depends on your circumstances, ITM will assess the information before asking you to approve a quotation.
+If the correct route depends on your circumstances, ITM Business Solutions will assess the information before asking you to approve a quotation.
 
 ## What the service can include
 
@@ -60,7 +60,7 @@ This is a preparation checklist. A consultant may request fewer or additional it
 
 | Charge type | Amount | Notes |
 | --- | ---: | --- |
-| Professional fee | US$[Set after assessment] | Work performed by ITM |
+| Professional fee | US$[Set after assessment] | Work performed by ITM Business Solutions |
 | Statutory or authority fee | US$[Confirm current amount] | Paid to or for the responsible authority where applicable |
 | Optional costs | US$[If selected] | Third-party, delivery, urgent or additional work |
 | Total quotation | US$[Calculated] | Valid until the date shown on the quotation |

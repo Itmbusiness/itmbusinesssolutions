@@ -1,6 +1,6 @@
 ---
 seo_title: "Business Registration and Compliance FAQs Zimbabwe"
-meta_description: "Answers about ITM quotations, fees, application support, documents, payments, tracking and authority decisions."
+meta_description: "Answers about ITM Business Solutions quotations, fees, application support, documents, payments, tracking and authority decisions."
 indexable: true
 ---
 
@@ -16,7 +16,7 @@ Your quotation separates professional fees, statutory charges and optional expen
 
 ## Do you guarantee approval?
 
-No. ITM prepares and supports applications, while the responsible authority controls acceptance and processing.
+No. ITM Business Solutions prepares and supports applications, while the responsible authority controls acceptance and processing.
 
 ## Can one account manage several companies?
 

@@ -15,6 +15,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string $title
  * @property string|null $excerpt
  * @property string|null $body
+ * @property string|null $cta_label
+ * @property string|null $cta_url
  * @property string|null $seo_title
  * @property string|null $meta_description
  * @property string|null $primary_keyword
@@ -29,8 +31,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property CarbonInterface|null $updated_at
  */
 #[Fillable([
-    'service_category_id', 'slug', 'title', 'excerpt', 'body', 'seo_title', 'meta_description',
-    'primary_keyword', 'author', 'reviewer', 'reviewed_on', 'next_review_date',
+    'service_category_id', 'slug', 'title', 'excerpt', 'body', 'cta_label', 'cta_url', 'seo_title',
+    'meta_description', 'primary_keyword', 'author', 'reviewer', 'reviewed_on', 'next_review_date',
     'is_published', 'published_at', 'position',
 ])]
 class Article extends Model

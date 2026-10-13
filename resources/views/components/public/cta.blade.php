@@ -6,14 +6,12 @@
 
 <section class="section-tight" aria-labelledby="cta-heading">
     <div class="page-shell-wide">
-        <div class="ground-navy grain relative overflow-hidden rounded-card px-8 py-14 lg:px-14 lg:py-16" data-reveal="scale">
-            <div aria-hidden="true" class="pointer-events-none absolute inset-0 -z-10">
-                <div class="orb-drift absolute -bottom-28 right-0 size-96 rounded-full bg-teal/20 blur-[110px]"></div>
-            </div>
+        <div class="ground-navy public-hero public-hero-image public-cta px-8 py-14 lg:px-14 lg:py-16" data-reveal="scale">
+            <x-public.media subject="quotation" class="public-hero-backdrop" />
 
-            <div class="max-w-[52ch]">
+            <div class="public-hero-content max-w-[52ch]">
                 <p class="eyebrow-rule text-gold">{{ __('Ready to begin?') }}</p>
-                <h2 id="cta-heading" class="mt-5 text-balance text-[clamp(1.7rem,3.2vw,2.4rem)] font-semibold leading-[1.12] tracking-tight text-white">
+                <h2 id="cta-heading" class="public-subheading mt-5 text-balance font-semibold text-white">
                     {{ $heading ?? __('Tell us about your organisation and desired outcome.') }}
                 </h2>
                 <p class="mt-4 text-navy-300">

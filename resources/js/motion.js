@@ -153,6 +153,64 @@ function initCounters() {
     counters.forEach((el) => observer.observe(el));
 }
 
+/**
+ * Wires up every `[data-menu-trigger]` / `[data-menu-panel]` pair in the
+ * header — the "Services" mega menu, the account menu, and the mobile nav
+ * drawer. Deliberately generic rather than one-off per menu: several
+ * triggers may share one panel (the drawer's own open and close buttons),
+ * opening one closes any other menu that was open, and Escape or a click
+ * outside every panel closes them all.
+ */
+function initMenus() {
+    const panels = document.querySelectorAll('[data-menu-panel]');
+
+    if (!panels.length) {
+        return;
+    }
+
+    const triggersFor = (panel) => document.querySelectorAll(`[data-menu-trigger][aria-controls="${panel.id}"]`);
+
+    const setOpen = (panel, open) => {
+        panel.hidden = !open;
+        triggersFor(panel).forEach((trigger) => trigger.setAttribute('aria-expanded', String(open)));
+
+        // Only the full-screen mobile nav asks for this — a mega menu or the
+        // account dropdown should never stop the page behind it scrolling.
+        if (panel.hasAttribute('data-lock-scroll')) {
+            document.documentElement.style.overflow = open ? 'hidden' : '';
+        }
+    };
+
+    const closeAll = () => panels.forEach((panel) => setOpen(panel, false));
+
+    document.querySelectorAll('[data-menu-trigger]').forEach((trigger) => {
+        trigger.addEventListener('click', (event) => {
+            event.stopPropagation();
+
+            const panel = document.getElementById(trigger.getAttribute('aria-controls'));
+
+            if (!panel) {
+                return;
+            }
+
+            const willOpen = panel.hidden;
+            closeAll();
+            setOpen(panel, willOpen);
+        });
+    });
+
+    // A click inside a panel (choosing a link, say) must not reach the
+    // document listener below and immediately close the panel it is in.
+    panels.forEach((panel) => panel.addEventListener('click', (event) => event.stopPropagation()));
+
+    document.addEventListener('click', closeAll);
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            closeAll();
+        }
+    });
+}
+
 function init() {
     if (REDUCED_MOTION.matches) {
         revealEverything();
@@ -162,6 +220,7 @@ function init() {
     }
 
     initStickyHeader();
+    initMenus();
 }
 
 if (document.readyState === 'loading') {

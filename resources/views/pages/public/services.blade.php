@@ -1,8 +1,10 @@
 <x-layouts::public
-    :title="__('Services')"
-    :meta-description="__('Company registration, tax and fiscal compliance, tenders, employer compliance, trusts and licences — every ITM service with its requirements explained.')"
+    :title="$page?->seo_title ?? __('Services')"
+    :meta-description="$page?->meta_description ?? __('Company registration, tax and fiscal compliance, tenders, employer compliance, trusts and licences — every ITM Business Solutions service with its requirements explained.')"
+    :indexable="$page?->is_indexable ?? true"
 >
     <x-public.page-header
+        image="registration"
         :eyebrow="__('Services')"
         :heading="__('Every service, grouped by the outcome it delivers.')"
         :lead="__('Requirements are listed on each page before you commit. A consultant confirms the final list in your written quotation.')"
@@ -31,7 +33,8 @@
 
                 <div class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3" data-reveal-stagger="60">
                     @foreach ($category->services as $service)
-                        <a href="{{ route('services.show', $service) }}" class="card card-lift group flex flex-col no-underline hover:no-underline" data-reveal="up">
+                        <a href="{{ route('services.show', $service) }}" class="card card-lift public-image-card group flex flex-col no-underline hover:no-underline" data-reveal="up">
+                            <x-public.media :subject="$category->slug" class="public-card-image" />
                             <h3 class="font-semibold text-navy">{{ $service->name }}</h3>
                             <p class="card-body mt-2 flex-1">{{ Str::limit($service->summary, 110) }}</p>
                             <span class="mt-4 inline-flex items-center gap-2 text-meta font-semibold text-teal">

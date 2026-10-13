@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
     'reference', 'user_id', 'service_id', 'name', 'email', 'phone', 'organisation_name',
     'organisation_status', 'goal', 'message', 'preferred_channel', 'urgency', 'source',
     'status', 'assigned_to', 'internal_notes', 'consent_at',
+    'utm_source', 'utm_medium', 'utm_campaign',
 ])]
 class Lead extends Model
 {

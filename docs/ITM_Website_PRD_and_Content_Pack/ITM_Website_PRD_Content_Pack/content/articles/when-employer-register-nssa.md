@@ -1,5 +1,5 @@
 ---
-seo_title: "When Must an Employer Register with NSSA? | ITM"
+seo_title: "When Must an Employer Register with NSSA? | ITM Business Solutions"
 meta_description: "A practical guide to when must an employer register with nssa?, including preparation questions, common risks and the next appropriate step."
 slug: "when-employer-register-nssa"
 primary_keyword: "NSSA employer registration Zimbabwe"
@@ -42,7 +42,7 @@ Official account recovery depends on accessible contact information. Update reco
 
 ## What to do next
 
-Prepare the available records and request an assessment. ITM will identify missing information and send a written quotation before payment is requested.
+Prepare the available records and request an assessment. ITM Business Solutions will identify missing information and send a written quotation before payment is requested.
 
 **CTA:** Start an Employer Assessment
 

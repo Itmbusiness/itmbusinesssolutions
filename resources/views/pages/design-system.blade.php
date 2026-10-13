@@ -206,7 +206,7 @@
                 <tbody>
                     @foreach ([
                         ['APP-2418', 'Sunrise Logistics (Pvt) Ltd', 'PRAZ Registration Support', 'attention', 'Client action', 'Upload tax clearance'],
-                        ['APP-2411', 'Chenai Family Trust', 'Trust Registration', 'info', 'In progress', 'ITM preparing submission'],
+                        ['APP-2411', 'Chenai Family Trust', 'Trust Registration', 'info', 'In progress', 'ITM Business Solutions preparing submission'],
                         ['APP-2402', 'Mbare Hardware PBC', 'NSSA Employer Registration', 'success', 'Completed', 'Deliverables available'],
                     ] as [$ref, $org, $service, $variant, $status, $next])
                         <tr>
@@ -235,7 +235,7 @@
                     Page 2 of your ID scan is unreadable. Replace it to continue — nothing else is affected.
                 </x-ui.alert>
                 <x-ui.alert variant="success" title="Quotation approved — reference QUO-1183 v2">
-                    Payment instructions are now available. ITM will not ask for passwords or one-time codes.
+                    Payment instructions are now available. ITM Business Solutions will not ask for passwords or one-time codes.
                 </x-ui.alert>
             </div>
 

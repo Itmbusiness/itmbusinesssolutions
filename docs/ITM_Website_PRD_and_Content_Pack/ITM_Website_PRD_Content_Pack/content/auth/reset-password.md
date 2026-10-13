@@ -1,5 +1,5 @@
 ---
-seo_title: "Reset Password | ITM"
+seo_title: "Reset Password | ITM Business Solutions"
 indexable: false
 ---
 

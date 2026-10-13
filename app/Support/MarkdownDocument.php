@@ -179,6 +179,83 @@ class MarkdownDocument
         ], $matches);
     }
 
+    /**
+     * The document split into content blocks: an optional leading block with
+     * no heading (whatever sits before the first `##`, minus the `# Title`
+     * line), followed by one block per `##` section, in document order.
+     *
+     * Generic — unlike {@see section()} this does not target one heading, so
+     * it works for both the seeded content pack and admin-edited page bodies
+     * that may not follow the pack's section names at all.
+     *
+     * @return array<int, array{heading: ?string, body: string}>
+     */
+    public function blocks(): array
+    {
+        // The `# Title` line is rendered separately by the page header; drop
+        // it here so it is never duplicated inside the body.
+        $body = preg_replace('/^#\s+.+\n?/', '', $this->body, 1) ?? $this->body;
+
+        $pattern = '/^##\s+(.+?)\s*$(.*?)(?=^##\s|\z)/ms';
+        $leadEnd = preg_match($pattern, $body, $lead, PREG_OFFSET_CAPTURE) === 1
+            ? $lead[0][1]
+            : strlen($body);
+
+        $blocks = [];
+        $leadBody = trim(substr($body, 0, $leadEnd));
+
+        if ($leadBody !== '') {
+            $blocks[] = ['heading' => null, 'body' => $leadBody];
+        }
+
+        preg_match_all($pattern, $body, $matches, PREG_SET_ORDER);
+
+        foreach ($matches as $match) {
+            $sectionBody = trim($match[2]);
+
+            if ($sectionBody === '') {
+                continue;
+            }
+
+            $blocks[] = ['heading' => trim($match[1]), 'body' => $sectionBody];
+        }
+
+        return $blocks;
+    }
+
+    /** Whether every line of a block is a bullet or numbered list item. */
+    public static function isBulletList(string $body): bool
+    {
+        $lines = array_filter(array_map('trim', explode("\n", trim($body))), fn (string $l) => $l !== '');
+
+        if ($lines === []) {
+            return false;
+        }
+
+        foreach ($lines as $line) {
+            if (preg_match('/^(?:[-*+]|\d+\.)\s+/', $line) !== 1) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * Plain-text list items from a block already known to be a bullet list.
+     *
+     * @return array<int, string>
+     */
+    public static function bulletLines(string $body): array
+    {
+        preg_match_all('/^(?:[-*+]|\d+\.)\s+(.+)$/m', $body, $matches);
+
+        return array_values(array_filter(array_map(
+            fn (string $item) => self::plain(preg_replace('/^\[[ x]\]\s*/', '', trim($item)) ?? ''),
+            $matches[1],
+        )));
+    }
+
     /** Strip Markdown emphasis and links down to readable prose. */
     public static function plain(string $value): string
     {

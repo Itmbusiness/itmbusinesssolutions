@@ -1,10 +1,10 @@
 ---
-seo_title: "Company Registration & Compliance Support | ITM"
-meta_description: "Start and keep your Zimbabwean organisation compliant with guided company, tax, NSSA, PRAZ, licensing and business-document support."
+seo_title: "Company Registration in Zimbabwe | ITM Business Solutions"
+meta_description: "Company registration and business compliance support in Zimbabwe. Compare PBC and private limited company services, tax requirements and written quotations."
 indexable: true
 ---
 
-# Start, Grow and Keep Your Organisation Compliant
+# Company Registration and Compliance in Zimbabwe
 
 Company registration, tax, NSSA, PRAZ, licensing and professional business documents—handled with clear requirements, written quotations and visible progress.
 
@@ -45,16 +45,16 @@ Private Limited Company Registration · TIN and Tax Clearance · Tax Returns · 
 2. Review the initial requirements.
 3. Request a written quotation.
 4. Approve the scope and charges.
-5. Pay and enter your secure workspace.
-6. Track progress until completion.
+5. Follow the payment and document instructions in your accepted quotation.
+6. Receive updates on the agreed work until completion.
 
-## Why clients choose ITM
+## Why clients choose ITM Business Solutions
 
 - One provider across formation, compliance and business presentation.
 - No payment request before scope and charges are written clearly.
-- One account can manage multiple organisations.
-- Documents and updates remain attached to the correct application.
-- Ongoing reminders are available after the initial service.
+- Request a quotation without creating an account.
+- Consultants confirm the scope and requirements before paid work begins.
+- Ask about ongoing support separately from the initial registration service.
 
 ## Need help choosing?
 

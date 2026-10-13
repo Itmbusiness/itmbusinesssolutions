@@ -184,6 +184,28 @@ class AdminTest extends TestCase
         $this->assertSame('Called, sounds genuine.', $lead->internal_notes);
     }
 
+    public function test_a_lead_can_only_be_assigned_to_staff(): void
+    {
+        $lead = Lead::factory()->create();
+        $client = User::factory()->create();
+        $consultant = User::factory()->consultant()->create();
+        $admin = $this->admin();
+
+        $this->actingAs($admin)->patch(route('admin.leads.update', $lead), [
+            'status' => LeadStatus::New->value,
+            'assigned_to' => $client->id,
+        ])->assertSessionHasErrors('assigned_to');
+
+        $this->assertNull($lead->refresh()->assigned_to);
+
+        $this->actingAs($admin)->patch(route('admin.leads.update', $lead), [
+            'status' => LeadStatus::New->value,
+            'assigned_to' => $consultant->id,
+        ])->assertRedirect();
+
+        $this->assertSame($consultant->id, $lead->refresh()->assigned_to);
+    }
+
     public function test_an_admin_can_grant_and_revoke_administrator_access(): void
     {
         $admin = $this->admin();

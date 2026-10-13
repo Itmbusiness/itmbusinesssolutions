@@ -1,5 +1,5 @@
 ---
-seo_title: "Documents and Information Needed for Company Registration | ITM"
+seo_title: "Documents and Information Needed for Company Registration | ITM Business Solutions"
 meta_description: "A practical guide to documents and information needed for company registration, including preparation questions, common risks and the next appropriate step."
 slug: "documents-needed-company-registration-zimbabwe"
 primary_keyword: "company registration requirements Zimbabwe"
@@ -42,7 +42,7 @@ Use contact details that the owners can continue to access. Official accounts sh
 
 ## What to do next
 
-Prepare the available records and request an assessment. ITM will identify missing information and send a written quotation before payment is requested.
+Prepare the available records and request an assessment. ITM Business Solutions will identify missing information and send a written quotation before payment is requested.
 
 **CTA:** View Company Registration Services
 

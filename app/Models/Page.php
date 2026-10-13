@@ -14,12 +14,14 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
  * @property string|null $seo_title
  * @property string|null $meta_description
  * @property string|null $body
+ * @property string|null $cta_label
+ * @property string|null $cta_url
  * @property bool $is_published
  * @property bool $is_indexable
  * @property bool $is_system
  */
 #[Fillable([
-    'slug', 'title', 'seo_title', 'meta_description', 'body',
+    'slug', 'title', 'seo_title', 'meta_description', 'body', 'cta_label', 'cta_url',
     'is_published', 'is_indexable', 'is_system',
 ])]
 class Page extends Model

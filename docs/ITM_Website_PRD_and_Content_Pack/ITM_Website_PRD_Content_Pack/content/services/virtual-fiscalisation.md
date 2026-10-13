@@ -1,5 +1,5 @@
 ---
-seo_title: "Virtual Fiscalisation Zimbabwe | ITM"
+seo_title: "Virtual Fiscalisation Zimbabwe | ITM Business Solutions"
 meta_description: "Receive readiness, onboarding and configuration support for an approved virtual fiscalisation solution in Zimbabwe."
 slug: "virtual-fiscalisation"
 primary_keyword: "virtual fiscalisation Zimbabwe"
@@ -24,7 +24,7 @@ Move from uncertainty about fiscalisation to an assessed, configured and tested 
 - Businesses replacing manual processes
 - Organisations connecting invoicing or point-of-sale workflows
 
-If the correct route depends on your circumstances, ITM will assess the information before asking you to approve a quotation.
+If the correct route depends on your circumstances, ITM Business Solutions will assess the information before asking you to approve a quotation.
 
 ## What the service can include
 
@@ -60,7 +60,7 @@ This is a preparation checklist. A consultant may request fewer or additional it
 
 | Charge type | Amount | Notes |
 | --- | ---: | --- |
-| Professional fee | US$[Set after assessment] | Work performed by ITM |
+| Professional fee | US$[Set after assessment] | Work performed by ITM Business Solutions |
 | Statutory or authority fee | US$[Confirm current amount] | Paid to or for the responsible authority where applicable |
 | Optional costs | US$[If selected] | Third-party, delivery, urgent or additional work |
 | Total quotation | US$[Calculated] | Valid until the date shown on the quotation |
@@ -79,7 +79,7 @@ Suitability depends on tax status, transaction workflow and current authority re
 
 ### Do you supply the fiscalisation platform?
 
-The quotation must state whether ITM supplies, resells or only assists with an approved third-party solution.
+The quotation must state whether ITM Business Solutions supplies, resells or only assists with an approved third-party solution.
 
 ### Will my existing invoicing system work?
 
