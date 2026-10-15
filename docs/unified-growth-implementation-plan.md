@@ -27,6 +27,10 @@ The repository uses Laravel 13, Livewire 4, Blade, and a database-driven service
 
 Do not scale paid campaigns until enquiry capture, staff response, attribution, consent and lead-to-sale tracking pass their gates. Set numerical growth targets after collecting a reliable baseline; the blueprint's week estimates depend on access and approvals.
 
-## Work started in this change
+## Work completed so far
 
 Phase 1 begins with session-based `utm_source`, `utm_medium` and `utm_campaign` capture for website and workspace requests. The values are limited in length, stored separately from the existing `source` field, and shown only in the admin lead detail. Lead assignment validation now matches the staff-only choices in the admin form. External account integration and promotional messaging wait for the decisions above.
+
+The next Phase 1 step adds an optional, unchecked email marketing choice to all enquiry forms. It creates a pending subscription linked to the lead and records a wording version, source and time. A queued email asks the recipient to confirm; only confirmed, non-revoked subscriptions qualify as active. The same private link supports unsubscribe, and consent transitions are recorded separately from operational contact permission. No marketing campaign sender has been connected. The owner must review the consent wording and privacy notice before using this for campaigns, and production needs a working queue worker and mail provider.
+
+The admin now has an oldest-first queue of open leads with no recorded human response. An administrator records the first response after personally replying, so the timestamp is not inferred from opening an email link. Historical leads may have received a reply before this feature existed; their empty timestamp means only that no reply was recorded here. Assignment time is saved when the owner changes. ITM leads can be assigned only to administrators because the self-registered consultant role belongs to an independent CRM tenant. Existing consultant assignments are preserved but flagged for review on the lead detail screen. A response SLA target still needs business approval before an overdue rule is added.

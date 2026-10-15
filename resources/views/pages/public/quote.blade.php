@@ -135,6 +135,8 @@
                             {{ __('I agree that ITM Business Solutions may contact me about this request and store the information I have provided.') }}
                         </x-ui.choice>
                     </x-ui.field>
+
+                    <x-public.marketing-opt-in />
                 </div>
             </x-ui.card>
 

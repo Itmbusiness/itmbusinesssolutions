@@ -44,6 +44,7 @@ class ContactPageTest extends TestCase
             ->assertSee('mailto:office@example.co.zw')->assertSee('tel:+263775423197')
             ->assertSee('https://wa.me/263775423198')->assertSee('Get directions')
             ->assertDontSee('[Insert verified')->assertSee('name="message"', false)
+            ->assertSee('name="marketing_opt_in"', false)
             ->assertSee('action="'.route('quote.store').'"', false);
     }
 

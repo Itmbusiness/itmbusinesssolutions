@@ -51,8 +51,10 @@ payments, document vault, applications workflow, compliance calendar.
 | Add an admin screen | `routes/admin.php` + `app/Http/Controllers/Admin/` + `resources/views/pages/admin/` |
 | Admin sidebar links | `resources/views/layouts/admin.blade.php` |
 | Quotation request form / validation | `app/Http/Controllers/QuoteRequestController.php` + `resources/views/pages/public/quote.blade.php` |
+| Optional email marketing consent and unsubscribe | `components/public/marketing-opt-in.blade.php`, `app/Support/MarketingConsent.php`, `MarketingPreferenceController`, `marketing_subscriptions` / `marketing_consent_events`; wording version in `config/marketing.php` |
 | Lead notification / confirmation emails | `app/Mail/{NewLeadReceived,LeadConfirmation}.php` + `resources/views/emails/`. Sent from `QuoteRequestController@store` and `LeadController@store`, queued — see `docs/running-locally.md` for running a worker |
 | Lead statuses | `app/Enums/LeadStatus.php` |
+| ITM lead ownership and first-response queue | `app/Http/Controllers/Admin/LeadController.php`, `Admin/DashboardController.php`, `pages/admin/leads/`, `pages/admin/dashboard.blade.php`; assignees are admins only |
 | Who can reach the admin | `app/Http/Middleware/EnsureUserIsAdmin.php`, `app/Enums/UserRole.php` |
 | Registration fields / roles | `app/Actions/Fortify/CreateNewUser.php` + `resources/views/pages/auth/register.blade.php` |
 | Client vs consultant dashboard | `app/Http/Controllers/DashboardController.php` prepares role-scoped data; `resources/views/dashboard.blade.php` dispatches to `pages/dashboard/{client,consultant}.blade.php` |
@@ -122,6 +124,7 @@ Migrations in `database/migrations/`. Content tables are in
 | `faqs` | `Faq` | **Polymorphic**: attached to a service, or `faqable_type = null` for the site-wide `/faq` page |
 | `settings` | `Setting` | Key/value, cached. Read via `Setting::get()` / `Setting::values()` |
 | `leads` | `Lead` | Every quotation request, guest or signed-in — **ITM's own clients only**, never a consultant's |
+| `marketing_subscriptions`, `marketing_consent_events` | `MarketingSubscription`, `MarketingConsentEvent` | Email opt-in state and append-only request/confirmation/revocation history; transactional lead consent remains separate |
 | `users` | `User` | `role` is a `UserRole` enum: client, consultant, admin |
 | `consultant_customers` | `ConsultantCustomer` | A consultant's own customer book, scoped by `consultant_id`. Deliberately separate from `leads` |
 | `consultant_customer_notes` | `ConsultantCustomerNote` | Timestamped activity log per consultant customer |
@@ -162,7 +165,7 @@ These are non-obvious and were each found the hard way.
 7. An unchecked checkbox sends nothing — read it with `$request->boolean('x')`.
 8. Eloquent does not read DB defaults back. `User` sets `$attributes['role']`
    so a user created without a role is not null in memory.
-9. PHPStan needs `--memory-limit=1G` on this machine (`vendor/bin/phpstan analyse --memory-limit=1G`).
+9. PHPStan needs `--memory-limit=1G` on this machine (`vendor/bin/phpstan analyse --configuration=phpstan-project.neon --memory-limit=1G`). The previous `phpstan.neon` filename was blocked by the local security software, so the same configuration lives in `phpstan-project.neon`.
 
 **Environment** (full detail in `docs/running-locally.md`)
 

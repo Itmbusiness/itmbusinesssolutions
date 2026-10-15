@@ -22,6 +22,9 @@
                         __('Organisation status') => $lead->organisation_status ? Str::headline($lead->organisation_status) : null,
                         __('Urgency') => $lead->urgency ? Str::headline($lead->urgency) : null,
                         __('Source') => Str::headline($lead->source),
+                        __('Assigned at') => $lead->assigned_at?->format('j M Y, H:i'),
+                        __('First human response') => $lead->first_responded_at?->format('j M Y, H:i'),
+                        __('Response recorded by') => $lead->responseRecorder?->name,
                         __('Campaign source') => $lead->utm_source,
                         __('Campaign medium') => $lead->utm_medium,
                         __('Campaign name') => $lead->utm_campaign,
@@ -33,6 +36,12 @@
                     @endforeach
                 </dl>
             </x-ui.card>
+
+            @if ($lead->assignee && ! $lead->assignee->isAdmin())
+                <x-ui.alert variant="attention" :title="__('Review this assignment')">
+                    {{ __('This lead is assigned to an account that does not manage ITM Business Solutions leads. Reassign it to an administrator.') }}
+                </x-ui.alert>
+            @endif
 
             <x-ui.card>
                 <h2 class="card-title">{{ __('What they asked for') }}</h2>
@@ -67,6 +76,30 @@
                     {{ __('This request predates consent capture. Confirm before contacting.') }}
                 </x-ui.alert>
             @endif
+
+            <x-ui.card>
+                <h2 class="card-title">{{ __('Optional email updates') }}</h2>
+                @if ($requestEvent = $lead->marketingConsentEvents->firstWhere('action', 'requested'))
+                    <p class="card-body mt-3">
+                        {{ __('Requested through :source on :date (wording :version).', [
+                            'source' => str_replace('_', ' ', $requestEvent->source),
+                            'date' => $requestEvent->occurred_at->format('j M Y, H:i'),
+                            'version' => $requestEvent->policy_version,
+                        ]) }}
+                    </p>
+                    <p class="card-meta mt-2">
+                        @if ($marketingSubscription?->isActive())
+                            {{ __('Email permission confirmed') }}
+                        @elseif ($marketingSubscription?->revoked_at)
+                            {{ __('Unsubscribed — do not send marketing email') }}
+                        @else
+                            {{ __('Awaiting email confirmation — do not send marketing email') }}
+                        @endif
+                    </p>
+                @else
+                    <p class="card-body mt-3">{{ __('No marketing opt-in was requested on this enquiry.') }}</p>
+                @endif
+            </x-ui.card>
         </div>
 
         <aside class="flex flex-col gap-4">
@@ -120,6 +153,13 @@
                         </x-ui.button>
                     @endif
                 </div>
+                @if (! $lead->first_responded_at)
+                    <form method="POST" action="{{ route('admin.leads.response', $lead) }}" class="mt-5">
+                        @csrf
+                        <p class="card-meta mb-3">{{ __('After you have personally replied, record the first human response here. Opening email or WhatsApp alone does not count.') }}</p>
+                        <x-ui.button type="submit" variant="secondary" class="btn-block">{{ __('Record first response') }}</x-ui.button>
+                    </form>
+                @endif
             </x-ui.card>
 
             <form method="POST" action="{{ route('admin.leads.destroy', $lead) }}"

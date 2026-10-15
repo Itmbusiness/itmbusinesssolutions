@@ -3,14 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Enums\ServiceGoal;
+use App\Mail\ConfirmMarketingSubscription;
 use App\Mail\LeadConfirmation;
 use App\Mail\NewLeadReceived;
 use App\Models\Lead;
 use App\Models\Service;
 use App\Models\Setting;
+use App\Support\MarketingConsent;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
@@ -34,7 +37,7 @@ class QuoteRequestController extends Controller
         ]);
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request, MarketingConsent $marketingConsent): RedirectResponse
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -48,44 +51,58 @@ class QuoteRequestController extends Controller
             'preferred_channel' => ['required', 'in:whatsapp,email,phone'],
             'urgency' => ['nullable', 'in:exploring,this-month,urgent'],
             'consent' => ['accepted'],
+            'marketing_opt_in' => ['sometimes', 'accepted'],
             // Honeypot: a real person never fills a hidden field.
             'website' => ['prohibited'],
         ], [
             'consent.accepted' => 'Please confirm that ITM Business Solutions may contact you about this request.',
         ]);
 
-        $lead = Lead::create([
-            'user_id' => Auth::id(),
-            'service_id' => $validated['service_id'] ?? null,
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-            'phone' => $validated['phone'] ?? null,
-            'organisation_name' => $validated['organisation_name'] ?? null,
-            'organisation_status' => $validated['organisation_status'] ?? null,
-            'goal' => $validated['goal'] ?? null,
-            'message' => $validated['message'] ?? null,
-            'preferred_channel' => $validated['preferred_channel'],
-            'urgency' => $validated['urgency'] ?? null,
-            'consent_at' => now(),
-            'utm_source' => $request->session()->get('lead_attribution.utm_source') ?: null,
-            'utm_medium' => $request->session()->get('lead_attribution.utm_medium') ?: null,
-            'utm_campaign' => $request->session()->get('lead_attribution.utm_campaign') ?: null,
-        ]);
+        [$lead, $subscription] = DB::transaction(function () use ($request, $validated, $marketingConsent): array {
+            $lead = Lead::create([
+                'user_id' => Auth::id(),
+                'service_id' => $validated['service_id'] ?? null,
+                'name' => $validated['name'],
+                'email' => $validated['email'],
+                'phone' => $validated['phone'] ?? null,
+                'organisation_name' => $validated['organisation_name'] ?? null,
+                'organisation_status' => $validated['organisation_status'] ?? null,
+                'goal' => $validated['goal'] ?? null,
+                'message' => $validated['message'] ?? null,
+                'preferred_channel' => $validated['preferred_channel'],
+                'urgency' => $validated['urgency'] ?? null,
+                'consent_at' => now(),
+                'utm_source' => $request->session()->get('lead_attribution.utm_source') ?: null,
+                'utm_medium' => $request->session()->get('lead_attribution.utm_medium') ?: null,
+                'utm_campaign' => $request->session()->get('lead_attribution.utm_campaign') ?: null,
+            ]);
+
+            $subscription = $request->boolean('marketing_opt_in')
+                ? $marketingConsent->requestForLead($lead, 'website_enquiry')
+                : null;
+
+            return [$lead, $subscription];
+        });
 
         if ($contactEmail = Setting::get('contact.email')) {
             Mail::to($contactEmail)->send(new NewLeadReceived($lead));
         }
         Mail::to($lead->email)->send(new LeadConfirmation($lead));
+        if ($subscription) {
+            Mail::to($subscription->email)->send(new ConfirmMarketingSubscription($subscription));
+        }
 
         return redirect()
             ->route('quote.received')
-            ->with('lead_reference', $lead->reference);
+            ->with('lead_reference', $lead->reference)
+            ->with('marketing_confirmation_pending', $subscription !== null);
     }
 
     public function received(Request $request): View
     {
         return view('pages.public.quote-received', [
             'reference' => $request->session()->get('lead_reference'),
+            'marketingConfirmationPending' => $request->session()->get('marketing_confirmation_pending', false),
         ]);
     }
 }

@@ -9,12 +9,14 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 #[Fillable([
     'reference', 'user_id', 'service_id', 'name', 'email', 'phone', 'organisation_name',
     'organisation_status', 'goal', 'message', 'preferred_channel', 'urgency', 'source',
     'status', 'assigned_to', 'internal_notes', 'consent_at',
     'utm_source', 'utm_medium', 'utm_campaign',
+    'assigned_at', 'first_responded_at', 'response_recorded_by',
 ])]
 class Lead extends Model
 {
@@ -31,6 +33,8 @@ class Lead extends Model
         return [
             'status' => LeadStatus::class,
             'consent_at' => 'datetime',
+            'assigned_at' => 'datetime',
+            'first_responded_at' => 'datetime',
         ];
     }
 
@@ -79,6 +83,24 @@ class Lead extends Model
     public function assignee(): BelongsTo
     {
         return $this->belongsTo(User::class, 'assigned_to');
+    }
+
+    /** @return HasMany<MarketingConsentEvent, $this> */
+    public function marketingConsentEvents(): HasMany
+    {
+        return $this->hasMany(MarketingConsentEvent::class);
+    }
+
+    /** @return BelongsTo<User, $this> */
+    public function responseRecorder(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'response_recorded_by');
+    }
+
+    /** @param Builder<$this> $query */
+    public function scopeAwaitingResponse(Builder $query): void
+    {
+        $query->open()->whereNull('first_responded_at');
     }
 
     /** @param Builder<$this> $query */

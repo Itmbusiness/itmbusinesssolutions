@@ -27,6 +27,10 @@
                 {{ $status->label() }}
             </a>
         @endforeach
+        <a href="{{ route('admin.leads.index', ['response' => 'waiting', 'q' => request('q')]) }}"
+            @class(['badge', $awaitingResponse ? 'badge-info' : 'badge-neutral', 'no-underline hover:no-underline'])>
+            {{ __('No response recorded') }}
+        </a>
     </nav>
 
     @if ($leads->isEmpty())
@@ -43,6 +47,7 @@
                     <th scope="col">{{ __('Service') }}</th>
                     <th scope="col">{{ __('Status') }}</th>
                     <th scope="col">{{ __('Assigned') }}</th>
+                    <th scope="col">{{ __('First response') }}</th>
                     <th scope="col">{{ __('Received') }}</th>
                 </tr>
             </thead>
@@ -60,6 +65,7 @@
                         <td class="text-muted">{{ $lead->service?->name ?? __('Not specified') }}</td>
                         <td><x-ui.badge :variant="$lead->status->badge()">{{ $lead->status->label() }}</x-ui.badge></td>
                         <td class="text-muted">{{ $lead->assignee?->name ?? '—' }}</td>
+                        <td class="text-muted">{{ $lead->first_responded_at?->format('j M Y, H:i') ?? __('Not recorded') }}</td>
                         <td class="text-muted">{{ $lead->created_at->format('j M Y') }}</td>
                     </tr>
                 @endforeach

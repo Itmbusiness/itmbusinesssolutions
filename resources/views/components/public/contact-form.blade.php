@@ -63,6 +63,8 @@
         </x-ui.choice>
     </x-ui.field>
 
+    <x-public.marketing-opt-in />
+
     <div class="flex flex-wrap items-center gap-4">
         <x-ui.button type="submit" icon="paper-plane-tilt" x-bind:disabled="submitting"><span x-show="!submitting">{{ __('Send enquiry') }}</span><span x-cloak x-show="submitting">{{ __('Sending...') }}</span></x-ui.button>
         <a href="{{ route('page', 'privacy') }}" class="text-meta">{{ __('Privacy Policy') }}</a>

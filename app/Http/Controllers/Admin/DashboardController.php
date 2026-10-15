@@ -17,6 +17,8 @@ class DashboardController extends Controller
     {
         return view('pages.admin.dashboard', [
             'openLeads' => Lead::query()->open()->count(),
+            'awaitingResponseCount' => Lead::query()->awaitingResponse()->count(),
+            'awaitingResponseLeads' => Lead::query()->awaitingResponse()->oldest()->with(['service', 'assignee'])->limit(8)->get(),
             'newLeads' => Lead::where('status', LeadStatus::New)->count(),
             'convertedLeads' => Lead::where('status', LeadStatus::Converted)->count(),
             'totalLeads' => Lead::count(),

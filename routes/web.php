@@ -4,6 +4,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LeadController;
+use App\Http\Controllers\MarketingPreferenceController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\QuoteRequestController;
 use App\Http\Controllers\ServiceController;
@@ -35,6 +36,13 @@ Route::post('request-a-quotation', [QuoteRequestController::class, 'store'])
     ->middleware('throttle:10,1')
     ->name('quote.store');
 Route::get('request-received', [QuoteRequestController::class, 'received'])->name('quote.received');
+
+Route::get('email-preferences/{token}', [MarketingPreferenceController::class, 'show'])
+    ->whereAlphaNumeric('token')->name('marketing.preferences.show');
+Route::post('email-preferences/{token}/confirm', [MarketingPreferenceController::class, 'confirm'])
+    ->whereAlphaNumeric('token')->middleware('throttle:10,1')->name('marketing.preferences.confirm');
+Route::post('email-preferences/{token}/unsubscribe', [MarketingPreferenceController::class, 'unsubscribe'])
+    ->whereAlphaNumeric('token')->middleware('throttle:10,1')->name('marketing.preferences.unsubscribe');
 
 Route::get('track', [TrackApplicationController::class, 'show'])->name('track');
 Route::post('track', [TrackApplicationController::class, 'lookup'])

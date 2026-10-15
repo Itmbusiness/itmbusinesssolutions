@@ -61,6 +61,8 @@
                 </x-ui.choice>
             </x-ui.field>
 
+            <x-public.marketing-opt-in />
+
             <div class="flex items-center gap-3">
                 <x-ui.button type="submit" icon="paper-plane-tilt">{{ __('Send Request') }}</x-ui.button>
                 <x-ui.button variant="quiet" href="{{ route('dashboard') }}">{{ __('Cancel') }}</x-ui.button>

@@ -30,6 +30,7 @@ Route::middleware(['auth', 'verified', 'admin'])
         Route::get('leads', [LeadController::class, 'index'])->name('leads.index');
         Route::get('leads/{lead}', [LeadController::class, 'show'])->name('leads.show');
         Route::patch('leads/{lead}', [LeadController::class, 'update'])->name('leads.update');
+        Route::post('leads/{lead}/response', [LeadController::class, 'recordResponse'])->name('leads.response');
         Route::delete('leads/{lead}', [LeadController::class, 'destroy'])->name('leads.destroy');
 
         Route::resource('categories', ServiceCategoryController::class)->except('show');

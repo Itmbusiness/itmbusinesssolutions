@@ -108,9 +108,10 @@ should not be folded into this one by default.
   leads, quotations, or client actions — it shows the consultant's own
   customer count, open task count, a recent-customers list, and an
   open-tasks list with an inline complete/reopen toggle.
-- `Lead::assigned_to` was left untouched — it was never repurposed for
-  consultant data, and remains open for ITM's own internal case-assignment
-  story (admin staff, not consultants) if that gets designed later.
+- `Lead::assigned_to` remains separate from consultant data. ITM lead
+  assignment now accepts administrator accounts only; independent consultants
+  cannot access the admin lead inbox. Admins can record the first human
+  response and review the oldest open leads still waiting for one.
 
 Not implemented, per the open questions below: consultant registration
 approval/gating, and monetization.

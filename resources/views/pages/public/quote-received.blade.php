@@ -6,6 +6,12 @@
     />
 
     <div class="page-shell section-tight">
+        @if ($marketingConfirmationPending)
+            <x-ui.alert variant="info" :title="__('Confirm email updates')" class="mb-6">
+                {{ __('We have sent a separate confirmation email for the optional updates you requested. Your quotation request does not depend on confirming it.') }}
+            </x-ui.alert>
+        @endif
+
         @if ($reference)
             <x-ui.card class="elev-md">
                 <p class="card-kicker text-teal">{{ __('Your reference') }}</p>

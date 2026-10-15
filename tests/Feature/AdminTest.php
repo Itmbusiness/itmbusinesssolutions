@@ -184,7 +184,7 @@ class AdminTest extends TestCase
         $this->assertSame('Called, sounds genuine.', $lead->internal_notes);
     }
 
-    public function test_a_lead_can_only_be_assigned_to_staff(): void
+    public function test_itm_leads_can_only_be_assigned_to_administrators(): void
     {
         $lead = Lead::factory()->create();
         $client = User::factory()->create();
@@ -201,9 +201,60 @@ class AdminTest extends TestCase
         $this->actingAs($admin)->patch(route('admin.leads.update', $lead), [
             'status' => LeadStatus::New->value,
             'assigned_to' => $consultant->id,
+        ])->assertSessionHasErrors('assigned_to');
+
+        $this->assertNull($lead->refresh()->assigned_to);
+
+        $this->actingAs($admin)->patch(route('admin.leads.update', $lead), [
+            'status' => LeadStatus::New->value,
+            'assigned_to' => $admin->id,
         ])->assertRedirect();
 
-        $this->assertSame($consultant->id, $lead->refresh()->assigned_to);
+        $this->assertSame($admin->id, $lead->refresh()->assigned_to);
+        $this->assertNotNull($lead->assigned_at);
+
+        $this->actingAs($admin)->get(route('admin.leads.show', $lead))
+            ->assertOk()->assertDontSee($consultant->name);
+    }
+
+    public function test_an_admin_can_record_the_first_human_response_once(): void
+    {
+        $lead = Lead::factory()->create();
+        $admin = $this->admin();
+
+        $this->actingAs($admin)->get(route('admin.leads.index', ['response' => 'waiting']))
+            ->assertOk()->assertSee($lead->reference);
+
+        $this->actingAs($admin)->post(route('admin.leads.response', $lead))->assertRedirect();
+
+        $firstResponse = $lead->refresh()->first_responded_at;
+        $this->assertNotNull($firstResponse);
+        $this->assertSame($admin->id, $lead->response_recorded_by);
+
+        $this->actingAs($admin)->post(route('admin.leads.response', $lead))->assertRedirect();
+
+        $this->assertTrue($firstResponse->equalTo($lead->refresh()->first_responded_at));
+        $this->actingAs($admin)->get(route('admin.leads.index', ['response' => 'waiting']))
+            ->assertOk()->assertDontSee($lead->reference);
+    }
+
+    public function test_a_legacy_consultant_assignment_is_flagged_for_review(): void
+    {
+        $consultant = User::factory()->consultant()->create();
+        $lead = Lead::factory()->create(['assigned_to' => $consultant->id]);
+
+        $this->actingAs($this->admin())->get(route('admin.leads.show', $lead))
+            ->assertOk()->assertSee('Review this assignment');
+    }
+
+    public function test_a_client_cannot_record_a_human_response(): void
+    {
+        $lead = Lead::factory()->create();
+
+        $this->actingAs(User::factory()->create())
+            ->post(route('admin.leads.response', $lead))->assertForbidden();
+
+        $this->assertNull($lead->refresh()->first_responded_at);
     }
 
     public function test_an_admin_can_grant_and_revoke_administrator_access(): void
