@@ -2,6 +2,9 @@
 
 namespace Tests\Feature;
 
+use App\Enums\LeadStatus;
+use App\Models\ConsultantCustomer;
+use App\Models\Lead;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -31,7 +34,7 @@ class DashboardTest extends TestCase
 
         $this->get(route('dashboard'))
             ->assertOk()
-            ->assertSee('No quotations yet')
+            ->assertSee('Open requests')
             ->assertSee('Request a Service')
             ->assertDontSee('My customers');
     }
@@ -44,7 +47,46 @@ class DashboardTest extends TestCase
             ->assertOk()
             ->assertSee('My business')
             ->assertSee('No customers yet')
-            ->assertDontSee('No quotations yet');
+            ->assertDontSee('Awaiting information');
+    }
+
+    public function test_a_client_can_review_all_their_requests_without_seeing_another_clients(): void
+    {
+        $client = User::factory()->create();
+        $other = User::factory()->create();
+        $mine = Lead::factory()->for($client)->status(LeadStatus::AwaitingInformation)->create();
+        $theirs = Lead::factory()->for($other)->create();
+
+        $this->withoutVite()->actingAs($client);
+
+        $this->get(route('dashboard'))
+            ->assertOk()
+            ->assertSee('Awaiting information')
+            ->assertSee('View all requests')
+            ->assertSee($mine->reference)
+            ->assertDontSee($theirs->reference);
+
+        $this->get(route('service-requests.index'))
+            ->assertOk()
+            ->assertSee($mine->reference)
+            ->assertDontSee($theirs->reference);
+    }
+
+    public function test_a_consultant_dashboard_shows_their_overdue_tasks_only(): void
+    {
+        $consultant = User::factory()->consultant()->create();
+        $other = User::factory()->consultant()->create();
+        $customer = ConsultantCustomer::factory()->for($consultant, 'consultant')->create();
+        $otherCustomer = ConsultantCustomer::factory()->for($other, 'consultant')->create();
+        $customer->tasks()->create(['consultant_id' => $consultant->id, 'title' => 'Call today', 'due_on' => today()->subDay()]);
+        $otherCustomer->tasks()->create(['consultant_id' => $other->id, 'title' => 'Other task', 'due_on' => today()->subDay()]);
+
+        $this->withoutVite()->actingAs($consultant)->get(route('dashboard'))
+            ->assertOk()
+            ->assertSee('Overdue follow-ups')
+            ->assertSee('Call today')
+            ->assertSee('Overdue')
+            ->assertDontSee('Other task');
     }
 
     /**

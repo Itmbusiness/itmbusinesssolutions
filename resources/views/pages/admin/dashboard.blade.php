@@ -1,21 +1,18 @@
 <x-layouts::admin :title="__('Overview')">
     <header>
         <p class="text-eyebrow uppercase text-teal">{{ __('Admin') }}</p>
-        <h1 class="mt-2 text-h2">{{ __('Overview') }}</h1>
+        <h1 class="mt-2 text-h2">{{ __('Work overview') }}</h1>
+        <p class="mt-2 text-muted">{{ __('Lead follow-up and content requiring review.') }}</p>
     </header>
 
     <div class="mt-6 grid gap-3.5 sm:grid-cols-2 lg:grid-cols-4">
         @foreach ([
-            [__('Open leads'), $openLeads, __(':count new', ['count' => $newLeads]), 'admin.leads.index'],
-            [__('Converted'), $convertedLeads, __('of :total total', ['total' => $totalLeads]), 'admin.leads.index'],
-            [__('Services'), $serviceCount, __(':count unpublished', ['count' => $unpublishedServices]), 'admin.services.index'],
-            [__('Articles'), $articleCount, __(':count due review', ['count' => $staleArticles]), 'admin.articles.index'],
+            [__('Awaiting response'), $awaitingResponseCount, __('Open leads without a recorded reply'), route('admin.leads.index', ['response' => 'waiting'])],
+            [__('Open leads'), $openLeads, __(':count new', ['count' => $newLeads]), route('admin.leads.index')],
+            [__('Converted leads'), $convertedLeads, __('Of :total leads, all time', ['total' => $totalLeads]), route('admin.leads.index')],
+            [__('Articles due review'), $staleArticles, __('Of :total articles', ['total' => $articleCount]), route('admin.articles.index')],
         ] as [$label, $value, $note, $route])
-            <a href="{{ route($route) }}" class="card card-lift no-underline hover:no-underline">
-                <p class="card-kicker">{{ $label }}</p>
-                <p class="stat-figure mt-2 text-h1 font-semibold text-navy">{{ $value }}</p>
-                <p class="card-meta mt-1">{{ $note }}</p>
-            </a>
+            <x-ui.dashboard-stat :label="$label" :value="$value" :note="$note" :href="$route" />
         @endforeach
     </div>
 

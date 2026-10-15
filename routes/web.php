@@ -66,6 +66,8 @@ if (! app()->isProduction()) {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('dashboard', DashboardController::class)->name('dashboard');
 
+    Route::get('service-requests', [LeadController::class, 'index'])
+        ->name('service-requests.index');
     Route::get('service-requests/create', [LeadController::class, 'create'])
         ->name('service-requests.create');
     Route::post('service-requests', [LeadController::class, 'store'])

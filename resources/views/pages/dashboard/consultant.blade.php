@@ -2,7 +2,8 @@
     <header class="flex flex-wrap items-end justify-between gap-4">
         <div>
             <p class="text-eyebrow uppercase text-teal">My business</p>
-            <h1 class="mt-2 text-h2">{{ __('Overview') }}</h1>
+            <h1 class="mt-2 text-h2">{{ __('Your business') }}</h1>
+            <p class="mt-2 text-muted">{{ __('Customers and follow-ups in your own book.') }}</p>
         </div>
 
         <x-ui.button icon="user-plus" href="{{ route('consultant.customers.create') }}">
@@ -18,16 +19,10 @@
         This is entirely the consultant's own book — never ITM's leads,
         quotations or clients. See docs/dashboards-spec.md.
     --}}
-    <div class="mt-6 grid gap-3.5 md:grid-cols-2">
-        <x-ui.card kicker="Customers" title="Your book">
-            <p class="mt-1 text-h1 tabular-nums">{{ $customerCount }}</p>
-            <p class="card-meta mt-1">{{ $customerCount === 0 ? 'No customers yet' : 'Total customers' }}</p>
-        </x-ui.card>
-
-        <x-ui.card navy kicker="Tasks" title="Open follow-ups">
-            <p class="mt-1 text-h1 tabular-nums">{{ $openTaskCount }}</p>
-            <p class="mt-1 text-meta text-navy-300">{{ $openTaskCount === 0 ? 'Nothing due' : 'Waiting on you' }}</p>
-        </x-ui.card>
+    <div class="mt-6 grid gap-3.5 sm:grid-cols-3">
+        <x-ui.dashboard-stat :label="__('Customers')" :value="$customerCount" :note="__('Total in your book')" :href="route('consultant.customers.index')" />
+        <x-ui.dashboard-stat :label="__('Open follow-ups')" :value="$openTaskCount" :note="__('Incomplete tasks')" href="#dash-tasks" />
+        <x-ui.dashboard-stat :label="__('Overdue follow-ups')" :value="$overdueTaskCount" :note="__('Due before today')" href="#dash-tasks" />
     </div>
 
     <div class="mt-8 grid gap-6 lg:grid-cols-2">
@@ -63,10 +58,10 @@
         </section>
 
         <section aria-labelledby="dash-tasks">
-            <h2 id="dash-tasks" class="text-h3">{{ __('My tasks') }}</h2>
+            <h2 id="dash-tasks" class="text-h3">{{ __('Next follow-ups') }}</h2>
 
             @if ($tasks->isEmpty())
-                <x-ui.empty-state class="mt-3.5" icon="check-circle" title="No tasks due">
+                <x-ui.empty-state class="mt-3.5" icon="check-circle" title="No open follow-ups">
                     Follow-up reminders you add for a customer will appear here.
                 </x-ui.empty-state>
             @else
@@ -85,6 +80,9 @@
                                         {{ $task->customer->name }}
                                         @if ($task->due_on)
                                             · {{ __('Due') }} {{ $task->due_on->format('j M Y') }}
+                                            @if ($task->due_on->isPast() && ! $task->due_on->isToday())
+                                                · {{ __('Overdue') }}
+                                            @endif
                                         @endif
                                     </p>
                                 </div>

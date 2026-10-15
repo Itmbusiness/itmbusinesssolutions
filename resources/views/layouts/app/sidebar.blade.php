@@ -24,6 +24,10 @@
                         <flux:sidebar.item icon="users" :href="route('consultant.customers.index')" :current="request()->routeIs('consultant.customers.*')" wire:navigate>
                             {{ __('My customers') }}
                         </flux:sidebar.item>
+                    @elseif (auth()->user()->isClient())
+                        <flux:sidebar.item icon="document-text" :href="route('service-requests.index')" :current="request()->routeIs('service-requests.index')" wire:navigate>
+                            {{ __('My requests') }}
+                        </flux:sidebar.item>
                     @endif
                     <flux:sidebar.item icon="cog-6-tooth" :href="route('profile.edit')" :current="request()->routeIs('profile.edit', 'appearance.edit', 'security.edit')" wire:navigate>
                         {{ __('Settings') }}

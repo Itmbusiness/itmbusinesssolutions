@@ -62,6 +62,19 @@ class AdminTest extends TestCase
             ->assertSee('Overview');
     }
 
+    public function test_the_admin_dashboard_prioritizes_unanswered_open_leads(): void
+    {
+        $waiting = Lead::factory()->create();
+        $answered = Lead::factory()->create(['first_responded_at' => now()]);
+
+        $this->actingAs($this->admin())->get(route('admin.dashboard'))
+            ->assertOk()
+            ->assertSee('Awaiting response')
+            ->assertSee(route('admin.leads.index', ['response' => 'waiting']))
+            ->assertSee($waiting->reference)
+            ->assertSee($answered->reference);
+    }
+
     public function test_an_admin_can_create_a_service_that_appears_on_the_public_site(): void
     {
         $category = $this->category();

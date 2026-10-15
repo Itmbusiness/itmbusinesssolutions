@@ -24,6 +24,13 @@ use Illuminate\View\View;
  */
 class LeadController extends Controller
 {
+    public function index(Request $request): View
+    {
+        return view('pages.service-requests.index', [
+            'leads' => $request->user()->leads()->with('service')->latest()->paginate(15),
+        ]);
+    }
+
     public function create(): View
     {
         return view('pages.service-requests.create', [

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\LeadStatus;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -19,14 +20,17 @@ class DashboardController extends Controller
             return view('dashboard', [
                 'customers' => $user->consultantCustomers()->latest()->take(5)->get(),
                 'customerCount' => $user->consultantCustomers()->count(),
-                'tasks' => $user->consultantTasks()->open()->with('customer')->orderBy('due_on')->take(5)->get(),
+                'tasks' => $user->consultantTasks()->open()->with('customer')->orderByRaw('due_on IS NULL')->orderBy('due_on')->take(5)->get(),
                 'openTaskCount' => $user->consultantTasks()->open()->count(),
+                'overdueTaskCount' => $user->consultantTasks()->open()->whereDate('due_on', '<', today())->count(),
             ]);
         }
 
         return view('dashboard', [
-            'leads' => $user->leads()->latest()->take(5)->get(),
+            'leads' => $user->leads()->with('service')->latest()->take(5)->get(),
             'openLeadCount' => $user->leads()->open()->count(),
+            'awaitingInformationCount' => $user->leads()->where('status', LeadStatus::AwaitingInformation)->count(),
+            'leadCount' => $user->leads()->count(),
         ]);
     }
 }

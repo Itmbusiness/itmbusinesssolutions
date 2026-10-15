@@ -8,6 +8,7 @@ change them**. Read this before exploring — it is meant to replace a search.
 - Live cPanel/SSH connection, deployment paths and backups: `docs/deployment-cpanel.md`
 - Design tokens and components: `docs/design-system.md`
 - Client vs. consultant dashboard role definitions: `docs/dashboards-spec.md`
+- Dashboard usability and accessibility rules: `docs/dashboard-best-practices.md`
 
 ---
 
@@ -57,7 +58,7 @@ payments, document vault, applications workflow, compliance calendar.
 | ITM lead ownership and first-response queue | `app/Http/Controllers/Admin/LeadController.php`, `Admin/DashboardController.php`, `pages/admin/leads/`, `pages/admin/dashboard.blade.php`; assignees are admins only |
 | Who can reach the admin | `app/Http/Middleware/EnsureUserIsAdmin.php`, `app/Enums/UserRole.php` |
 | Registration fields / roles | `app/Actions/Fortify/CreateNewUser.php` + `resources/views/pages/auth/register.blade.php` |
-| Client vs consultant dashboard | `app/Http/Controllers/DashboardController.php` prepares role-scoped data; `resources/views/dashboard.blade.php` dispatches to `pages/dashboard/{client,consultant}.blade.php` |
+| Client vs consultant dashboard | `app/Http/Controllers/DashboardController.php` prepares role-scoped data; `resources/views/dashboard.blade.php` dispatches to `pages/dashboard/{client,consultant}.blade.php`; shared linked stat at `components/ui/dashboard-stat.blade.php` |
 | Consultant's own customers/notes/tasks | `routes/consultant.php` + `app/Http/Controllers/Consultant/` + `resources/views/pages/consultant/customers/` |
 | Workspace sidebar | `resources/views/layouts/app/sidebar.blade.php` |
 | Re-import the PRD content pack | `database/seeders/ContentPackSeeder.php`, then `php artisan db:seed` |
@@ -91,6 +92,7 @@ Defined in `routes/web.php` (public) and `routes/admin.php` (admin).
 | URL | Notes |
 | --- | --- |
 | `/dashboard` | `DashboardController`; branches on role → `pages/dashboard/client` or `consultant` |
+| `/service-requests` | `LeadController@index` → `pages/service-requests/index` (paginated requests scoped to signed-in user) |
 | `/service-requests/create`, POST `/service-requests` | `LeadController` (signed-in request; creates a `Lead` with `source=workspace`) |
 | `/consultant/customers/*` | `Consultant\CustomerController` — a consultant's own customer CRUD, scoped to `consultant_id`. Middleware `auth,verified,consultant` |
 | `/consultant/customers/{customer}/notes`, `/tasks` | `Consultant\CustomerNoteController`, `Consultant\TaskController` |
