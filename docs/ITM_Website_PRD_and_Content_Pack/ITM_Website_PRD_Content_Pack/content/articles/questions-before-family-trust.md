@@ -1,6 +1,6 @@
 ---
 seo_title: "Questions to Answer Before Forming a Family Trust | ITM Business Solutions"
-meta_description: "A practical guide to questions to answer before forming a family trust, including preparation questions, common risks and the next appropriate step."
+meta_description: "Explore the purpose, trustees, beneficiaries and assets to consider before seeking advice on a family trust in Zimbabwe."
 slug: "questions-before-family-trust"
 primary_keyword: "family trust planning Zimbabwe"
 category: "Organisations and Trusts"

@@ -1,6 +1,6 @@
 ---
 seo_title: "Tender-readiness Document Checklist for Zimbabwean Businesses | ITM Business Solutions"
-meta_description: "A practical guide to tender-readiness document checklist for zimbabwean businesses, including preparation questions, common risks and the next appropriate step."
+meta_description: "Use a practical checklist to prepare company, tax and supplier records before responding to a tender in Zimbabwe."
 slug: "tender-readiness-document-checklist"
 primary_keyword: "tender documents checklist Zimbabwe"
 category: "Tender Readiness"

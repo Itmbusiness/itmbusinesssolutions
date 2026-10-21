@@ -23,6 +23,6 @@ We do not guarantee authority approval, tender awards or processing dates contro
 
 ## Business verification
 
-Production content must insert the verified legal entity name, registration number, consultant authorisation where applicable, physical address, contact information and real team profiles.
+For current contact details and office information, see our [Contact page](/contact). We can provide the business details relevant to your enquiry before you engage us. We publish team credentials only after they have been verified.
 
 **CTA:** View Our Services

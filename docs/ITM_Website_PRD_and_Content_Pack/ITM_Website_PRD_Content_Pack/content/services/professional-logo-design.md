@@ -79,7 +79,7 @@ The number of concepts and revision rounds must be stated in the quotation.
 
 ### Will I receive editable files?
 
-The package should clearly list included source and export formats.
+Your written quotation will list the editable source files and export formats included in your package.
 
 ### Can you redesign an existing logo?
 

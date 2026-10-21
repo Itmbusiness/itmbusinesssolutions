@@ -1,6 +1,6 @@
 ---
 seo_title: "When Must an Employer Register with NSSA? | ITM Business Solutions"
-meta_description: "A practical guide to when must an employer register with nssa?, including preparation questions, common risks and the next appropriate step."
+meta_description: "Find out what to check when a Zimbabwean business becomes an employer and needs to plan NSSA registration."
 slug: "when-employer-register-nssa"
 primary_keyword: "NSSA employer registration Zimbabwe"
 category: "Employer Compliance"

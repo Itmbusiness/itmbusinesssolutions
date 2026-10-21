@@ -1,6 +1,6 @@
 ---
 seo_title: "Why a Tax Clearance Request May Be Delayed | ITM Business Solutions"
-meta_description: "A practical guide to why a tax clearance request may be delayed, including preparation questions, common risks and the next appropriate step."
+meta_description: "Review common record and filing issues that may delay a ZIMRA tax clearance request, and prepare for a focused assessment."
 slug: "why-tax-clearance-may-be-delayed"
 primary_keyword: "tax clearance delays Zimbabwe"
 category: "Tax Compliance"

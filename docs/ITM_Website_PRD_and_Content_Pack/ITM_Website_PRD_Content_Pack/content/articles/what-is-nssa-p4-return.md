@@ -1,6 +1,6 @@
 ---
 seo_title: "What Is an NSSA P4 Return? | ITM Business Solutions"
-meta_description: "A practical guide to what is an nssa p4 return?, including preparation questions, common risks and the next appropriate step."
+meta_description: "Understand the purpose of an NSSA P4 return and the payroll records an employer may need before preparing a submission."
 slug: "what-is-nssa-p4-return"
 primary_keyword: "NSSA P4 return Zimbabwe"
 category: "Employer Compliance"

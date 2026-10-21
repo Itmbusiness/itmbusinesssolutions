@@ -6,7 +6,7 @@
     <x-public.page-header
         image="resources"
         :eyebrow="__('Resources')"
-        :heading="__('Written by consultants, dated and reviewed.')"
+        :heading="__('Practical guidance for your next step')"
         :lead="__('Practical explanations of the questions clients ask most. Guidance is general — a consultant confirms what applies to your organisation.')"
     />
 
@@ -19,10 +19,10 @@
                         <p class="card-kicker text-teal">{{ $article->category->name }}</p>
                     @endif
                     <h2 class="card-title mt-3 text-balance text-navy">{{ $article->title }}</h2>
-                    <p class="card-body mt-2 flex-1">{{ Str::limit($article->excerpt, 130) }}</p>
+                    <p class="card-body mt-2 flex-1">{{ $article->excerpt }}</p>
                     <span class="mt-6 flex items-center gap-2 border-t border-line-soft pt-4 text-meta text-muted">
                         <x-ui.icon name="clock-counter-clockwise" size="14px" />
-                        {{ $article->reviewed_on?->format('j M Y') ?? __('Reviewed before publication') }}
+                        {{ $article->reviewed_on?->format('j M Y') ?? __('Check current requirements') }}
                     </span>
                 </a>
             @empty

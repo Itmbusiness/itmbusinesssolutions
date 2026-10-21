@@ -1,6 +1,6 @@
 ---
 seo_title: "Trust, PVO or Association: Which Structure Fits the Purpose? | ITM Business Solutions"
-meta_description: "A practical guide to trust, pvo or association: which structure fits the purpose?, including preparation questions, common risks and the next appropriate step."
+meta_description: "Compare the questions to ask when considering a trust, PVO or association for an organisation in Zimbabwe."
 slug: "trust-pvo-association-differences"
 primary_keyword: "trust PVO association Zimbabwe"
 category: "Organisations and Trusts"

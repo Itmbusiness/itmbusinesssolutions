@@ -1,6 +1,6 @@
 ---
 seo_title: "Documents and Information Needed for Company Registration | ITM Business Solutions"
-meta_description: "A practical guide to documents and information needed for company registration, including preparation questions, common risks and the next appropriate step."
+meta_description: "Prepare names, ownership details, identity records and addresses before starting a company registration enquiry in Zimbabwe."
 slug: "documents-needed-company-registration-zimbabwe"
 primary_keyword: "company registration requirements Zimbabwe"
 category: "Starting a Business"
@@ -48,6 +48,6 @@ Prepare the available records and request an assessment. ITM Business Solutions 
 
 ## Sources and review note
 
-Verify current registry rules with the responsible Companies Registry before publication.
+Confirm the current filing requirements with the responsible Companies Registry before submitting an application.
 
 This article provides general preparation information. Requirements and procedures can change, and case-specific professional advice may be necessary.

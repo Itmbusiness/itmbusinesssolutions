@@ -79,7 +79,7 @@ Suitability depends on tax status, transaction workflow and current authority re
 
 ### Do you supply the fiscalisation platform?
 
-The quotation must state whether ITM Business Solutions supplies, resells or only assists with an approved third-party solution.
+We will clarify in your written quotation whether we can help you select a provider, assist with setup or supply a solution for your specific needs.
 
 ### Will my existing invoicing system work?
 
@@ -87,7 +87,7 @@ Compatibility requires an assessment of the software, integration options and ap
 
 ### How are credentials protected?
 
-Credentials must never be requested in ordinary chat. The platform should use secure, time-limited collection and access controls.
+Do not send passwords or one-time codes in ordinary chat. We will explain any access needed for the agreed work through an appropriate private channel.
 
 
 ## Related services

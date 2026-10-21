@@ -124,7 +124,7 @@
                             <x-public.media :subject="$service->slug" class="public-card-image" />
                             <p class="card-kicker text-teal">{{ $service->category->name }}</p>
                             <h3 class="mt-2 font-semibold text-navy">{{ $service->name }}</h3>
-                            <p class="card-body mt-2 flex-1">{{ Str::limit($service->summary, 110) }}</p>
+                            <p class="card-body mt-2 flex-1">{{ $service->summary }}</p>
                             <span class="mt-4 inline-flex items-center gap-2 text-meta font-semibold text-teal">
                                 {{ __('View service') }}
                                 <x-ui.icon name="arrow-right" size="14px" class="transition-transform duration-300 group-hover:translate-x-1" />
@@ -198,10 +198,10 @@
                                 <p class="card-kicker text-teal">{{ $article->category->name }}</p>
                             @endif
                             <h3 class="card-title mt-3 text-balance text-navy">{{ $article->title }}</h3>
-                            <p class="card-body mt-2 flex-1">{{ Str::limit($article->excerpt, 120) }}</p>
+                            <p class="card-body mt-2 flex-1">{{ $article->excerpt }}</p>
                             <span class="mt-6 flex items-center gap-2 border-t border-line-soft pt-4 text-meta text-muted">
                                 <x-ui.icon name="clock-counter-clockwise" size="14px" />
-                                {{ $article->reviewed_on?->format('j M Y') ?? __('Reviewed before publication') }}
+                                {{ $article->reviewed_on?->format('j M Y') ?? __('Check current requirements') }}
                             </span>
                         </a>
                     @endforeach

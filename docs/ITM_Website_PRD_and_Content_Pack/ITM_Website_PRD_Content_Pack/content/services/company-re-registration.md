@@ -74,7 +74,7 @@ The quotation should show an operational estimate based on document readiness an
 
 ### Is company re-registration still open?
 
-Availability, deadlines and consequences must be checked against a current official notice. The page should display a dated status banner maintained by the content team.
+Please ask us to check the current re-registration window and the requirements for your existing records before you pay. Deadlines and consequences can change through official notices.
 
 ### What if some old documents are missing?
 

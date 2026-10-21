@@ -83,7 +83,7 @@ Outstanding obligations normally need assessment and resolution before a clearan
 
 ### How long is tax clearance valid?
 
-Validity must be confirmed from the current certificate and official guidance. The dashboard should store the issue and expiry dates.
+Check the issue and expiry dates on your current certificate. We can help you review its status against current official guidance.
 
 ### Do you guarantee issuance?
 

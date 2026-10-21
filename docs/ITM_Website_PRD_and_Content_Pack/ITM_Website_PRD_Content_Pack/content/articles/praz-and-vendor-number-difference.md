@@ -1,6 +1,6 @@
 ---
 seo_title: "PRAZ Registration and Vendor Numbers: What Is the Difference? | ITM Business Solutions"
-meta_description: "A practical guide to praz registration and vendor numbers: what is the difference?, including preparation questions, common risks and the next appropriate step."
+meta_description: "Understand the difference between PRAZ supplier registration and a buyer-specific vendor number before preparing a tender application."
 slug: "praz-and-vendor-number-difference"
 primary_keyword: "PRAZ vs vendor number Zimbabwe"
 category: "Tender Readiness"

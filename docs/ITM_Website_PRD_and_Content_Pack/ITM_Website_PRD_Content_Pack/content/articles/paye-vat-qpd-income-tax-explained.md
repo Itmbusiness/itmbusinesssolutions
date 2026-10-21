@@ -1,6 +1,6 @@
 ---
 seo_title: "PAYE, VAT, QPD and Income Tax: A Practical Introduction | ITM Business Solutions"
-meta_description: "A practical guide to paye, vat, qpd and income tax: a practical introduction, including preparation questions, common risks and the next appropriate step."
+meta_description: "Understand how PAYE, VAT, QPDs and income tax relate to a Zimbabwean business, and what records to prepare before seeking tax support."
 slug: "paye-vat-qpd-income-tax-explained"
 primary_keyword: "PAYE VAT QPD income tax Zimbabwe"
 category: "Tax Compliance"

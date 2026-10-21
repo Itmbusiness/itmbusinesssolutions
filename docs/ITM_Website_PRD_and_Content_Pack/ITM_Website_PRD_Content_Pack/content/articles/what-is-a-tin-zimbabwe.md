@@ -1,6 +1,6 @@
 ---
 seo_title: "What Is a TIN and Why Does a Business Need One? | ITM Business Solutions"
-meta_description: "A practical guide to what is a tin and why does a business need one?, including preparation questions, common risks and the next appropriate step."
+meta_description: "Learn what a Taxpayer Identification Number is used for in Zimbabwe and what to prepare before asking for ZIMRA registration support."
 slug: "what-is-a-tin-zimbabwe"
 primary_keyword: "TIN number Zimbabwe"
 category: "Tax Compliance"
