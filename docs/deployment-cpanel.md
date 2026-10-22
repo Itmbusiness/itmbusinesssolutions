@@ -22,6 +22,10 @@ Confirmed ITM Business Solutions paths:
 
 Laravel's `public` path now links to the ITM domain web root, so compiled assets and dashboard image uploads use the directory actually served by cPanel. The domain's existing customised `index.php`, `.htaccess` and storage link were preserved.
 
+## Deployed on 22 October 2026: scroll timing correction
+
+Commit `2300b25` measures frame progress against the image viewport instead of the entire process section, allowing the sequence to start at its first frame on phones. The frontend build and eight focused tests (34 assertions) passed. A fresh private backup was made at `/home/itmcvepp/itm-deployment-backups/20261022-162155`, and the three-file release was staged at `/home/itmcvepp/itm-release-2300b25-20261022/release.tar.gz` with a verified SHA-256. No migration or seeder was run. The homepage and new JavaScript asset returned 200 after deployment; production remained out of maintenance mode and record counts stayed unchanged. Visual browser verification is still pending because the browser connection was unavailable.
+
 ## Deployed on 22 October 2026: scroll sequence
 
 Commit `f65dc22` added the scroll-linked frame sequence to the homepage process section. The existing editable process image remains the still-image fallback. The release changed only the homepage view, its CSS and JavaScript source, one feature test, and compiled assets. It ran no migrations or seeders and did not replace `.env`, uploads or live records.
