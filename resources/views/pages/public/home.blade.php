@@ -138,6 +138,10 @@
 
     {{-- ── Process ─────────────────────────────────────────────── --}}
     <section id="process" class="ground-navy grain edge-light section relative overflow-hidden" aria-labelledby="process-heading">
+        <div class="public-process-sequence" aria-hidden="true" data-scroll-frames data-frame-count="160" data-frame-template="{{ asset('images/frames/ezgif-frame-001.jpg') }}">
+            <x-public.media subject="process" class="public-process-sequence-image" />
+            <canvas class="public-process-sequence-canvas" aria-hidden="true"></canvas>
+        </div>
         <div class="page-shell-wide public-process-layout">
             <div class="max-w-[62ch]">
                 <p class="eyebrow-rule text-gold" data-reveal="fade">{{ __('How it works') }}</p>
@@ -169,10 +173,6 @@
                     </li>
                 @endforeach
             </ol>
-            <div class="public-process-sequence" data-scroll-frames data-frame-count="160" data-frame-template="{{ asset('images/frames/ezgif-frame-001.jpg') }}">
-                <x-public.media subject="process" class="public-process-sequence-image" />
-                <canvas class="public-process-sequence-canvas" aria-hidden="true"></canvas>
-            </div>
         </div>
     </section>
 

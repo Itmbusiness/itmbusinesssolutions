@@ -28,7 +28,8 @@ function initScrollFrames() {
 
     const draw = (image, index) => {
         const bounds = canvas.getBoundingClientRect();
-        const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+        // The source is 1920×1080; a larger canvas only spends memory.
+        const pixelRatio = Math.min(window.devicePixelRatio || 1, 2, 1920 / bounds.width, 1080 / bounds.height);
         const width = Math.round(bounds.width * pixelRatio);
         const height = Math.round(bounds.height * pixelRatio);
 
@@ -87,8 +88,7 @@ function initScrollFrames() {
             return;
         }
 
-        // Use the image's own journey through the viewport. On phones it sits
-        // below the six steps, so measuring the whole section skips the start.
+        // The scene fills the section, so its own bounds cover the full story.
         const bounds = sequence.getBoundingClientRect();
         const progress = Math.min(1, Math.max(0, (window.innerHeight - bounds.top) / (window.innerHeight + bounds.height)));
         const step = window.innerWidth < 768 ? 4 : 1;

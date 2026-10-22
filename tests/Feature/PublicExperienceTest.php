@@ -43,13 +43,14 @@ class PublicExperienceTest extends TestCase
         $this->get(route('home'))->assertOk()->assertSee('images/custom-home.webp');
     }
 
-    public function test_the_scroll_sequence_keeps_the_editable_process_image_as_its_fallback(): void
+    public function test_the_scroll_sequence_sits_behind_the_process_copy_and_keeps_its_editable_fallback(): void
     {
         Setting::put('media.quotation', 'images/custom-process.webp', 'public images');
 
         $this->get(route('home'))->assertOk()
             ->assertSee('images/custom-process.webp')
             ->assertSee('data-scroll-frames', false)
+            ->assertSeeInOrder(['id="process"', 'class="public-process-sequence"', 'class="page-shell-wide public-process-layout"'], false)
             ->assertSee('images/frames/ezgif-frame-001.jpg');
     }
 
