@@ -87,7 +87,9 @@ function initScrollFrames() {
             return;
         }
 
-        const bounds = sequence.closest('section').getBoundingClientRect();
+        // Use the image's own journey through the viewport. On phones it sits
+        // below the six steps, so measuring the whole section skips the start.
+        const bounds = sequence.getBoundingClientRect();
         const progress = Math.min(1, Math.max(0, (window.innerHeight - bounds.top) / (window.innerHeight + bounds.height)));
         const step = window.innerWidth < 768 ? 4 : 1;
         const rawFrame = 1 + progress * (frameCount - 1);
