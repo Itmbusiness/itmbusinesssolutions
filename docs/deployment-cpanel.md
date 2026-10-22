@@ -22,6 +22,10 @@ Confirmed ITM Business Solutions paths:
 
 Laravel's `public` path now links to the ITM domain web root, so compiled assets and dashboard image uploads use the directory actually served by cPanel. The domain's existing customised `index.php`, `.htaccess` and storage link were preserved.
 
+## Deployed on 22 October 2026: full process background
+
+Commit `e7fc229` moves the scroll-linked frame sequence behind the whole “How it works” section, with a navy overlay for text contrast and a canvas limited to the source image's resolution. The editable process image remains the still-image fallback. The frontend build, eight focused tests (35 assertions) and Pint passed. A private backup was created at `/home/itmcvepp/itm-deployment-backups/20261022-163214`. The staged archive is `/home/itmcvepp/itm-release-e7fc229-20261022/release.tar.gz`, with its SHA-256 verified before deployment. No migration or seeder was run. The live homepage, CSS and JavaScript returned 200; the compiled CSS positions the sequence across the section; production remained out of maintenance mode and record counts stayed unchanged. A refreshed screenshot is pending for visual confirmation.
+
 ## Deployed on 22 October 2026: process layout correction
 
 The first full-page screenshot exposed a CSS selector that placed the new frame wrapper in the left process column and pushed the heading and steps below it. Commit `cf06b49` limits that selector to the introductory text so the frame wrapper can occupy the right column. The frontend build and eight focused tests (34 assertions) passed. A fresh private backup was made at `/home/itmcvepp/itm-deployment-backups/20261022-162604`; the three-file release is `/home/itmcvepp/itm-release-cf06b49-20261022/release.tar.gz` and its SHA-256 was verified before extraction. No migration or seeder was run. The homepage and corrected stylesheet returned 200, the stylesheet contains the selector fix, the app is out of maintenance mode, and record counts remain unchanged. A post-fix screenshot has been requested for visual confirmation.
