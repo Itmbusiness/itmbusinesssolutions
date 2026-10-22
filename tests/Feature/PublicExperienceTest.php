@@ -43,6 +43,16 @@ class PublicExperienceTest extends TestCase
         $this->get(route('home'))->assertOk()->assertSee('images/custom-home.webp');
     }
 
+    public function test_the_scroll_sequence_keeps_the_editable_process_image_as_its_fallback(): void
+    {
+        Setting::put('media.quotation', 'images/custom-process.webp', 'public images');
+
+        $this->get(route('home'))->assertOk()
+            ->assertSee('images/custom-process.webp')
+            ->assertSee('data-scroll-frames', false)
+            ->assertSee('images/frames/ezgif-frame-001.jpg');
+    }
+
     public function test_whatsapp_uses_the_configured_number(): void
     {
         Setting::put('contact.whatsapp', '+263 775 423 197', 'contact');

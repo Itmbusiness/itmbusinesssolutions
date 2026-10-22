@@ -169,7 +169,10 @@
                     </li>
                 @endforeach
             </ol>
-            <x-public.media subject="process" class="public-process-image" />
+            <div class="public-process-sequence" data-scroll-frames data-frame-count="160" data-frame-template="{{ asset('images/frames/ezgif-frame-001.jpg') }}">
+                <x-public.media subject="process" class="public-process-sequence-image" />
+                <canvas class="public-process-sequence-canvas" aria-hidden="true"></canvas>
+            </div>
         </div>
     </section>
 
