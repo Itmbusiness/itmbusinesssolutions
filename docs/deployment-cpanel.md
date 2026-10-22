@@ -22,6 +22,36 @@ Confirmed ITM Business Solutions paths:
 
 Laravel's `public` path now links to the ITM domain web root, so compiled assets and dashboard image uploads use the directory actually served by cPanel. The domain's existing customised `index.php`, `.htaccess` and storage link were preserved.
 
+## Deployed on 22 October 2026
+
+The release brought the GitHub code through `83a72bb` to the ITM domain. It included
+the marketing-consent and lead-response features, the public editorial repairs, and
+the compiled frontend assets. A fresh private backup was created at
+`/home/itmcvepp/itm-deployment-backups/20261022-154246` before the site changed.
+The private release staging directory is
+`/home/itmcvepp/itm-release-83a72bb-20261022`.
+
+Local verification passed 150 tests (613 assertions) and the frontend build. The
+three release archives matched their SHA-256 hashes after transfer. The first
+migration attempt stopped because MySQL rejected an automatically generated index
+name longer than its identifier limit. The two partial marketing tables were
+confirmed empty, removed, and recreated by the corrected migration with an
+explicit shorter index name. All four new migrations are recorded as run. The
+site was then brought out of maintenance mode.
+
+No content-pack reseed or database reset was run. The live `.env`, customised
+domain `index.php` and `.htaccess` retained their original checksums. The app's
+`public` symlink still points to the dedicated ITM web root, and uploads remain
+writable. Post-deployment checks returned 200 for the homepage, contact, legal,
+service category, article, sitemap, login, images, CSS and JavaScript; guest
+`/admin` redirected to login. The editorial prompts and generic article
+descriptions targeted by the migration were absent from the live CMS. Counts
+remained 1 user, 3 leads, 11 pages, 13 articles and 7 settings.
+
+The staged application archive predates the one-line migration index fix. Do not
+rerun that archive or its deployment script; build a fresh release from GitHub for
+any future deployment.
+
 ## Deployed on 8 October 2026
 
 The release included the public redesign and generated WebP assets, contact form/settings integration, dashboard image management, sidebar visibility fixes, full business-name wording, legal pages and SEO improvements.

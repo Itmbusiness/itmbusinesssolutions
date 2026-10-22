@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string('policy_version');
             $table->timestamp('occurred_at');
 
-            $table->index(['marketing_subscription_id', 'occurred_at']);
+            $table->index(['marketing_subscription_id', 'occurred_at'], 'marketing_consent_subscription_occurred_idx');
         });
     }
 
