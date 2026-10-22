@@ -22,6 +22,10 @@ Confirmed ITM Business Solutions paths:
 
 Laravel's `public` path now links to the ITM domain web root, so compiled assets and dashboard image uploads use the directory actually served by cPanel. The domain's existing customised `index.php`, `.htaccess` and storage link were preserved.
 
+## Deployed on 22 October 2026: process layout correction
+
+The first full-page screenshot exposed a CSS selector that placed the new frame wrapper in the left process column and pushed the heading and steps below it. Commit `cf06b49` limits that selector to the introductory text so the frame wrapper can occupy the right column. The frontend build and eight focused tests (34 assertions) passed. A fresh private backup was made at `/home/itmcvepp/itm-deployment-backups/20261022-162604`; the three-file release is `/home/itmcvepp/itm-release-cf06b49-20261022/release.tar.gz` and its SHA-256 was verified before extraction. No migration or seeder was run. The homepage and corrected stylesheet returned 200, the stylesheet contains the selector fix, the app is out of maintenance mode, and record counts remain unchanged. A post-fix screenshot has been requested for visual confirmation.
+
 ## Deployed on 22 October 2026: scroll timing correction
 
 Commit `2300b25` measures frame progress against the image viewport instead of the entire process section, allowing the sequence to start at its first frame on phones. The frontend build and eight focused tests (34 assertions) passed. A fresh private backup was made at `/home/itmcvepp/itm-deployment-backups/20261022-162155`, and the three-file release was staged at `/home/itmcvepp/itm-release-2300b25-20261022/release.tar.gz` with a verified SHA-256. No migration or seeder was run. The homepage and new JavaScript asset returned 200 after deployment; production remained out of maintenance mode and record counts stayed unchanged. Visual browser verification is still pending because the browser connection was unavailable.
